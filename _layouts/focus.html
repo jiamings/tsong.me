@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if page.title %} {{ page.title }} | {% endif %} Jiaming Song</title>
+    <link href="{{ site.baseurl }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/roboto.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/material.min.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/ripples.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <div class="navbar-brand">Jiaming Song</div>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="navbar-left nav navbar-nav">
+            <li {% if page.title == "Home" %} class="active" {% endif %}><a href="{{ site.baseurl }}/">Home</a></li>
+            <li {% if page.title == "Publications" %} class="active" {% endif %}><a href="{{ site.baseurl }}/publications">Publications</a></li>
+            <li {% if page.title == "Projects" %} class="active" {% endif %}
+            {% if page.father and page.father == "Projects" %} class="active" {% endif %}
+            ><a href="{{ site.baseurl }}/projects/">Projects</a></li>
+
+        </ul>
+        <ul class="navbar-right">
+
+        </ul>
+    </div>
+</nav>
+
+<div class="container" style="padding-top: 70px">
+    {{ content }}
+</div>
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
+<script src="{{ site.baseurl }}/js/ripples.min.js"></script>
+<script src="{{ site.baseurl }}/js/material.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $.material.init();
+    });
+</script>
+{% if page.javascript %} {{ page.javascript }} {% endif %}
+</body>
+</html>

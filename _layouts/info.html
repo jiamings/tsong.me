@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if page.title %} {{ page.title }} | {% endif %} Jiaming Song</title>
+    <link href="{{ site.baseurl }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/roboto.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/material.min.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/ripples.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <div class="navbar-brand">Jiaming Song</div>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="navbar-left nav navbar-nav">
+            <li {% if page.title == "Home" %} class="active" {% endif %}><a href="{{ site.baseurl }}/">Home</a></li>
+            <li {% if page.title == "Publications" %} class="active" {% endif %}><a href="{{ site.baseurl }}/publications">Publications</a></li>
+            <li {% if page.title == "Projects" %} class="active" {% endif %}><a href="{{ site.baseurl }}/projects/">Projects</a></li>
+        </ul>
+        <ul class="navbar-right">
+
+        </ul>
+    </div>
+</nav>
+
+<div class="container" style="padding-top: 70px">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-6 col-xs-offset-3">
+                            <img src="{{ site.baseurl }}/img/avatar.png" class="img-circle img-responsive" style="min-width:150px"
+                                 alt="Jiaming Song">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <h3>Jiaming Song</h3>
+                    <p>Department of Computer Science and Technology, Tsinghua University</p>
+                    <p>
+                        <b>Email:</b> <a href="mailto:jiaming.tsong@gmail.com" target="_top">jiaming.tsong@gmail.com</a>
+                        <a href="mailto:jiaming.tsong@hotmail.com" target="_top">jiaming.tsong@hotmail.com</a>
+                    </p>
+                    <p><b>Curriculum Vitae:</b> <a href="" target="_top">[pdf]</a></p>
+                    <a href="http://cn.linkedin.com/in/jiamings" target="_blank">
+                        <img src="{{ site.baseurl }}/img/icon/linkedin.min.svg" height="24px" weight="24px">
+                    </a>
+                    <a href="https://github.com/jiamings" target="_blank">
+                        <img src="{{ site.baseurl }}/img/icon/github.min.svg" height="24px" weight="24px">
+                    </a>
+                    <a href="https://www.flickr.com/photos/jiamingtsong/" target="_blank">
+                        <img src="{{ site.baseurl }}/img/icon/flickr.svg" height="24px" weight="24px">
+                    </a>
+                    <a href="https://www.facebook.com/jiaming.tony.song" target="_blank">
+                        <img src="{{ site.baseurl }}/img/icon/facebook.min.svg" height="24px" weight="24px">
+                    </a>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>
+                        This website is created with the
+                        <a href="https://fezvrasta.github.io/bootstrap-material-design/">Material Design for Bootstrap</a> framework,
+                        with responsiveness in mind.
+                    </p>
+                    <p>
+                        I love <a href="https://www.google.com/design/spec/material-design/introduction.html">Material Design!</a>
+                    </p>
+                    <p>
+                        (Maybe I should try out <a href="http://www.getmdl.io/index.html" target="_blank">Google's Material Design Lite</a>
+                        when I have the time.)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            {{ content }}
+        </div>
+
+        <div class="col-lg-1">
+            <div data-spy="affix" style="position:fixed; bottom: 20px;">
+                <a class="button btn btn-fab btn-raised btn-material-green" href="#">
+                    <i class="mdi-navigation-arrow-forward" style="
+                        -webkit-transform: rotate(270deg);
+                        -moz-transform: rotate(270deg);
+                        -o-transform: rotate(270deg);
+                        -ms-transform: rotate(270deg);
+                        transform: rotate(270deg);"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
+<script src="{{ site.baseurl }}/js/ripples.min.js"></script>
+<script src="{{ site.baseurl }}/js/material.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $.material.init();
+    });
+</script>
+{% if page.javascript %} {{ page.javascript }} {% endif %}
+</body>
+</html>
