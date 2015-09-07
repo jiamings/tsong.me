@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Biopedia - Online Informatics Data Center |  Jiaming Song</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/roboto.css" rel="stylesheet">
+    <link href="/css/material.min.css" rel="stylesheet">
+    <link href="/css/ripples.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <div class="navbar-brand">Jiaming Song</div>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="navbar-left nav navbar-nav">
+            <li ><a href="/">Home</a></li>
+            <li ><a href="/publications">Publications</a></li>
+            <li 
+             class="active" 
+            ><a href="/projects/">Projects</a></li>
+
+        </ul>
+        <ul class="navbar-right">
+
+        </ul>
+    </div>
+</nav>
+
+<div class="container" style="padding-top: 70px">
+    <div class="page-header">
+    <h2>Biopedia - Online Informatics Data Center</h2>
+    <h3>by Jiaming Song, Yuan Yuan, Di Xiao, Yu Yang, Shuang Teng</h3>
+</div>
+
+<div class="bs-component">
+    <h3>Abstract</h3>
+    <p>
+        A website for storing bioinformatics related data, which contains basic navigation, data management and data visualization.
+    </p>
+    <p>
+        The website is a project for the Software Engineering class, and is implemented using the <a href="http://flask.pocoo.org/" target="_blank">Flask framework</a>
+        + <a href="https://www.mongodb.org/" target="_blank">MongoDB</a>.
+    </p>
+    <p>
+        We finished a demo skeleton, and then handed everything to the
+        Bioinformatics Lab in Tsinghua University.
+    </p>
+    <p>
+        You can see the demo <a href="http://biopedia.bigdata-thu.org/">[here]</a>, but it seems that the support has beeen discontinued.
+    </p>
+    <h3>Download</h3>
+    <p>You can also download our source code on GitHub: <a href="https://github.com/jiamings/biopedia" target="_blank">[here]</a></p>
+    <p>
+        We provide documentation for
+        <a href="/static/docs/Biopedia_requirements.pdf" target="_blank">[requirements]</a>,
+        <a href="/static/docs/Biopedia_design.pdf" target="_blank">[design]</a>, and
+        <a href="/static/docs/Biopedia_test.pdf" target="_blank">[test]</a>. (In Chinese)
+    </p>
+    <div class="row">
+        <div class="col-lg-5 col-lg-offset-1">
+            <img src="/img/projects/biopedia/register.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+            <h5 style="text-align: center;">Figure 1: Page for registration.</h5>
+        </div>
+        <div class="col-lg-5">
+            <img src="/img/projects/biopedia/user-info.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+            <h5 style="text-align: center;">Figure 2: Page for user information display. (The name is fabricated.)</h5>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/ripples.min.js"></script>
+<script src="/js/material.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $.material.init();
+    });
+</script>
+
+</body>
+</html>

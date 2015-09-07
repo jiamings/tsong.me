@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Publications |  Jiaming Song</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/roboto.css" rel="stylesheet">
+    <link href="/css/material.min.css" rel="stylesheet">
+    <link href="/css/ripples.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <div class="navbar-brand">Jiaming Song</div>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="navbar-left nav navbar-nav">
+            <li ><a href="/">Home</a></li>
+            <li  class="active" ><a href="/publications">Publications</a></li>
+            <li 
+            
+            ><a href="/projects/">Projects</a></li>
+
+        </ul>
+        <ul class="navbar-right">
+
+        </ul>
+    </div>
+</nav>
+
+<div class="container" style="padding-top: 70px">
+    <div class="page-header">
+    <h1>Publications and Manuscripts</h1>
+</div>
+
+<div class="bs-component">
+    <table class="table table-striped">
+        <tbody>
+        <tr>
+            <td class="col-lg-1"><b style="font-size:20px;color:darkgray">1.</b></td>
+            <td class="col-lg-3">
+                <img src="/img/publications/icm2015/overview.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+            </td>
+            <td class="col-lg-8">
+                <h4><b>Organizational Churn: A Roll of the Dice?</b></h4>
+                <h5><b>Jiaming Song</b>*, Canyao Liu*, Chuan Yu* (* indicates equal contribution)</h5>
+                <h5>To appear in <i>Undergraduate Mathematics and its Applications (UMAP), Issue 36.2</i></h5>
+                <h5>For <a href="http://www.comap.com/undergraduate/contests/" target="_blank"><i>Interdisciplinary Contest in Modeling 2015</i></a>, Problem C</h5>
+                <h5><a>[pdf]</a>
+                    <a href="javascript:void(0)" onclick="$('#icm2015').collapse('toggle')">[abstract]</a>
+                    <a href="https://github.com/jiamings/icm2015" target="_blank">[code]</a>
+                    <a href="/static/slides/sfimm15_slides.pdf" target="_blank">[slides for sfimm15]</a>
+                    <a href="/static/slides/icm2015_slides_tsinghua.pdf" target="_blank">[slides for Tsinghua]</a>
+                    <a href="http://www.comap.com/undergraduate/contests/mcm/contests/2015/problems/2015_ICM_Problem_C.pdf" target="_blank">[problem]</a>
+                </h5>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div class="collapse" id="icm2015">
+                    <div class="well">
+                        <p>
+                            Network science is critical to understanding management
+                            due to its extensive applications in complex systems with
+                            network-based structures. Since the organization of ICM
+                            forms an network structure, network science can be utilized
+                            to analyze dynamic processes within the team, e.g.
+                            the diffusion effects of organizational churn.
+                        </p>
+                        <p>
+                            In this paper, we construct a Human Capital network according
+                            to the hierarchical structure of ICM and create a simple yet
+                            effective model to capture the dynamic processes, which includes
+                            organizational churn, promotion, and recruitment.
+                            For organizational churn, we propose and implement our
+                            probabilistic churn model inspired by Bayesian learning principles,
+                            which estimates and updates the likelihood of individual churn
+                            using the Beta-Bernoulli distribution.
+                            Then we develop three promotion measures based on working
+                            experience, inclination to churn, and closeness centrality.
+                            Moreover, we propose several means of controlling the
+                            recruitment rate from the HR's perspective, and further
+                            define some key concepts for evaluation, such as dissatisfaction and productivity.
+                        </p>
+                        <p>
+                            Through extensive simulations, we show that our model is
+                            flexible enough to encompass most features of the current
+                            situation and yield convincing productivity and cost results.
+                            We further extend our model to scenarios with higher churn
+                            rates, and discover an interesting fact that higher churn
+                            rates lead to lower productivity-cost ratios. In an extreme
+                            case with no recruitment, we discover differentiated HR
+                            health degeneration among different offices over two years
+                            through visualization.
+                        </p>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="col-lg-1"><b style="font-size:20px;color:darkgray">2.</b></td>
+            <td class="col-lg-3">
+                <img src="/img/publications/pami2015/overview.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+            </td>
+            <td class="col-lg-8">
+                <h4><b>Max-Margin Nonparametric Latent Feature Relational Models for Link Prediction</b></h4>
+                <h5><a href="http://ml.cs.tsinghua.edu.cn/~jun" target="_blank">Jun Zhu</a>, <b>Jiaming Song</b>, Bei Chen</h5>
+                <h5>Submitted to <i>IEEE Transations on Pattern Analysis and Machine Intelligence (TPAMI)</i></h5>
+                <h5>
+                    <a href="javascript:void(0)" onclick="$('#pami2015').collapse('toggle')">[abstract]</a>
+                </h5>
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div class="collapse" id="pami2015">
+                    <div class="well">
+                        <p>
+                            Link prediction is a fundamental task in statistical network analysis.
+                            Recent advances have been made on learning flexible nonparametric Bayesian
+                            latent feature models for link prediction. In this paper, we present a
+                            max-margin learning method for such nonparametric latent feature relational
+                            models. Our approach attempts to unite the ideas of max-margin learning
+                            and Bayesian nonparametrics to discover discriminative latent features
+                            for link prediction. It inherits the advances of nonparametric Bayesian
+                            methods to infer the unknown latent social dimension, while for
+                            discriminative link prediction, it adopts the max-margin learning principle
+                            by minimizing a hinge-loss using the linear expectation operator,
+                            without dealing with a highly nonlinear link likelihood function.
+                            For posterior inference, we develop an efficient stochastic variational
+                            inference algorithm under a truncated mean-field assumption.
+                            Our methods can scale up to large-scale real networks with
+                            millions of entities and tens of millions of positive links.
+                            We also provide a full Bayesian formulation, which can avoid tuning
+                            regularization hyper-parameters. Experimental results on a diverse
+                            range of real datasets demonstrate the benefits inherited from
+                            max-margin learning and Bayesian nonparametric inference.
+                        </p>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+</div>
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/ripples.min.js"></script>
+<script src="/js/material.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $.material.init();
+    });
+</script>
+
+</body>
+</html>

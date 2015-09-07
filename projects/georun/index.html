@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> GeoRun - A Unity Game with Kinect Controls |  Jiaming Song</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/roboto.css" rel="stylesheet">
+    <link href="/css/material.min.css" rel="stylesheet">
+    <link href="/css/ripples.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <div class="navbar-brand">Jiaming Song</div>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="navbar-left nav navbar-nav">
+            <li ><a href="/">Home</a></li>
+            <li ><a href="/publications">Publications</a></li>
+            <li 
+             class="active" 
+            ><a href="/projects/">Projects</a></li>
+
+        </ul>
+        <ul class="navbar-right">
+
+        </ul>
+    </div>
+</nav>
+
+<div class="container" style="padding-top: 70px">
+    <div class="page-header">
+    <h2>GeoRun - A Unity Game with Kinect Controls</h2>
+    <h3>by Jiaming Song and Yankai Zhang</h3>
+</div>
+
+<div class="bs-component">
+    <h3>Abstract</h3>
+    <p>
+        We developed GeoRun, which is a Unity game controlled by Kinect. The gameplay is a simplified version of the
+        famous Temple Run, where our main character tries to run away from three futuristic droids on an infinitely long track.
+    </p>
+
+    <div class="row">
+        <div class="col-lg-5 col-lg-offset-1">
+            <img src="/img/projects/georun/overview.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+            <h5 style="text-align: center;">Figure 1: Before game start.</h5>
+        </div>
+        <div class="col-lg-5">
+            <img src="/img/projects/georun/gameplay.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+            <h5 style="text-align: center;">Figure 2: During gameplay.</h5>
+        </div>
+    </div>
+    <h3>Gameplay</h3>
+    <p>
+        We support four movements: tilt left, tilt right, turn left, and turn right. Jump and slide are not supported
+        due to lack of 3D resources. Sad that we are not animators :(
+    </p>
+    <p>
+        These movements can be triggered using keyboard (<b>A</b> and <b>D</b>, <b>&larr;</b> and <b>&rarr;</b>),
+        but they are also supported by reading certain postures using Kinect.
+    </p>
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <img src="/img/projects/georun/gestures.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+            <h5 style="text-align: center;">Figure 1: Gestures from left to right: tilt left, tilt right, turn left, and turn right. Model: Yankai Zhang</h5>
+        </div>
+    </div>
+    <h3>Mapping Posture to Command</h3>
+    <p>We used the newest version of Unity possible, and used Kinect SDK 1.8. (Kinect SDK 2.0 is not compatible with the Kinect we have.)</p>
+    <p>Kinect SDK supports skeleton tracking, so a stream of skeleton data is obtained, through which we can utilize to identify the movements.</p>
+    <div class="row">
+        <div class="col-lg-3 col-lg-offset-1">
+            <img src="/img/projects/georun/joints.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+            <h5 style="text-align: center;">Figure 2: Tracked skeleton joints.</h5>
+        </div>
+        <div class="col-lg-6">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>Gesture logic</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>tilt_left</td>
+                    <td>(ShoulderCenter.x - HipCenter.x) / (SholderCenter.y - HipCenter.y) &lt; -0.1</td>
+                </tr>
+                <tr>
+                    <td>tilt_right</td>
+                    <td>(ShoulderCenter.x - HipCenter.x) / (SholderCenter.y - HipCenter.y) &gt; 0.1</td>
+                </tr>
+                <tr>
+                    <td>turn_left</td>
+                    <td>HandRight.x &lt; ShoulderCenter.x &amp;&amp; HandRight.z &lt; ShoulderCenter.z &amp;&amp; HandLeft.z &gt; ShoulderCenter.z</td>
+                </tr>
+                <tr>
+                    <td>turn_right</td>
+                    <td>HandLeft.x &gt; ShoulderCenter.x &amp;&amp; HandLeft.z &lt; ShoulderCenter.z &amp;&amp; HandRight.z &gt; ShoulderCenter.z</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/ripples.min.js"></script>
+<script src="/js/material.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $.material.init();
+    });
+</script>
+
+</body>
+</html>
