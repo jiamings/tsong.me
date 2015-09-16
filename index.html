@@ -73,9 +73,9 @@
             <div class="panel panel-default hidden-xs">
                 <div class="panel-body">
                     <p>
-                        This website is created with the
+                        This website is created by myself using the
                         <a href="https://fezvrasta.github.io/bootstrap-material-design/" target="_blank">Material Design for Bootstrap</a> framework,
-                        with responsiveness in mind.
+                        with responsive web design in mind.
                     </p>
                     <p>
                         I love <a href="https://www.google.com/design/spec/material-design/introduction.html" target="_blank">Material Design!</a>
@@ -93,9 +93,12 @@
     <div class="panel-body">
         <p>
             I am a senior undergraduate student in Tsinghua University (BS expected 2016).
-            My current research interests are primarily on large-scale machine learning,
+            My research interests are primarily on large-scale machine learning,
             especially Bayesian methods and deep generative models with applications
             in social networks and computer vision.
+        </p>
+        <p>
+            Currently I am learning convex optimization and stochastic optimization.
         </p>
         <p>
             I am also interested in participating in open source projects, massive open online courses,
@@ -238,6 +241,47 @@
                                 range of real datasets demonstrate the benefits inherited from
                                 max-margin learning and Bayesian nonparametric inference.
                             </p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-lg-1 col-xs-1"><b style="font-size:20px;color:darkgray">3.</b></td>
+                <td class="col-lg-10 col-xs-11">
+                    <h4><b>Discriminative Nonparametric Latent Feature Relational Models with Data Augmentation</b></h4>
+                    <h5>Bei Chen, Ning Chen, Jun Zhu, <b>Jiaming Song</b>, Bo Zhang</h5>
+                    <h5>Submitted to <i>the 30th Association for the Advancement of Artificial Intelligence (AAAI) Conference</i></h5>
+                    <div class="visible-xs-inline">
+                        <h5><a href="javascript:void(0)" onclick="$('#aaai2016').collapse('toggle')">[abstract]<a/></h5>
+                    </div>
+                </td>
+                <td class="col-lg-1 hidden-xs">
+                    <h5><a href="javascript:void(0)" onclick="$('#aaai2016').collapse('toggle')">[abstract]<a/></h5>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="collapse" id="aaai2016">
+                        <div class="well">
+                            We present a discriminative nonparametric latent feature
+                            relational model (LFRM) for link prediction to automatically
+                            infer the dimensionality of latent features.
+                            Under the generic RegBayes (regularized Bayesian inference)
+                            framework, we handily incorporate the prediction
+                            loss with probabilistic inference of a Bayesian
+                            model; set distinct regularization parameters for different
+                            types of links to handle the imbalance issue in real
+                            networks; and unify the analysis of both the smooth logistic
+                            log-loss and the piecewise linear hinge loss. For
+                            the nonconjugate posterior inference, we present a simple
+                            Gibbs sampler via data augmentation, without making
+                            restricting assumptions as done in variational methods.
+                            We further develop an approximate sampler using
+                            stochastic gradient Langevin dynamics to handle large
+                            networks with hundreds of thousands of entities and
+                            millions of links, orders of magnitude larger than what
+                            existing LFRM models can process. Extensive studies
+                            on various real networks show promising performance.
                         </div>
                     </div>
                 </td>
