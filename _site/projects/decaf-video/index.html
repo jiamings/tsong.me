@@ -8,7 +8,6 @@
     <link href="/css/roboto.css" rel="stylesheet">
     <link href="/css/material.min.css" rel="stylesheet">
     <link href="/css/ripples.min.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -39,69 +38,88 @@
     </div>
 </nav>
 
-<div class="container" style="padding-top: 70px">
-    <div class="page-header">
-    <h2>Video Classification with Audio and Visual Deep Activation Features</h2>
-    <h3>by Jiaming Song and Yankai Zhang</h3>
-</div>
-
-<div class="bs-component">
-
-    <h3>Abstract</h3>
-    <p>
-        This project aims to do fast and scalable video sequence classification through feature extraction methods.
-        We extract features from image frames as well as audio information.
-    </p>
+<div class="container" style="padding-top: 70px; margin-bottom: 50px;">
+    <div class="component">
     <div class="row">
-        <div class="col-lg-5 col-lg-offset-1">
-            <img src="/img/projects/decaf-video/overview.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
-            <h5 style="text-align: center;">Figure 1: Where do we extract features from?</h5>
-        </div>
-        <div class="col-lg-5">
-            <img src="/img/projects/decaf-video/philosophy.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
-            <h5 style="text-align: center;">Figure 2: Why do we need both frame and audio?</h5>
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+            <div class="page-header">
+                <h2>Video Classification with Audio and Visual Deep Activation Features</h2>
+                <h3>by Jiaming Song and Yankai Zhang</h3>
+            </div>
+            <h3>Abstract</h3>
+            <p>
+                This project aims to do fast and scalable video sequence classification through feature extraction methods.
+                We extract features from image frames as well as audio information.
+            </p>
+            <div class="row">
+                <div class="hidden-xs col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-6">
+                    <img src="/img/projects/decaf-video/overview.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+                    <h5 style="text-align: center;">Figure 1: Where do we extract features from?</h5>
+                </div>
+                <div class="hidden-xs col-lg-5 col-md-5 col-sm-6">
+                    <img src="/img/projects/decaf-video/philosophy.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+                    <h5 style="text-align: center;">Figure 2: Why do we need both frame and audio?</h5>
+                </div>
+                <div class="visible-xs col-xs-12">
+                    <img src="/img/projects/decaf-video/overview.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+                    <h5 style="text-align: center;">Figure 1: Where do we extract features from?</h5>
+                </div>
+                <div class="visible-xs col-xs-12">
+                    <img src="/img/projects/decaf-video/philosophy.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+                    <h5 style="text-align: center;">Figure 2: Why do we need both frame and audio?</h5>
+                </div>
+            </div>
+
+            <h3>Methods</h3>
+
+            <p> The image features are extracted according to novel methods
+                from this paper <a href="http://arxiv.org/pdf/1310.1531v1.pdf" target="_blank">DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition</a>,
+                which uses a deep convolutional neural net trained on ImageNet dataset for feature extraction;
+                the audio features are extracted using MFCC/LPCC.
+            </p>
+            <p>
+                We extract visual features by configuring <a href="http://caffe.berkeleyvision.org/" target="_blank">Caffe</a> on a Thinkpad T430 laptop, use a pretrained
+                <a href="http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf" target="_blank">AlexNet</a>, and extract a layer of
+                responses for each image.
+            </p>
+
+            <div class="row">
+                <div class="hidden-xs col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-6">
+                    <img src="/img/projects/decaf-video/validation-test.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+                    <h5 style="text-align: center;">Table 1: A comparison between different visual features.</h5>
+                </div>
+                <div class="hidden-xs col-lg-5 col-md-5 col-sm-6">
+                    <img src="/img/projects/decaf-video/add-audio.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+                    <h5 style="text-align: center;">Table 2: A comparsion between visual features w/ or w/o audio features.</h5>
+                </div>
+                <div class="visible-xs col-xs-12">
+                    <img src="/img/projects/decaf-video/validation-test.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+                    <h5 style="text-align: center;">Table 1: A comparison between different visual features.</h5>
+                </div>
+                <div class="visible-xs col-xs-12">
+                    <img src="/img/projects/decaf-video/add-audio.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
+                    <h5 style="text-align: center;">Table 2: A comparsion between visual features w/ or w/o audio features.</h5>
+                </div>
+            </div>
+            <h3>Results</h3>
+            <p>
+                We collect a dataset with 5 classes, and train the features with an linear SVM. We discover that:
+            </p>
+            <ul>
+                <li>
+                    Features from neural networks provides better performance than traditional hand-crafted features.
+                </li>
+                <li>
+                    Combining audio and image features provides better performance than using image features alone.
+                </li>
+            </ul>
+            <p>
+                For more details, please see our slides <a href="/static/slides/decaf_video_slides.pdf" target="_blank">here</a>.
+            </p>
         </div>
     </div>
-
-    <h3>Methods</h3>
-
-    <p> The image features are extracted according to novel methods
-        from this paper <a href="http://arxiv.org/pdf/1310.1531v1.pdf" target="_blank">DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition</a>,
-        which uses a deep convolutional neural net trained on ImageNet dataset for feature extraction;
-        the audio features are extracted using MFCC/LPCC.
-    </p>
-    <p>
-        We extract visual features by configuring <a href="http://caffe.berkeleyvision.org/" target="_blank">Caffe</a> on a Thinkpad T430 laptop, use a pretrained
-        <a href="http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf" target="_blank">AlexNet</a>, and extract a layer of
-        responses for each image.
-    </p>
-
-    <div class="row">
-        <div class="col-lg-5 col-lg-offset-1">
-            <img src="/img/projects/decaf-video/validation-test.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
-            <h5 style="text-align: center;">Table 1: A comparison between different visual features.</h5>
-        </div>
-        <div class="col-lg-5">
-            <img src="/img/projects/decaf-video/add-audio.png" style="max-width: 100%; border: 1px solid gray; margin-bottom: 5px;">
-            <h5 style="text-align: center;">Table 2: A comparsion between visual features w/ or w/o audio features.</h5>
-        </div>
-    </div>
-    <h3>Results</h3>
-    <p>
-        We collect a dataset with 5 classes, and train the features with an linear SVM. We discover that:
-    </p>
-    <ul>
-        <li>
-            Features from neural networks provides better performance than traditional hand-crafted features.
-        </li>
-        <li>
-            Combining audio and image features provides better performance than using image features alone.
-        </li>
-    </ul>
-    <p>
-        For more details, please see our slides <a href="/static/slides/decaf_video_slides.pdf" target="_blank">here</a>.
-    </p>
 </div>
+
 </div>
 
 <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
