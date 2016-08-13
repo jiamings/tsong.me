@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>{% if page.title %} {{ page.title }} | {% endif %} Jiaming Song</title>
+    <link href="{{ site.baseurl }}/css/bootstrap.css" rel="stylesheet">
     <link href="{{ site.baseurl }}/css/flatly.css" rel="stylesheet">
     <link href="{{ site.baseurl }}/css/custom.css" rel="stylesheet">
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
@@ -17,14 +18,16 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-data">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
             <div class="navbar-brand">Jiaming Song</div>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="navbar-data" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+            </ul>
             <ul class="navbar-right nav navbar-nav">
                 <li class="active"><a href="{{ site.baseurl }}/">Home</a></li>
                 <!--li><a href="{{ site.baseurl }}/publications">Publications</a></li-->
@@ -37,7 +40,45 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" style="padding-top: 90px">
+
+        <div class="hidden-lg hidden-md hidden-sm col-xs-12" style="padding-top: 70px;">
+            <div class="panel panel-default">
+                <!--div class="panel-heading">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-6 col-xs-offset-3">
+                            <img src="{{ site.baseurl }}/img/avatar.png" class="img-circle img-responsive" style="min-width:150px"
+                                 alt="Jiaming Song">
+                        </div>
+                    </div>
+                </div-->
+                <div class="panel-body">
+                    <h3>Jiaming Song</h3>
+                    <p>Computer Science Department <br/> Stanford University</p>
+                    <p>
+                        <a href="mailto:jiaming.tsong@gmail.com" target="_top">jiaming.tsong@gmail.com</a>
+                    </p>
+                    <p>
+                        <a href="mailto:tsong@stanford.edu" target="_top">tsong@stanford.edu</a>
+                    </p>
+                    <p><a href="{{ site.baseurl }}/static/jiaming_cv.pdf" target="_blank">Curriculum Vitae</a></p>
+                    <a href="http://cn.linkedin.com/in/jiamings" target="_blank">
+                        <img src="{{ site.baseurl }}/img/icon/linkedin.min.svg" height="24px" weight="24px">
+                    </a>
+                    <a href="https://github.com/jiamings" target="_blank">
+                        <img src="{{ site.baseurl }}/img/icon/github.min.svg" height="24px" weight="24px">
+                    </a>
+                    <a href="https://www.flickr.com/photos/jiamingtsong/" target="_blank">
+                        <img src="{{ site.baseurl }}/img/icon/flickr.svg" height="24px" weight="24px">
+                    </a>
+                    <a href="https://www.facebook.com/jiaming.tony.song" target="_blank">
+                        <img src="{{ site.baseurl }}/img/icon/facebook.min.svg" height="24px" weight="24px">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" style="padding-top: 70px">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <p>
@@ -157,7 +198,7 @@
             </div>
         </div>
 
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding-top: 120px;">
+        <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs" style="padding-top: 120px;">
             <div class="panel panel-default">
                 <!--div class="panel-heading">
                     <div class="row">
@@ -172,6 +213,8 @@
                     <p>Computer Science Department <br/> Stanford University</p>
                     <p>
                         <a href="mailto:jiaming.tsong@gmail.com" target="_top">jiaming.tsong@gmail.com</a>
+                    </p>
+                    <p>
                         <a href="mailto:tsong@stanford.edu" target="_top">tsong@stanford.edu</a>
                     </p>
                     <p><a href="{{ site.baseurl }}/static/jiaming_cv.pdf" target="_blank">Curriculum Vitae</a></p>
@@ -194,8 +237,8 @@
     </div>
 </div>
 
-<script src="{{ site.baseurl }}/js/jquery.min.js"></script>
-<script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="{{ site.baseurl }}/js/bootstrap.js"></script>
 
 </body>
 </html>
