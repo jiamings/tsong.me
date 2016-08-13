@@ -1,6 +1,6 @@
 # This is the default format.
 # For more see: http://jekyllrb.com/docs/permalinks/
-permalink: /:categories/:year/:month/:day/:title
+permalink: pretty
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 highlighter: pygments
@@ -17,6 +17,18 @@ author :
   twitter : jiamingso
   feedburner : feedname
 
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input:  GFM
+  hard_wrap: false
+  footnote_nr: 1
+  toc_levels: 1..6
+  entity_output: as_char
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+
+gems:
+ - jekyll-redirect-from
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt
 # Most places will/should use BASE_PATH to make the urls
@@ -104,7 +116,7 @@ JB :
     gauges :
         site_id : 'SITE ID'
     google :
-        tracking_id : 'UA-123-12'
+        tracking_id : 'UA-68764449-1'
     getclicky :
       site_id :
     mixpanel :

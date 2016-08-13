@@ -1,351 +1,201 @@
 ---
-layout: info
-title: Home
 ---
 
-<div class="panel panel-default">
-    <div class="panel-body">
-        <p>
-            (The page is out of sync with my current situation. I will update the website as soon as possible.)
-            I am a senior undergraduate student in Tsinghua University (BS expected 2016).
-            My research interests are primarily on machine learning, including neural networks, scalable Bayesian inference, and
-            latent variable models.
-        </p>
-        <p>
-            Recently, I find optimization methods (convex or stochastic) very interesting.
-        </p>
-        <p>
-                I am looking for <b>Ph.D position</b> starting next fall (preferably one that aligns well with my interests). <br/>
-                Please feel free to contact me <b>by email</b>.
-        </p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{% if page.title %} {{ page.title }} | {% endif %} Jiaming Song</title>
+    <link href="{{ site.baseurl }}/css/flatly.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/custom.css" rel="stylesheet">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand">Jiaming Song</div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-right nav navbar-nav">
+                <li class="active"><a href="{{ site.baseurl }}/">Home</a></li>
+                <!--li><a href="{{ site.baseurl }}/publications">Publications</a></li-->
+                <li><a href="{{ site.baseurl }}/projects/">Projects</a></li>
+                <!--li><a href="{{ site.baseurl }}/blog/">Blog</a></li-->
+            </ul>
+        </div>
     </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3>Education</h3>
-    </div>
-    <div class="panel-body">
-        <table class="table table-hover" id="education">
-            <tbody>
-            <tr>
-                <td class="col-lg-2"><b style="font-size:13px;color:darkgray">2012-2016</b></td>
-                <td class="col-lg-10">
-                    <h5>Department of Computer Science and Technology, <b>Tsinghua University</b>, <i>Beijing, China</i></h5>
-                    <p>B.Eng. (Expected) in Computer Science and Technology.</p>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-lg-2"><b style="font-size:13px;color:darkgray">July 2014</b></td>
-                <td class="col-lg-10">
-                    <h5>Department of Electrical Engineering and Computer Science, <b>National Tsing Hua University</b>, <i>Hsinchu, Taiwan</i></h5>
-                    <p>Exchange Student</p>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading" id="publications">
-        <h3>Publications and Manuscripts   <a style="font-size: 15px;" href="{{ site.baseurl }}/publications">[more]</a></h3>
-    </div>
-    <div class="panel-body">
-        <table class="table table-striped">
-            <tbody>
-            <tr>
-                <td class="col-lg-1 col-xs-1"><b style="font-size:20px;color:darkgray">1.</b></td>
-                <td class="col-lg-10 col-xs-11">
-                    <h4><b>Organizational Churn: A Roll of the Dice?</b></h4>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" style="padding-top: 90px">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>
+                        I am a first year Ph.D student in Stanford University. <br/>
+                        I am interested in machine learning, with an awareness of efficient systems.
+                    </p>
+                </div>
+            </div>
+
+            <div class="list-group">
+                <div href="#" class="list-group-item active">
+                    <h4>Education</h4>
+                </div>
+                <div href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        Computer Science Department
+                    </h4>
+                    <p><b>Stanford University</b>, <i>Palo Alto, CA</i></p>
+                    <h5 class="list-group-item-text">Ph.D. student in Computer Science (September 2016 till now)</h5>
+                </div>
+                <div href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        Department of Computer Science and Technology
+                    </h4>
+                    <p><b>Tsinghua University</b>, <i>Beijing, China</i></p>
+                    <h5 class="list-group-item-text">B.Eng. in Computer Science and Technology (August 2012 - July 2016)</h5>
+                </div>
+                <div href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        Department of Electrical Engineering and Computer Science
+                    </h4>
+                    <p><b>National Tsing Hua University</b>, <i>Hsinchu, Taiwan</i></p>
+                    <h5 class="list-group-item-text">Exchange Student (July 2014)</h5>
+                </div>
+            </div>
+
+            <div class="list-group">
+                <div class="list-group-item active">
+                    <h4>
+                        Publications and / or Manuscripts
+                    </h4>
+                </div>
+                <div class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        <a href="https://arxiv.org/abs/1605.06715" target="_blank">
+                            <b>Factored Sigmoid Belief Networks for Sequence Learning</b>
+                        </a>
+                    </h4>
+                    <h5><b>Jiaming Song</b>, Zhe Gan, Lawrence Carin</h5>
+                    <h5>In <i>the 33rd International Conference on Machine Learning (ICML) </i></h5>
+                </div>
+                <div class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        <a href="{{ site.baseurl }}/static/papers/icm2015_umap.pdf" target="_blank">
+                            <b>Organizational Churn: A Roll of the Dice?</b>
+                        </a>
+                    </h4>
                     <h5><b>Jiaming Song</b>*, Canyao Liu*, Chuan Yu* (* indicates equal contribution)</h5>
                     <h5>In <i>Undergraduate Mathematics and its Applications (UMAP), Issue 36.2</i></h5>
-                    <h5>For <a href="http://www.comap.com/undergraduate/contests/" target="_blank"><i>Interdisciplinary Contest in Modeling 2015</i></a>, Problem C</h5>
-                    <div class="visible-xs-inline">
-                        <h5>
-                            <a href="{{ site.baseurl }}/static/papers/icm2015_umap.pdf" target="_blank">[journal_scan]</a>
-                            <h5><a href="{{ site.baseurl }}/static/papers/icm2015.pdf" target="_blank">[contest_pdf]</a></h5>
-                            <a href="javascript:void(0)" onclick="$('#icm2015').collapse('toggle')">[abstract]<a/>
-                            <a href="https://github.com/jiamings/icm2015" target="_blank">[code]</a>
-                            <a href="{{ site.baseurl }}/static/slides/sfimm15_slides.pdf" target="_blank">[slides]</a>
-                            <a href="http://www.comap.com/undergraduate/contests/mcm/contests/2015/problems/2015_ICM_Problem_C.pdf" target="_blank">[problem]</a>
-                        </h5>
-                    </div>
-                </td>
-                <td class="col-lg-1 hidden-xs">
-                    <h5><a href="{{ site.baseurl }}/static/papers/icm2015_umap.pdf" target="_blank">[journal_scan]</a></h5>
-                    <h5><a href="{{ site.baseurl }}/static/papers/icm2015.pdf" target="_blank">[contest_pdf]</a></h5>
-                    <h5><a href="javascript:void(0)" onclick="$('#icm2015').collapse('toggle')">[abstract]<a/></h5>
-                    <h5><a href="https://github.com/jiamings/icm2015" target="_blank">[code]</a></h5>
-                    <h5><a href="{{ site.baseurl }}/static/slides/sfimm15_slides.pdf" target="_blank">[slides]</a></h5>
-                    <h5><a href="http://www.comap.com/undergraduate/contests/mcm/contests/2015/problems/2015_ICM_Problem_C.pdf" target="_blank">[problem]</a></h5>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div class="collapse" id="icm2015">
-                        <div class="well">
-                            <p>
-                                Network science is critical to understanding management
-                                due to its extensive applications in complex systems with
-                                network-based structures. Since the organization of ICM
-                                forms an network structure, network science can be utilized
-                                to analyze dynamic processes within the team, e.g.
-                                the diffusion effects of organizational churn.
-                            </p>
-                            <p>
-                                In this paper, we construct a Human Capital network according
-                                to the hierarchical structure of ICM and create a simple yet
-                                effective model to capture the dynamic processes, which includes
-                                organizational churn, promotion, and recruitment.
-                                For organizational churn, we propose and implement our
-                                probabilistic churn model inspired by Bayesian learning principles,
-                                which estimates and updates the likelihood of individual churn
-                                using the Beta-Bernoulli distribution.
-                                Then we develop three promotion measures based on working
-                                experience, inclination to churn, and closeness centrality.
-                                Moreover, we propose several means of controlling the
-                                recruitment rate from the HR's perspective, and further
-                                define some key concepts for evaluation, such as dissatisfaction and productivity.
-                            </p>
-                            <p>
-                                Through extensive simulations, we show that our model is
-                                flexible enough to encompass most features of the current
-                                situation and yield convincing productivity and cost results.
-                                We further extend our model to scenarios with higher churn
-                                rates, and discover an interesting fact that higher churn
-                                rates lead to lower productivity-cost ratios. In an extreme
-                                case with no recruitment, we discover differentiated HR
-                                health degeneration among different offices over two years
-                                through visualization.
-                            </p>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-lg-1 col-xs-1"><b style="font-size:20px;color:darkgray">2.</b></td>
-                <td class="col-lg-10 col-xs-11">
-                    <h4><b>Max-Margin Nonparametric Latent Feature Relational Models for Link Prediction</b></h4>
+                </div>
+                <div class="list-group-item">
+                    <h4>
+                        <a href="http://arxiv.org/abs/1602.07428" target="_blank">
+                            <b>Max-Margin Nonparametric Latent Feature Relational Models for Link Prediction</b>
+                        </a>
+                    </h4>
                     <h5><a href="http://ml.cs.tsinghua.edu.cn/~jun" target="_blank">Jun Zhu</a>, <b>Jiaming Song</b>, Bei Chen</h5>
                     <h5>Submitted to <i>IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)</i></h5>
-                    <div class="visible-xs-inline">
-                        <h5><a href="javascript:void(0)" onclick="$('#pami2015').collapse('toggle')">[abstract]</a></h5>
-                    </div>
-                </td>
-                <td class="col-lg-1 hidden-xs">
-                    <h5><a href="javascript:void(0)" onclick="$('#pami2015').collapse('toggle')">[abstract]</a></h5>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div class="collapse" id="pami2015">
-                        <div class="well">
-                            <p>
-                                Link prediction is a fundamental task in statistical network analysis.
-                                Recent advances have been made on learning flexible nonparametric Bayesian
-                                latent feature models for link prediction. In this paper, we present a
-                                max-margin learning method for such nonparametric latent feature relational
-                                models. Our approach attempts to unite the ideas of max-margin learning
-                                and Bayesian nonparametrics to discover discriminative latent features
-                                for link prediction. It inherits the advances of nonparametric Bayesian
-                                methods to infer the unknown latent social dimension, while for
-                                discriminative link prediction, it adopts the max-margin learning principle
-                                by minimizing a hinge-loss using the linear expectation operator,
-                                without dealing with a highly nonlinear link likelihood function.
-                                For posterior inference, we develop an efficient stochastic variational
-                                inference algorithm under a truncated mean-field assumption.
-                                Our methods can scale up to large-scale real networks with
-                                millions of entities and tens of millions of positive links.
-                                We also provide a full Bayesian formulation, which can avoid tuning
-                                regularization hyper-parameters. Experimental results on a diverse
-                                range of real datasets demonstrate the benefits inherited from
-                                max-margin learning and Bayesian nonparametric inference.
-                            </p>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-lg-1 col-xs-1"><b style="font-size:20px;color:darkgray">3.</b></td>
-                <td class="col-lg-10 col-xs-11">
-                    <h4><b>Discriminative Nonparametric Latent Feature Relational Models with Data Augmentation</b></h4>
+                </div>
+                <div class="list-group-item">
+                    <h4>
+                        <a href="https://arxiv.org/abs/1512.02016" target="_blank">
+                            <b>Discriminative Nonparametric Latent Feature Relational Models with Data Augmentation</b>
+                        </a>
+                    </h4>
                     <h5>Bei Chen, Ning Chen, Jun Zhu, <b>Jiaming Song</b>, Bo Zhang</h5>
-                    <h5>To appear in <i>the 30th Association for the Advancement of Artificial Intelligence (AAAI) Conference</i></h5>
-                    <div class="visible-xs-inline">
-                        <h5><a href="javascript:void(0)" onclick="$('#aaai2016').collapse('toggle')">[abstract]<a/></h5>
-                    </div>
-                </td>
-                <td class="col-lg-1 hidden-xs">
-                    <h5><a href="javascript:void(0)" onclick="$('#aaai2016').collapse('toggle')">[abstract]<a/></h5>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div class="collapse" id="aaai2016">
-                        <div class="well">
-                            We present a discriminative nonparametric latent feature
-                            relational model (LFRM) for link prediction to automatically
-                            infer the dimensionality of latent features.
-                            Under the generic RegBayes (regularized Bayesian inference)
-                            framework, we handily incorporate the prediction
-                            loss with probabilistic inference of a Bayesian
-                            model; set distinct regularization parameters for different
-                            types of links to handle the imbalance issue in real
-                            networks; and unify the analysis of both the smooth logistic
-                            log-loss and the piecewise linear hinge loss. For
-                            the nonconjugate posterior inference, we present a simple
-                            Gibbs sampler via data augmentation, without making
-                            restricting assumptions as done in variational methods.
-                            We further develop an approximate sampler using
-                            stochastic gradient Langevin dynamics to handle large
-                            networks with hundreds of thousands of entities and
-                            millions of links, orders of magnitude larger than what
-                            existing LFRM models can process. Extensive studies
-                            on various real networks show promising performance.
+                    <h5>In <i>the 30th Association for the Advancement of Artificial Intelligence (AAAI) Conference</i></h5>
+                </div>
+            </div>
+
+            <div class="list-group">
+                <div class="list-group-item active">
+                    <h4>Awards</h4>
+                </div>
+                <div class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        <b>Qualcomm Scholarship</b>
+                    </h4>
+                    <h5 class="list-group-item-text">Issued by <i>Qualcomm</i></h5>
+                </div>
+                <div class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        <b>Outstanding Winner</b>, Interdisciplinary Contest in Modeling
+                    </h4>
+                    <h5 class="list-group-item-text">Issued by <i>The Consortium for Mathematics and Its Applications</i></h5>
+                </div>
+                <div href="" class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        <b>Google Excellence Scholarship</b>
+                    </h4>
+                    <h5 class="list-group-item-text">Issued by <i>Google</i></h5>
+                </div>
+                <div href="" class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        <b>Outstanding Undergraduate</b>
+                    </h4>
+                    <h5 class="list-group-item-text">Issued by <i>Chinese Computer Federation</i></h5>
+                </div>
+                <div href="" class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        <b>Spark Program for Technological Innovation</b>
+                    </h4>
+                    <h5 class="list-group-item-text">Issued by <i>Tsinghua University</i></h5>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding-top: 120px;">
+            <div class="panel panel-default">
+                <!--div class="panel-heading">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-6 col-xs-offset-3">
+                            <img src="{{ site.baseurl }}/img/avatar.png" class="img-circle img-responsive" style="min-width:150px"
+                                 alt="Jiaming Song">
                         </div>
                     </div>
-                </td>
-            </tr>
-
-            </tbody>
-        </table>
+                </div-->
+                <div class="panel-body">
+                    <h3>Jiaming Song</h3>
+                    <p>Computer Science Department <br/> Stanford University</p>
+                    <p>
+                        <a href="mailto:jiaming.tsong@gmail.com" target="_top">jiaming.tsong@gmail.com</a>
+                        <a href="mailto:tsong@stanford.edu" target="_top">tsong@stanford.edu</a>
+                    </p>
+                    <p><a href="{{ site.baseurl }}/static/jiaming_cv.pdf" target="_blank">Curriculum Vitae</a></p>
+                    <a href="http://cn.linkedin.com/in/jiamings" target="_blank">
+                        <img src="{{ site.baseurl }}/img/icon/linkedin.min.svg" height="24px" weight="24px">
+                    </a>
+                    <a href="https://github.com/jiamings" target="_blank">
+                        <img src="{{ site.baseurl }}/img/icon/github.min.svg" height="24px" weight="24px">
+                    </a>
+                    <a href="https://www.flickr.com/photos/jiamingtsong/" target="_blank">
+                        <img src="{{ site.baseurl }}/img/icon/flickr.svg" height="24px" weight="24px">
+                    </a>
+                    <a href="https://www.facebook.com/jiaming.tony.song" target="_blank">
+                        <img src="{{ site.baseurl }}/img/icon/facebook.min.svg" height="24px" weight="24px">
+                    </a>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3>Honors and Awards</h3>
-    </div>
-    <div class="panel-body">
-        <table class="table table-striped" id="awards">
-            <tbody>
-            <tr>
-                <td class="col-lg-2 hidden-xs"><b style="font-size:14px;color:darkgray">April 2015</b></td>
-                <td class="col-lg-9 col-xs-11">
-                    <h4><b><a href="http://www.comap-math.com/mcm/2015Certs/37075.pdf" target="_blank">Outstanding Winner</a></b>, Interdisciplinary Contest in Modeling</h4>
-                    <h5>Issued by <i><a href="http://www.comap.com/" target="_blank">The Consortium for Mathematics and Its Applications</a></i></h5>
-                </td>
-                <td class="col-lg-1 col-xs-1">
-                    <h5><a href="javascript:void(0)" onclick="$('#icm-award').collapse('toggle')">[details]</a></h5>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div class="collapse" id="icm-award">
-                        <div class="well">
-                            <p>
-                                The highest award for the contest.
-                                Only 9 out of 2317 (< 1%) teams are awarded for this year's competition.
-                                Wrote a paper which models organizational churn using Bayesian methods
-                                and network science. See <a href="https://github.com/jiamings/icm2015" target="_blank">[code]</a> for more details of the paper.
-                                Our work is published to the UMAP journal for novelty.
-                                For the certificate, please see <a href="http://www.comap-math.com/mcm/2015Certs/37075.pdf" target="_blank">[certificate]</a>.
-                            </p>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-lg-2 hidden-xs"><b style="font-size:14px;color:darkgray">June 2015</b></td>
-                <td class="col-lg-9 col-xs-11">
-                    <h4><b><a href="http://www.google.cn/university/student/scholarship-recipients.html" target="_blank">Google Excellence Scholarship</a></b></h4>
-                    <h5>Issued by <i><a href="https://www.google.com/" target="_blank">Google</a></i></h5>
-                </td>
-                <td class="col-lg-1 col-xs-1">
-                    <h5><a href="javascript:void(0)" onclick="$('#google-award-undergraduate').collapse('toggle')">[details]</a></h5>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div class="collapse" id="google-award-undergraduate">
-                        <div class="well">
-                            <p>
-                                This scholarship is offered to Chinese undergraduate and graduate students
-                                who possess remarkable academic achievements and project experiences.
-                                58 students are selected nationwide (6 in Tsinghua University) this year.
-                                See <a href="http://www.google.cn/university/student/scholarship.html" target="_blank">[info in Chinese]</a> for more details.
-                            </p>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-lg-2 hidden-xs"><b style="font-size: 14px;color:darkgray">October 2014</b></td>
-                <td class="col-lg-9 col-xs-11">
-                    <h4><b>Outstanding Undergraduate</b></h4>
-                    <h5>Issued by <i><a href="http://www.ccf.org.cn" target="_blank">Chinese Computer Federation</a></i>.</h5>
-                </td>
-                <td class="col-lg-1 col-xs-1">
-                    <h5><a href="javascript:void(0)" onclick="$('#ccf-undergraduate').collapse('toggle')">[details]</a></h5>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div class="collapse" id="ccf-undergraduate">
-                        <div class="well">
-                            <p>
-                                Only 2 students in Tsinghua, and 100 in China are awarded each year.
-                                Attended China National Computer Congress(CNCC),
-                                where I received the award and had the pleasure to meet
-                                <a href="https://www.doc.ic.ac.uk/~alw/" target="_blank">Alexander Wolf</a>
-                                (President of the ACM) and
-                                <a href="https://en.wikipedia.org/wiki/Ivan_Sutherland">Ivan Sutherland</a> (Turing Award 1988).
-                            </p>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-lg-2 hidden-xs"><b style="font-size:14px;color:darkgray">May 2014</b></td>
-                <td class="col-lg-9 col-xs-11">
-                    <h4><b>Spark Program for Technological Innovation</b></h4>
-                    <h5>Issued by <i>Tsinghua University</i></h5>
-                </td>
-                <td class="col-lg-1 col-xs-1">
-                    <h5><a href="javascript:void(0)" onclick="$('#spark-program').collapse('toggle')">[details]</a></h5>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div class="collapse" id="spark-program">
-                        <div class="well">
-                            <p>
-                                Among top 50/3000 students for achievements in scientific and technological innovations,
-                                and top 10 in the Information Technology field. Notable members include
-                                <a href="http://ml.cs.tsinghua.edu.cn/~tianlin/" target="_blank">[Tianlin Shi]</a> and
-                                <a href="http://jiajunwu.com" target="_blank">[Jiajun Wu]</a>.
-                            </p>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-            <tr>
-                <td class="col-lg-2 hidden-xs"><b style="font-size:14px;color:darkgray">December 2013</b></td>
-                <td class="col-lg-9 col-xs-11">
-                    <h4><b>Zhong Shimo Scholarship</b></h4>
-                    <h5>Issued by <i>Department of Computer Science and Technology, Tsinghua University</i></h5>
-                </td>
-                <td class="col-lg-1 col-xs-1">
-                    <h5><a href="javascript:void(0)" onclick="$('#zhongshimo').collapse('toggle')">[details]</a></h5>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div class="collapse" id="zhongshimo">
-                        <div class="well">
-                            <p>
-                                The highest scholarship in the CS department for academic achievements, social activities,
-                                and charity work. Named after
-                                <a href="http://baike.baidu.com/link?url=_Y87QVzfuyNF1S0APX4kdRZT38mHu9Zddl3x2XsBROKr4p_hcZrKAis1ctCBe2VewjXlrwv2pni6V69tbCjspa" target="_blank">Shimo Zhong</a>,
-                                founder of the CS department.
-                            </p>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+<script src="{{ site.baseurl }}/js/jquery.min.js"></script>
+<script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
+
+</body>
+</html>
