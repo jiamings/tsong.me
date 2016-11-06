@@ -1,13 +1,10 @@
 ---
 layout: post
 title: Video Classification with Deep Features
-parent: projects
-category: Projects
+tags:
+  - projects
 permalink: /projects/decaf-video/
 ---
-
-# Video Classification with Audio and Visual Deep Activation Features
-
 by Jiaming Song and Yankai Zhang
 
 ## Abstract

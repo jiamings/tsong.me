@@ -1,81 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title> {{ page.title }} </title>
-    <link href="{{ site.baseurl }}/css/flatly.css" rel="stylesheet">
-    <link href="{{ site.baseurl }}/css/custom.css" rel="stylesheet">
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-</head>
-<body>
+---
+layout: default
+---
 
-<div class="container">
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="navbar-brand">Jiaming Song</div>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li {% if page.title == "Home" %} class="active" {% endif %}><a href="{{ site.baseurl }}/">Home</a></li>
-                <!--li {% if page.title == "Publications" %} class="active" {% endif %}><a href="{{ site.baseurl }}/publications">Publications</a></li-->
-                <li {% if page.parent == "projects" %} class="active" {% endif %}><a href="{{ site.baseurl }}/projects/">Projects</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div class="post">
+  <h1 class="post-title">{{ page.title }}</h1>
+  <span class="post-date">{{ page.date | date_to_string }}</span>
+  {{ content }}
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8" style="padding-top: 70px">
-            {{ content }}
-        </div>
-        <div class="col-lg-4" style="padding-top: 140px">
-            <div class="list-group">
-                <a href="#" class="list-group-item active">
-                    {% if page.category %} {{ page.category }} {% else %} Posts {% endif %}
-                </a>
-
-
-                {% for post in site.posts %}
-                <a href="{{ post.url }}" class="list-group-item">{{ post.title }}</a>
-                {% endfor %}
-            </div>
-            {% if page.comments %}
-            <div id="disqus_thread"></div>
-            <script>
-
-                /**
-                 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
-
-                 var disqus_config = function () {
-                 this.page.url = '{{ site.url }}{{ page.url }}';  // Replace PAGE_URL with your page's canonical URL variable
-                 this.page.identifier = '{% if page.disqus %}{{ page.disqus }}{% else %}{{ site.url }}{{ page.url }}{% endif %}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                 };
-
-                (function() { // DON'T EDIT BELOW THIS LINE
-                    var d = document, s = d.createElement('script');
-                    s.src = '//tsong-me.disqus.com/embed.js';
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-            {% endif %}
-        </div>
-    </div>
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    {% for post in site.related_posts limit:3 %}
+      <li>
+        <h3>
+          <a href="{{ post.url }}">
+            {{ post.title }}
+            <small>{{ post.date | date_to_string }}</small>
+          </a>
+        </h3>
+      </li>
+    {% endfor %}
+  </ul>
 </div>
-
-<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="{{ site.baseurl }}/js/bootstrap.js"></script>
-
-</body>
-</html>

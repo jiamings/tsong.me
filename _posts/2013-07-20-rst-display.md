@@ -1,13 +1,10 @@
 ---
 layout: post
 title: Rectilinear Steiner Tree
-parent: projects
-category: Projects
+tags:
+  - projects
 permalink: /projects/rst-display/
 ---
-
-# Rectilinear Steiner Tree
-
 by Jiaming Song
 
 In this project, three methods (SMST, LMST, ZMST), which are proposed in this paper
@@ -17,8 +14,6 @@ In this project, three methods (SMST, LMST, ZMST), which are proposed in this pa
 The implementation was selected for the 2012-2013 Summer Programming Course as a base algorithm for a
 Qt5 GUI project.
 
-{: .row}
-![-border]({{ site.baseurl }}/img/projects/rst-display/overview.png){: .col-lg-8 .col-lg-offset-2}
+![]({{ site.baseurl }}/img/projects/rst-display/overview.png)
 
-{: .col-lg-6 .col-lg-offset-3}
 RMST and LMST algorithms displayed with Qt.
