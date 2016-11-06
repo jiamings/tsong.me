@@ -1,25 +1,41 @@
 ---
-layout: default
 ---
-
-<div class="post">
-  <h1 class="post-title">{{ page.title }}</h1>
-  <span class="post-date">{{ page.date | date_to_string }}</span>
-  {{ content }}
+<html lang='en'>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }}</title>
+  <link href="{{ site.baseurl }}/public/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    p {
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body style="padding-top: 120px">
+{% include navbar.html %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9 col-md-8 col-sm-8">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h2>{{ page.title }}</h2>
+          {% if page.author %}
+          <h4>{{ page.author }}</h4>
+          {% endif %}
+          <hr/>
+          {{ content }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    {% for post in site.related_posts limit:3 %}
-      <li>
-        <h3>
-          <a href="{{ post.url }}">
-            {{ post.title }}
-            <small>{{ post.date | date_to_string }}</small>
-          </a>
-        </h3>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="{{ site.baseurl }}/public/js/bootstrap.min.js"></script>
+<script>
+  var shiftWindow = function() { scrollBy(0, -100) };
+  if (location.hash) shiftWindow();
+  window.addEventListener("hashchange", shiftWindow);
+</script>
+</body>
+</html>

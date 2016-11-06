@@ -1,23 +1,23 @@
 ---
 layout: post
 title: Video Classification with Deep Features
+author: Jiaming Song and Yankai Zhang
 tags:
   - projects
 permalink: /projects/decaf-video/
 ---
-by Jiaming Song and Yankai Zhang
 
-## Abstract
+### Abstract
 
 This project aims to do fast and scalable video sequence classification through feature extraction methods.
 
 We extract features from image frames as well as audio information.
 
 {: .row}
-![-border]({{ site.baseurl }}/img/projects/decaf-video/overview.png){: .col-lg-5 .col-lg-offset-1}
-![-border]({{ site.baseurl }}/img/projects/decaf-video/philosophy.png){: .col-lg-5 }
+![-border]({{ site.baseurl }}/public/img/projects/decaf-video/overview.png){: .col-lg-5 .col-lg-offset-1}
+![-border]({{ site.baseurl }}/public/img/projects/decaf-video/philosophy.png){: .col-lg-5 }
 
-## Methods
+### Methods
 
 The image features are extracted according to novel methods
 from this paper
@@ -31,8 +31,8 @@ on a Thinkpad T430 laptop, use a pretrained
 responses for each image.
 
 {: .row}
-![]({{ site.baseurl }}/img/projects/decaf-video/validation-test.png){: .col-lg-5 .col-lg-offset-1}
-![]({{ site.baseurl }}/img/projects/decaf-video/add-audio.png){: .col-lg-5 }
+![]({{ site.baseurl }}/public/img/projects/decaf-video/validation-test.png){: .col-lg-5 .col-lg-offset-1}
+![]({{ site.baseurl }}/public/img/projects/decaf-video/add-audio.png){: .col-lg-5 }
 
 ### Results
 We collect a dataset with 5 classes, and train the features with an linear SVM. We discover that:

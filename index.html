@@ -1,244 +1,40 @@
 ---
 ---
-
-<html lang="en">
+<html lang='en'>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>{% if page.title %} {{ page.title }} | {% endif %} Jiaming Song</title>
-    <link href="{{ site.baseurl }}/css/bootstrap.css" rel="stylesheet">
-    <link href="{{ site.baseurl }}/css/flatly.css" rel="stylesheet">
-    <link href="{{ site.baseurl }}/css/custom.css" rel="stylesheet">
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jiaming Song (Tony)</title>
+    <link href="{{ site.baseurl }}/public/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
-<body>
-
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-data">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="navbar-brand">Jiaming Song</div>
-        </div>
-        <div id="navbar-data" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-            </ul>
-            <ul class="navbar-right nav navbar-nav">
-                <li class="active"><a href="{{ site.baseurl }}/">Home</a></li>
-                <!--li><a href="{{ site.baseurl }}/publications">Publications</a></li-->
-                <li><a href="{{ site.baseurl }}/projects/">Projects</a></li>
-                <!--li><a href="{{ site.baseurl }}/blog/">Blog</a></li-->
-            </ul>
-        </div>
-    </div>
-</nav>
-
+<body style="padding-top: 120px">
+{% include navbar.html %}
 <div class="container">
     <div class="row">
-
-        <div class="hidden-lg hidden-md hidden-sm col-xs-12" style="padding-top: 70px;">
-            <div class="panel panel-default">
-                <!--div class="panel-heading">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-6 col-xs-offset-3">
-                            <img src="{{ site.baseurl }}/img/avatar.png" class="img-circle img-responsive" style="min-width:150px"
-                                 alt="Jiaming Song">
-                        </div>
-                    </div>
-                </div-->
-                <div class="panel-body">
-                    <h3>Jiaming Song</h3>
-                    <p>Computer Science Department <br/> Stanford University</p>
-                    <p>
-                        <a href="mailto:jiaming.tsong@gmail.com" target="_top">jiaming.tsong@gmail.com</a>
-                    </p>
-                    <p>
-                        <a href="mailto:tsong@stanford.edu" target="_top">tsong@stanford.edu</a>
-                    </p>
-                    <p><a href="{{ site.baseurl }}/static/jiaming_cv.pdf" target="_blank">Curriculum Vitae</a></p>
-                    <a href="http://cn.linkedin.com/in/jiamings" target="_blank">
-                        <img src="{{ site.baseurl }}/img/icon/linkedin.min.svg" height="24px" weight="24px">
-                    </a>
-                    <a href="https://github.com/jiamings" target="_blank">
-                        <img src="{{ site.baseurl }}/img/icon/github.min.svg" height="24px" weight="24px">
-                    </a>
-                    <a href="https://www.flickr.com/photos/jiamingtsong/" target="_blank">
-                        <img src="{{ site.baseurl }}/img/icon/flickr.svg" height="24px" weight="24px">
-                    </a>
-                    <a href="https://www.facebook.com/jiaming.tony.song" target="_blank">
-                        <img src="{{ site.baseurl }}/img/icon/facebook.min.svg" height="24px" weight="24px">
-                    </a>
-                </div>
-            </div>
+        <div class="col-lg-3 col-md-4 col-sm-4">
+            {% include information.html %}
         </div>
-
-
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" style="padding-top: 70px">
+        <div class="col-lg-9 col-md-8 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p>
-                        I am a first year Ph.D student in Stanford University. <br/>
-                        I am interested in machine learning, with an awareness of efficient systems.
+                    <p style="font-size: 16px;">
+                        I am a first year Ph.D. student at Stanford University.
+                    </p>
+                    <p style="font-size: 16px;">
+                        My interests lies in machine learning and deep learning, with application to temporal modeling and decision making.
+                        I worked on scalable bayesian machine learning and deep generative models during my undergrad.
+                    </p>
+                    <p style="font-size: 16px;">
+                        Currently I am looking for internships for summer 2017.
                     </p>
                 </div>
             </div>
-
-            <div class="list-group">
-                <div href="#" class="list-group-item active">
-                    <h4>Education</h4>
-                </div>
-                <div href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">
-                        Computer Science Department
-                    </h4>
-                    <p><b>Stanford University</b>, <i>Palo Alto, CA</i></p>
-                    <h5 class="list-group-item-text">Ph.D. student in Computer Science (September 2016 till now)</h5>
-                </div>
-                <div href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">
-                        Department of Computer Science and Technology
-                    </h4>
-                    <p><b>Tsinghua University</b>, <i>Beijing, China</i></p>
-                    <h5 class="list-group-item-text">B.Eng. in Computer Science and Technology (August 2012 - July 2016)</h5>
-                </div>
-                <div href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">
-                        Department of Electrical Engineering and Computer Science
-                    </h4>
-                    <p><b>National Tsing Hua University</b>, <i>Hsinchu, Taiwan</i></p>
-                    <h5 class="list-group-item-text">Exchange Student (July 2014)</h5>
-                </div>
-            </div>
-
-            <div class="list-group">
-                <div class="list-group-item active">
-                    <h4>
-                        Publications and / or Manuscripts
-                    </h4>
-                </div>
-                <div class="list-group-item">
-                    <h4 class="list-group-item-heading">
-                        <a href="https://arxiv.org/abs/1605.06715" target="_blank">
-                            <b>Factored Sigmoid Belief Networks for Sequence Learning</b>
-                        </a>
-                    </h4>
-                    <h5><b>Jiaming Song</b>, Zhe Gan, Lawrence Carin</h5>
-                    <h5>In <i>the 33rd International Conference on Machine Learning (ICML) </i></h5>
-                </div>
-                <div class="list-group-item">
-                    <h4 class="list-group-item-heading">
-                        <a href="{{ site.baseurl }}/static/papers/icm2015_umap.pdf" target="_blank">
-                            <b>Organizational Churn: A Roll of the Dice?</b>
-                        </a>
-                    </h4>
-                    <h5><b>Jiaming Song</b>*, Canyao Liu*, Chuan Yu* (* indicates equal contribution)</h5>
-                    <h5>In <i>Undergraduate Mathematics and its Applications (UMAP), Issue 36.2</i></h5>
-                </div>
-                <div class="list-group-item">
-                    <h4>
-                        <a href="http://arxiv.org/abs/1602.07428" target="_blank">
-                            <b>Max-Margin Nonparametric Latent Feature Relational Models for Link Prediction</b>
-                        </a>
-                    </h4>
-                    <h5><a href="http://ml.cs.tsinghua.edu.cn/~jun" target="_blank">Jun Zhu</a>, <b>Jiaming Song</b>, Bei Chen</h5>
-                    <h5>Submitted to <i>IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)</i></h5>
-                </div>
-                <div class="list-group-item">
-                    <h4>
-                        <a href="https://arxiv.org/abs/1512.02016" target="_blank">
-                            <b>Discriminative Nonparametric Latent Feature Relational Models with Data Augmentation</b>
-                        </a>
-                    </h4>
-                    <h5>Bei Chen, Ning Chen, Jun Zhu, <b>Jiaming Song</b>, Bo Zhang</h5>
-                    <h5>In <i>the 30th Association for the Advancement of Artificial Intelligence (AAAI) Conference</i></h5>
-                </div>
-            </div>
-
-            <div class="list-group">
-                <div class="list-group-item active">
-                    <h4>Awards</h4>
-                </div>
-                <div class="list-group-item">
-                    <h4 class="list-group-item-heading">
-                        <b>Qualcomm Scholarship</b>
-                    </h4>
-                    <h5 class="list-group-item-text">Issued by <i>Qualcomm</i></h5>
-                </div>
-                <div class="list-group-item">
-                    <h4 class="list-group-item-heading">
-                        <b>Outstanding Winner</b>, Interdisciplinary Contest in Modeling
-                    </h4>
-                    <h5 class="list-group-item-text">Issued by <i>The Consortium for Mathematics and Its Applications</i></h5>
-                </div>
-                <div href="" class="list-group-item">
-                    <h4 class="list-group-item-heading">
-                        <b>Google Excellence Scholarship</b>
-                    </h4>
-                    <h5 class="list-group-item-text">Issued by <i>Google</i></h5>
-                </div>
-                <div href="" class="list-group-item">
-                    <h4 class="list-group-item-heading">
-                        <b>Outstanding Undergraduate</b>
-                    </h4>
-                    <h5 class="list-group-item-text">Issued by <i>Chinese Computer Federation</i></h5>
-                </div>
-                <div href="" class="list-group-item">
-                    <h4 class="list-group-item-heading">
-                        <b>Spark Program for Technological Innovation</b>
-                    </h4>
-                    <h5 class="list-group-item-text">Issued by <i>Tsinghua University</i></h5>
-                </div>
-
-
-            </div>
+            {% include education.html %}
+            {% include publications.html %}
         </div>
-
-        <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs" style="padding-top: 120px;">
-            <div class="panel panel-default">
-                <!--div class="panel-heading">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-6 col-xs-offset-3">
-                            <img src="{{ site.baseurl }}/img/avatar.png" class="img-circle img-responsive" style="min-width:150px"
-                                 alt="Jiaming Song">
-                        </div>
-                    </div>
-                </div-->
-                <div class="panel-body">
-                    <h3>Jiaming Song</h3>
-                    <p>Computer Science Department <br/> Stanford University</p>
-                    <p>
-                        <a href="mailto:jiaming.tsong@gmail.com" target="_top">jiaming.tsong@gmail.com</a>
-                    </p>
-                    <p>
-                        <a href="mailto:tsong@stanford.edu" target="_top">tsong@stanford.edu</a>
-                    </p>
-                    <p><a href="{{ site.baseurl }}/static/jiaming_cv.pdf" target="_blank">Curriculum Vitae</a></p>
-                    <a href="http://cn.linkedin.com/in/jiamings" target="_blank">
-                        <img src="{{ site.baseurl }}/img/icon/linkedin.min.svg" height="24px" weight="24px">
-                    </a>
-                    <a href="https://github.com/jiamings" target="_blank">
-                        <img src="{{ site.baseurl }}/img/icon/github.min.svg" height="24px" weight="24px">
-                    </a>
-                    <a href="https://www.flickr.com/photos/jiamingtsong/" target="_blank">
-                        <img src="{{ site.baseurl }}/img/icon/flickr.svg" height="24px" weight="24px">
-                    </a>
-                    <a href="https://www.facebook.com/jiaming.tony.song" target="_blank">
-                        <img src="{{ site.baseurl }}/img/icon/facebook.min.svg" height="24px" weight="24px">
-                    </a>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
-
 <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="{{ site.baseurl }}/js/bootstrap.js"></script>
-
+<script src="{{ site.baseurl }}/public/js/bootstrap.min.js"></script>
 </body>
 </html>
