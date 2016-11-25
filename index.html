@@ -1,13 +1,10 @@
 ---
 ---
 <html lang='en'>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jiaming Song (Tony)</title>
-    <link href="{{ site.baseurl }}/public/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body style="padding-top: 120px">
+
+{% include head.html %}
+
+<body style="font-size: 14px; margin-bottom: 5px; line-height: 1.3;">
 {% include navbar.html %}
 <div class="container">
     <div class="row">
@@ -16,15 +13,15 @@
         </div>
         <div class="col-lg-9 col-md-8 col-sm-8">
             <div class="panel panel-default">
-                <div class="panel-body">
-                    <p style="font-size: 16px;">
+                <div class="panel-body" style="line-height: 1.5; font-size: 16px;">
+                    <p>
                         I am a first year Ph.D. student at Stanford University.
                     </p>
-                    <p style="font-size: 16px;">
+                    <p>
                         My interests lies in machine learning and deep learning, with application to temporal modeling and decision making.
                         I worked on scalable bayesian machine learning and deep generative models during my undergrad.
                     </p>
-                    <p style="font-size: 16px;">
+                    <p>
                         Currently I am looking for internships for summer 2017.
                     </p>
                 </div>
@@ -34,6 +31,9 @@
         </div>
     </div>
 </div>
+
+{% include footer.html %}
+
 <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="{{ site.baseurl }}/public/js/bootstrap.min.js"></script>
 </body>
