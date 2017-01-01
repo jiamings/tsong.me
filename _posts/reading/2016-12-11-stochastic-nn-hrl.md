@@ -1,3 +1,13 @@
+---
+layout: post
+title: Stochastic Neural Networks for Hierarchical Reinforcement Learning
+author: Jiaming Song
+tags:
+- Reading
+---
+
+
+
 ## Stochastic Neural Networks for Hierarchical Reinforcement Learning
 
 Currently, deep RL employ naive exploration strategies, and work poorly in tasks with sparse rewards. To tackle these challenges, two popular approaches are used
