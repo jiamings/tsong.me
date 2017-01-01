@@ -3,7 +3,7 @@ layout: post
 title: Stochastic Neural Networks for Hierarchical Reinforcement Learning
 author: Jiaming Song
 tags:
-- Reading
+- reading
 ---
 
 
