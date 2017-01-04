@@ -10,6 +10,10 @@ tags:
 
 ## Communicating Hierarchical Neural Controllers for Learning Zero-shot Task Generalization
 
+[https://openreview.net/pdf?id=SJttqw5ge](https://openreview.net/pdf?id=SJttqw5ge)
+
+
+
 The model consists of two modules, which is popular in the current hierarchical RL literature:
 
 1. A meta controller that reads instructions and repeatedly communicates subtasks to a subtask controller 
