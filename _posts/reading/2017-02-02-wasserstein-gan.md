@@ -16,7 +16,7 @@ The regular GAN during the discriminator to approximate the Jenson-Shannon diver
 
 In this paper, the authors proposed to use the discriminator to approximate the Earth-Mover distance (or Wasserstein-1). The EM distance has nicer properties than JS divergence, in that the gradient will not vanish when the generator reaches a region that the discriminator has high conficence over. Therefore, it is suitable for the discriminator to be trained more, without having to worry about the balancing between generator and discriminator.
 
-![]({{site.baseurl}}/public/img/reading/wgan.png})
+![]({{site.baseurl}}/public/img/reading/wgan.png)
 
 
 
