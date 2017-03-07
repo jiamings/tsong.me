@@ -12,7 +12,7 @@ It is a long journey to start with [Jekyll](https://jekyllrb.com) from scratch[^
 
 It all started when I was writing a website for grad school applications. I started off by using the [Bootstrap Material Design](http://fezvrasta.github.io/bootstrap-material-design/) template, which I used during a [course project](http://tsong.me/projects/biopedia/). It was a great template, but I just did not like Google's Roboto font in paragraphs. So after I got to Stanford, I changed to the [Paper template @ Bootswatch](https://bootswatch.com/paper/). Material Design rocks!
 
-But the font problem persists. Then I took inspiration from [Typora](https://typora.io), a fantastic Markdown editor. I love how beautiful the rendering in a WYSIWYG style, and I though it would be pleasing to see this style in the blog posts, so I can basically type in Typora and publish directly without worring about the style in the browser. This can be done easily since Typora (and most other Markdown editors) use CSS templates for rendering; so I took it. I really have no idea how adding a file replaces the Roboto font, but it worked, so I never bothered to know why [^phd].
+But the font problem persists. Then I took inspiration from [Typora](https://typora.io), a fantastic Markdown editor. I love how beautiful the rendering in a WYSIWYG style, and I thought it would be pleasing to see this style in the blog posts, so I can basically type in Typora and publish directly without worring about the style in the browser. This can be done easily since Typora (and most other Markdown editors) use CSS templates for rendering; so I took it. I really have no idea how adding a file replaces the Roboto font, but it worked, so I never bothered to know why [^phd].
 
 However, the process was not entirely smooth, and I list some of the problems that I encountered and their solutions:
 
@@ -26,7 +26,7 @@ However, the process was not entirely smooth, and I list some of the problems th
 
 <br/>
 
-Here is a comparison between brower and Typora:
+Here is a comparison between browser and Typora:
 
 **Browser:**[^mathjax]
 
