@@ -6,7 +6,7 @@ tags:
 - blog
 ---
 
-Finally I decide to open a blog here. I will write mostly about research stuff - some recent work will come out shortly - but in this post I just wanted to talk about the blog itself.
+Finally I decide to open a blog here. I will write mostly about research stuff - some recent work will come out shortly - but in this post I just want to talk about the blog itself.
 
 It is a long journey to start with [Jekyll](https://jekyllrb.com) from scratch[^medium] - I have always wanted more customization options, but I really know little about web developing.
 
