@@ -1,7 +1,6 @@
 This site is available at (with decreasing priority)
 
 - [tsong.me](http://tsong.me)
-- [jiamings.github.io](http://jiamings.github.io)
 - [cs.stanford.edu/~tsong](http://cs.stanford.edu/~tsong)
 
 
