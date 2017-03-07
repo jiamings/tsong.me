@@ -1,7 +1,7 @@
 # This is the default format.
 # For more see: http://jekyllrb.com/docs/permalinks/
 permalink: /blog/:title/
-
+destination: docs
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 highlighter: pygments
 
@@ -26,6 +26,7 @@ kramdown:
   toc_levels: 1..6
   entity_output: as_char
   smart_quotes: lsquo,rsquo,ldquo,rdquo
+
 
 gems:
  - jekyll-redirect-from
