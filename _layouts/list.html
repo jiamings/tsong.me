@@ -1,0 +1,42 @@
+---
+---
+<html lang='en'>
+
+{% include head.html %}
+
+<body style="">
+
+{% include navbar.html %}
+
+<div class="container" style="margin-top: 50px;">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+            <h1 style="margin-top: 0px; text-align: center;"> {{ page.title }} </h1>
+
+            <table style="border: 0; margin: auto;">
+                {% for post in site.posts %}
+                {% if post.tags contains page.tag %}
+                <tr style="border: 0;">
+                    <td style="border: 0;">
+                        {{ post.date | date: '%b %d, %Y' }}
+                    </td>
+                    <td style="border: 0;">
+                        <a href="{{ post.url }}" style="color: #666;">{{ post.title }}</a>
+                    </td>
+                </tr>
+
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% include footer.html %}
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="{{ site.baseurl }}/public/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+{% include analytics.html %}
+</body>
+</html>
