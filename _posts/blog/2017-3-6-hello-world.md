@@ -20,6 +20,7 @@ However, the process was not entirely smooth, and I list some of the problems th
 2. Disqus just does not work. **Solution**: I found the documentation in the official website very confusing. [This blog post](http://www.perfectlyrandom.org/2014/06/29/adding-disqus-to-your-jekyll-powered-github-pages/) is a much better guide.
 3. I need citations. **Solution:** Use [Jekyll Scholar](https://github.com/inukshuk/jekyll-scholar). 
 4. Images do not appear where I want it to. **Solution**: Use Kramdown IAL, such as `{:.center}`, and some CSS hacks will get you there. Or use plain Photoshop.
+5. Github does not support Jekyll plugins. **Solution:** either use your own host, or [publish through the `/docs` folder](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch).
 
 
 
@@ -41,7 +42,7 @@ So basically, WYSIWYG!
 
 <br/>
 
-The code for this blog is fully available [on Github](https://github.com/jiamings/jiamings.github.io). Feel free to use the code - I will be grateful if you include a link to [tsong.me](http://tsong.me) in the footer of your blog.
+The code for this blog is fully available [on Github](https://github.com/jiamings/tsong.me). Feel free to use the code - I will be grateful if you include a link to [tsong.me](http://tsong.me) in the footer of your blog.
 
 Certain style details of the blog are inspired by [Otoro](http://blog.otoro.net/) and [Dustin Tran's Blog](http://dustintran.com/blog/).
 
