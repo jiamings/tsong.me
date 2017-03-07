@@ -1,0 +1,202 @@
+<html lang='en'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello World!</title>
+    <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/css/github.css" rel="stylesheet">
+    <style>
+        hr {
+            height: 1px;
+        }
+        footer {
+            font-family: "Open Sans", "Arial", sans-serif;
+            margin-top: 50px;
+        }
+        img {
+            margin-left: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-right: auto;
+            max-width:90%;
+            max-height:90%;
+        }
+        img.center {
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 25px;
+            padding-top: 25px;
+            max-width:90%;
+            max-height:90%;
+            display: block;
+        }
+    </style>
+</head>
+
+<body style="font-size: 16px;">
+
+<nav class="navbar navbar-default" style="display: block; font-size: 18px;" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-data" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/" style="padding-left: 30px">Jiaming Song</a>
+        </div>
+
+
+        <div id="navbar-data" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/" style="padding-left: 30px">Home</a>
+                </li>
+                <li>
+                    <a href="/blog" style="padding-left: 30px">Articles</a>
+                </li>
+                <li>
+                    <a href="/projects" style="padding-left: 30px">Projects</a>
+                </li>
+                <li>
+                    <a href="/reading" style="padding-left: 30px">Reading</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="https://github.com/jiamings" target="_blank"><img src="/public/img/icon/github.min.svg" height="24px" width="24px"></a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/baaadas" target="_blank"><img src="/public/img/icon/twitter.min.svg" height="24px" width="24px"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container" style="margin-top: 50px;">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+      
+      <h2>Hello World!</h2>
+      <h5>by Jiaming Song </h5>
+      <hr/>
+      
+      <p>Finally I decide to open a blog here. I will write mostly about research stuff - some recent works will come out shortly - but in this post I just wanted to talk about the blog itself.</p>
+
+<p>It is a long journey to start with <a href="https://jekyllrb.com">Jekyll</a> from scratch<sup id="fnref:medium"><a href="#fn:medium" class="footnote">1</a></sup> - I have always wanted more customization options, but I really know little about web developing.</p>
+
+<p>It all started when I was writing a website for grad school applications. I started off by using the <a href="http://fezvrasta.github.io/bootstrap-material-design/">Bootstrap Material Design</a> template, which I used during a <a href="http://tsong.me/projects/biopedia/">course project</a>. It was a great template, but I just did not like Google’s Roboto font in paragraphs. So after I got to Stanford, I changed to the <a href="https://bootswatch.com/paper/">Paper template @ Bootswatch</a>. Material Design rocks!</p>
+
+<p>But the font problem persists. Then I took inspiration from <a href="https://typora.io">Typora</a>, a fantastic Markdown editor. I love how beautiful the rendering in a WYSIWYG style, and I though it would be pleasing to see this style in the blog posts, so I can basically type in Typora and publish directly without worring about the style in the browser. This can be done easily since Typora (and most other Markdown editors) use CSS templates for rendering; so I took it. I really have no idea how adding a file replaces the Roboto font, but it worked, so I never bothered to know why <sup id="fnref:phd"><a href="#fn:phd" class="footnote">2</a></sup>.</p>
+
+<p>However, the process was not entirely smooth, and I list some of the problems that I encountered and their solutions:</p>
+
+<ol>
+  <li>Math does not render properly in the browser but it works perfectly in Typora. <strong>Solution</strong>: All math in Kramdown are enclosed in double dollar signs. Luckily, Typora supports this, so the problem is solved.</li>
+  <li>Disqus just does not work. <strong>Solution</strong>: I found the documentation in the official website very confusing. <a href="http://www.perfectlyrandom.org/2014/06/29/adding-disqus-to-your-jekyll-powered-github-pages/">This blog post</a> is a much better guide.</li>
+  <li>I need citations. <strong>Solution:</strong> Use <a href="https://github.com/inukshuk/jekyll-scholar">Jekyll Scholar</a>.</li>
+  <li>Images do not appear where I want it to. <strong>Solution</strong>: Use Kramdown IAL, such as <code class="highlighter-rouge"><span class="p">{</span><span class="err">:.center</span><span class="p">}</span></code>, and some CSS hacks will get you there. Or use plain Photoshop.</li>
+</ol>
+
+<p><br /></p>
+
+<p>Here is a comparison between brower and Typora:</p>
+
+<p><strong>Browser:</strong><sup id="fnref:mathjax"><a href="#fn:mathjax" class="footnote">3</a></sup></p>
+
+<p><img src="/public/img/blog/browser.png" alt="" /></p>
+
+<p><strong>Typora</strong>:</p>
+
+<p><img src="/public/img/blog/typora.png" alt="" /></p>
+
+<p>So basically, WYSIWYG!</p>
+
+<p><br /></p>
+
+<p>The code for this blog is fully available <a href="https://github.com/jiamings/jiamings.github.io">on Github</a>. Feel free to use the code - I will be grateful if you include a link to <a href="http://tsong.me">tsong.me</a> in the footer of your blog.</p>
+
+<p>Certain style details of the blog are inspired by <a href="http://blog.otoro.net/">Otoro</a> and <a href="http://dustintran.com/blog/">Dustin Tran’s Blog</a>.</p>
+
+<hr />
+
+<h4 id="footnotes">Footnotes</h4>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:medium">
+      <p>Medium does not support math, and Ghost is expensive (and I didn’t really need it by the time I encountered it). <a href="#fnref:medium" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:phd">
+      <p>I am a machine learning Ph.D, not a front-end developer. <a href="#fnref:phd" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:mathjax">
+      <p>Math is not pretty. Use Common HTML in MathJax fix this. <a href="#fnref:mathjax" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</div>
+</div>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+        <hr style="margin-top: 50px; margin-bottom: 50px;" />
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+        //var disqus_developer = 1; // Comment out when the site is live
+    var disqus_config = function () {
+            this.page.url = "http://tsong.me/blog/hello-world/";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = "/blog/hello-world/"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = 'https://tsong-me.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</div>
+</div>
+
+
+
+<footer>
+    <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+        <hr style="margin-top: 50px; margin-bottom: 50px;" />
+        <p style="text-align: center; font-size: 14px;">
+            © 2017 •
+            <a href="">tsong.me</a> •
+            <a href="" target="_top">tsong@cs.stanford.edu</a>
+        </p>
+    </div>
+</footer>
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-68764449-3', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

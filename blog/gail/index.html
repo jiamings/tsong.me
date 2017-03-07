@@ -1,0 +1,205 @@
+<html lang='en'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generative Adversarial Imitation Learning</title>
+    <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/css/github.css" rel="stylesheet">
+    <style>
+        hr {
+            height: 1px;
+        }
+        footer {
+            font-family: "Open Sans", "Arial", sans-serif;
+            margin-top: 50px;
+        }
+        img {
+            margin-left: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-right: auto;
+            max-width:90%;
+            max-height:90%;
+        }
+        img.center {
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 25px;
+            padding-top: 25px;
+            max-width:90%;
+            max-height:90%;
+            display: block;
+        }
+    </style>
+</head>
+
+<body style="font-size: 16px;">
+
+<nav class="navbar navbar-default" style="display: block; font-size: 18px;" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-data" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/" style="padding-left: 30px">Jiaming Song</a>
+        </div>
+
+
+        <div id="navbar-data" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/" style="padding-left: 30px">Home</a>
+                </li>
+                <li>
+                    <a href="/blog" style="padding-left: 30px">Articles</a>
+                </li>
+                <li>
+                    <a href="/projects" style="padding-left: 30px">Projects</a>
+                </li>
+                <li>
+                    <a href="/reading" style="padding-left: 30px">Reading</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="https://github.com/jiamings" target="_blank"><img src="/public/img/icon/github.min.svg" height="24px" width="24px"></a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/baaadas" target="_blank"><img src="/public/img/icon/twitter.min.svg" height="24px" width="24px"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container" style="margin-top: 50px;">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+      
+      
+      <h2 id="generative-adversarial-imitation-learning">Generative Adversarial Imitation Learning</h2>
+
+<h3 id="inverse-reinforcement-learning">Inverse Reinforcement Learning</h3>
+
+<p>Maximum casual entropy IRL takes the form of</p>
+
+<script type="math/tex; mode=display">\max_{c \in C} (\min_{\pi \in \Pi} - H(\pi) + \mathbb{E}_{\pi}[c(s, a)]) - \mathbb{E}_{\pi_{E}}[c(s, a)]</script>
+
+<p>where <script type="math/tex">H(\pi) = \mathbb{E}_\pi [-\log \pi(a \lvert s)]</script> is the <script type="math/tex">\gamma</script> discounted casual entropy of the policy <script type="math/tex">\pi</script>. Maximum casual entropy IRL looks for a cost function <script type="math/tex">c \in \mathcal{C}</script> that assigns low cost to the expert policy and high cost to other policies, thereby allowing the expert policy to be found via a certain reinforcement learning procedure.</p>
+
+<script type="math/tex; mode=display">\mathrm{RL}(c) = \arg \min_{\pi \in \Pi} -H(\pi) + \mathbb{E}_\pi [c(s, a)]</script>
+
+<p>which maps a cost function to high-entropy policies that minimize the expected cumulative cost.</p>
+
+<h3 id="charaterizing-the-induced-optimal-policy">Charaterizing the Induced Optimal Policy</h3>
+
+<p>To begin our search for an algorithm that both bypasses an intermedia te IRL step, and is suitable for large environments, we will study policies found by reinforcement learning on costs learned by IRL on <script type="math/tex">\mathcal{C}</script>.</p>
+
+<p>To prevent overfitting, a (closed, proper) convex cost function regularizer <script type="math/tex">\psi: \mathbb{R}^{\mathcal{S} \times \mathcal{A}} \rightarrow \mathbb{R}</script> into the study.</p>
+
+<p>The IRL primitive procedure is defined as:</p>
+
+<script type="math/tex; mode=display">\mathrm{IRL}_\psi(\pi_E) = \arg \max_{c\in\mathbb{R}^{\mathcal{S} \times \mathcal{A}}} -\psi(c) + (\min_{\pi \in \Pi} - H(\pi) + \mathbb{E}_{\pi}[c(s, a)]) - \mathbb{E}_{\pi_{E}}[c(s, a)]</script>
+
+<h3 id="generative-adversarial-imitation-learning-1">Generative Adversarial Imitation Learning</h3>
+
+<p>One selection for a regularzier would be</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\psi_{GA}(c) =
+  \begin{cases}
+    \mathbb{E}_{\pi_E} [g(c(s, a))]       & \quad \text{if } c < 0 \\
+    +\infty  & \quad \text{otherwise}                                       \\
+  \end{cases} %]]></script>
+
+<p>where</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+g(x) = 
+\begin{cases}
+-x -\log(1 - e^x) & \quad \text{if } x < 0 \\
++\infty & \quad \text{otherwise}
+\end{cases} %]]></script>
+
+<p>This regularizer places low penalty on cost functions <script type="math/tex">c</script> that assign an amount of negative cost to expert state-action pairs; if <script type="math/tex">c</script>, however, assigns large costs to the expert, then <script type="math/tex">\psi_{GA}</script> will heavily penalize <script type="math/tex">c</script>.</p>
+
+<p>The algorithm called <em>generative adversarial imitation learning</em>, wishes to find a saddle point <script type="math/tex">(\pi, D)</script> of the expression:</p>
+
+<script type="math/tex; mode=display">\mathbb{E}_{\pi} [\log (D(s, a))] + \mathbb{E}_{\pi_E}[\log(1 - D(s, a))] - \lambda H(\pi)</script>
+
+<p>To do so, the algorithm alternate between an Adam step and a TRPO step.</p>
+
+<p>The Adam step updates with the gradient</p>
+
+<script type="math/tex; mode=display">\mathbb{E}_{\tau_i}[\nabla_w \log (D_w(s, a))] + \mathbb{E}_{\tau_E}[\nabla_w \log (1 - D_w(s, a))]</script>
+
+<p>The TRPO updates the KL-constrained natural gradient step with</p>
+
+<script type="math/tex; mode=display">\mathbb{E}_{\tau_i}[\nabla_\theta \log \pi_\theta (a \lvert s) Q(s, a)] - \lambda \nabla_\theta H(\pi_\theta), \\
+\text{where } Q(\bar{s}, \bar{a}) = \mathbb{E}_{\tau_i}[\log (D_{w_{i+1}} (s, a) \lvert s_0 = \bar{s}, a_0 = \bar{a})]</script>
+
+</div>
+</div>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+        <hr style="margin-top: 50px; margin-bottom: 50px;" />
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+        //var disqus_developer = 1; // Comment out when the site is live
+    var disqus_config = function () {
+            this.page.url = "http://tsong.me/blog/gail/";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = "/blog/gail/"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = 'https://tsong-me.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</div>
+</div>
+
+
+
+<footer>
+    <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+        <hr style="margin-top: 50px; margin-bottom: 50px;" />
+        <p style="text-align: center; font-size: 14px;">
+            © 2017 •
+            <a href="">tsong.me</a> •
+            <a href="" target="_top">tsong@cs.stanford.edu</a>
+        </p>
+    </div>
+</footer>
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-68764449-3', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
