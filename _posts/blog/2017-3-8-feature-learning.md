@@ -14,7 +14,7 @@ tags:
 
 Since the advent of AlexNet {% cite krizhevsky2012imagenet %}, deep convolutional networks pretrained on ImageNet have been used for a variety of tasks. These include transfer learning to a new task {% cite yosinski2014transferable %}, generating visually realistic data {% cite nguyen2016plug %}, and efficient evaluation of generative models {% cite salimans2016improved %}. These methods are based on one premise - that these pretrained models contain "rich features" that are generally useful in the larger domain.
 
-However, there are few investigations over how "rich" these features exactly are. Do deep models trained using supervised learning learn all the useful features for transfer? We answer this question in [a recently submitted ICLR workshop paper](https://openreview.net/pdf?id=HkcpR04Yx). (The answer is no.)
+However, there are few investigations over how "rich" these features exactly are. Do deep models trained using supervised learning learn all the useful features for transfer? We answer this question in [a recently submitted ICLR workshop paper](https://arxiv.org/pdf/1703.02156.pdf). (The answer is no.)
 
 ### Feature Learning with Discriminative Models
 
@@ -104,7 +104,7 @@ GAN and WGAN have accuracy that is on par with AE, while CNN performs even worse
 
 In this post, we discuss the limitations of learning transferrable features using label-based supervised learning. Current practice, however, tend to take CNN features trained on ImageNet as granted, such as the Inception score for measuring the "quality" of generated samples. While these methods seems to be successful [^imagenet], one should also realize their limitations. We propose that further exploration be done in the direction of unsupervised representation learning.
 
-  
+
 
 #### References
 

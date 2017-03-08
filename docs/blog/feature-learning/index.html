@@ -1,0 +1,273 @@
+<html lang='en'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>On the Limits of Learning Representations with Label-Based Supervision</title>
+    <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/css/github.css" rel="stylesheet">
+    <style>
+        hr {
+            height: 1px;
+        }
+        footer {
+            font-family: "Open Sans", "Arial", sans-serif;
+            margin-top: 50px;
+        }
+        img {
+            margin-left: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-right: auto;
+            max-width:90%;
+            max-height:90%;
+        }
+        img.center {
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 25px;
+            padding-top: 25px;
+            max-width:90%;
+            max-height:90%;
+            display: block;
+        }
+    </style>
+</head>
+
+<body style="font-size: 16px;">
+
+<nav class="navbar navbar-default" style="display: block; font-size: 18px;" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-data" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/" style="padding-left: 30px">Jiaming Song</a>
+        </div>
+
+
+        <div id="navbar-data" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/" style="padding-left: 30px">Home</a>
+                </li>
+                <li>
+                    <a href="/blog" style="padding-left: 30px">Articles</a>
+                </li>
+                <li>
+                    <a href="/projects" style="padding-left: 30px">Projects</a>
+                </li>
+                <li>
+                    <a href="/reading" style="padding-left: 30px">Reading</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="https://github.com/jiamings" target="_blank"><img src="/public/img/icon/github.min.svg" height="24px" width="24px"></a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/baaadas" target="_blank"><img src="/public/img/icon/twitter.min.svg" height="24px" width="24px"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container" style="margin-top: 50px;">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+      
+      <h2>On the Limits of Learning Representations with Label-Based Supervision</h2>
+      <h5>by Jiaming Song </h5>
+      <hr/>
+      
+      <blockquote>
+  <p><strong>TLDR of TLDR</strong>: With a dataset over “cats or dogs” labels, you are not going to learn a table detector even if cats appear on tables more often than dogs.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>TLDR</strong>: Current state-of-the-art deep learning models for transfer learning are mostly trained with supervised learning. However, their abilities to transfer are entirely limited by the expressiveness of labels. Unsupervised learning methods, on the other hand, do not suffer this problem, and thus have the potential to learn all the useful features in the data.</p>
+</blockquote>
+
+<p>Since the advent of AlexNet <a href="#krizhevsky2012imagenet">(Krizhevsky, Sutskever, and Hinton 2012)</a>, deep convolutional networks pretrained on ImageNet have been used for a variety of tasks. These include transfer learning to a new task <a href="#yosinski2014transferable">(Yosinski et al. 2014)</a>, generating visually realistic data <a href="#nguyen2016plug">(Nguyen et al. 2016)</a>, and efficient evaluation of generative models <a href="#salimans2016improved">(Salimans et al. 2016)</a>. These methods are based on one premise - that these pretrained models contain “rich features” that are generally useful in the larger domain.</p>
+
+<p>However, there are few investigations over how “rich” these features exactly are. Do deep models trained using supervised learning learn all the useful features for transfer? We answer this question in <a href="https://arxiv.org/pdf/1703.02156.pdf">a recently submitted ICLR workshop paper</a>. (The answer is no.)</p>
+
+<h3 id="feature-learning-with-discriminative-models">Feature Learning with Discriminative Models</h3>
+
+<p>We introduce a concept called <strong>feature learning</strong>. In feature learning, we assume that features emerge from the weights of a deep neural network, so that learning a neural network is essentially learning features at the same time. If we have learned <script type="math/tex">k-1</script> features, <script type="math/tex">\{f_i\}_{i=1}^{k-1}</script>, then the ease of learning a new feature <script type="math/tex">f_k</script> is measured by the “information gain” when we add it:</p>
+
+<script type="math/tex; mode=display">\text{signal}(f_k) = I(y; f_k\vert f_1, f_2, \ldots, f_{k-1})</script>
+
+<p>where <script type="math/tex">y</script> is the label <sup id="fnref:dataset"><a href="#fn:dataset" class="footnote">1</a></sup>. Therefore, a larger signal indicates that learning this new feature <em>while conditioning on the previous ones</em> will have better preditive performance on the current task. However, the sum of all the signals is bounded by the entropy of the labels:</p>
+
+<script type="math/tex; mode=display">\sum_{i=1}^{k} \text{signal}(f_i) = I(y; f_1, \ldots, f_k) \leq H(y)</script>
+
+<p>Note that this is independent of the size of the dataset. This suggests that the existence of previous features will negatively affect the ability to learn new features.</p>
+
+<p>With a infinite dataset over “cats or dogs” labels, learning cat face and dog face features will reduce the signal for learning feature for table detector. Therefore we hypothesize that highly predictive features, such as cat face and dog face features, will prevent learning of less predictive features such as tables. We refer to this hypothesis as <strong>“feature competition”</strong>.</p>
+
+<p>To test whether this is reasonable, we conduct the following experiment with two MNIST digit in the same input image. We would like to know if features learned for the label of the left digit will prevent learning features for the right digit. This is analagous to the hypothetical “cats, dogs, and tables” dataset where the left digits are “cats and dogs” and the right digits have “tables”.</p>
+
+<p>In the feature extraction phase, we train with only the label for the left digit, and obtain separate “feature extractors” for both digits <script type="math/tex">f_l</script> and <script type="math/tex">f_r</script>, which is the input for the top fully-connected layer. In the feature evaluation phase, we fix <script type="math/tex">f_l</script> and <script type="math/tex">f_r</script>, and plug in a new fully-connected layer to train over the label for the right digit. We use the test accuracy in the evaluation phase to approximate the quality of features learned in <script type="math/tex">f_r</script> - higher test accuracy would suggest that <script type="math/tex">f_r</script> learned “better” features in the extraction phase.</p>
+
+<p><img src="../../public/img/blog/competition.png" alt="" class="center" /></p>
+
+<p>During the extraction phase, we randomly corrupt the left digit (to make it totally indistinguishable) by probability <script type="math/tex">(1 - \rho_l)</script>, and force the right digit to have the same label with the left one by probability <script type="math/tex">\rho_r</script>. Therefore, the signal for learning the right digit would be:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}\
+\text{signal}(f_r) &= I(y; f_r \vert f_l) = H(y \vert f_l) - H(y \vert f_r, f_l) \\
+&= (1 - \rho_l) (H(y) - H(y \vert f_r))
+\end{align} %]]></script>
+
+<p>which increases if <script type="math/tex">\rho_l</script> decreases or <script type="math/tex">\rho_r</script> increases.</p>
+
+<p>The following figure are two heatmaps for the test accuracy and the signal of <script type="math/tex">f_r</script> under different settings of <script type="math/tex">\rho_l</script> and <script type="math/tex">\rho_r</script>. This validates our assumption that a higher signal makes learning the feature easier.</p>
+
+<p><img src="../../public/img/blog/heatmap.png" alt="" class="center" /></p>
+
+<p>Interestingly, if <script type="math/tex">\rho_l</script> is high then <script type="math/tex">f_r</script> would learn almost nothing even when <script type="math/tex">\rho_r</script> is as high as 0.5 due to the “feature competition” phenomenon. Hence, to learn a table detector with a “cats and dogs” dataset, we actually need <em>the majority of</em> cats to sit on a table.</p>
+
+<p><img src="../../public/img/blog/cats_on_table.jpg" alt="" class="center" /></p>
+
+<h3 id="feature-learning-with-gans">Feature Learning with GANs</h3>
+
+<p>On the other hand, some generative models using unsupervised methods tend to avoid this feature competition and has the potential to learn all the features. This might seem trivial for autoencoding models such as VAE <a href="#kingma2013auto">(Kingma and Welling 2013)</a>, but not so for GANs <a href="#goodfellow2014generative">(Goodfellow et al. 2014)</a>. In the paper, we point out that the discriminator in the GAN framework does not suffer from “feature competition”, and has the potential to learn all the features.</p>
+
+<p>For the discriminator, it is presented with a dataset over two labels - 1 for real data, and 0 for generated data. We assume that the discriminator is always at “a state of confusion” where it always assigns probability 0.5 to both real data and fake data <sup id="fnref:bsgan"><a href="#fn:bsgan" class="footnote">2</a></sup>. Therefore, <script type="math/tex">H(y \vert f_1, \ldots, f_{k-1}) = 1</script>, and the signal for learning a new feature then becomes:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}\
+I(y; f_k \vert f_1, \ldots, f_{k-1}) &= H(y \vert f_1, \ldots, f_{k-1}) - H(y \vert f_1, \ldots, f_{k-1}, f_k) \\
+&= 1 - H(y \lvert f_1, \ldots, f_{k-1}, f_k) \\
+& \geq 1 - H(y \vert f_k)
+\end{align} %]]></script>
+
+<p>If the generated distribution does not yet match the data distribution, then the value above is greater than zero. Importantly, this value has no dependence over the previous features, which effectively eliminates the “feature competition” phenomenon that plagues labeled supervision.</p>
+
+<p>We empirically test this using the same “evaluation-extraction” setting with <script type="math/tex">f</script> being a convolutional neural network, and <script type="math/tex">\rho_l = 0, \rho_r = 0</script> (no corrption in left digit, no correlation with right digit). We consider vanilla CNNs, Autoencoders, GANs and Wasserstein GANs with the same neural network as <script type="math/tex">f</script>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Model</th>
+      <th>CNN</th>
+      <th>AE</th>
+      <th>GAN</th>
+      <th>WGAN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Accuracy (w/ extraction)</td>
+      <td>67.93</td>
+      <td>89.95</td>
+      <td>90.38</td>
+      <td>91.37</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Accuracy (w/o extraction)</td>
+      <td>84.31</td>
+      <td>82.18</td>
+      <td>82.27</td>
+      <td>84.97</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>GAN and WGAN have accuracy that is on par with AE, while CNN performs even worse than random initializing the weights of <script type="math/tex">f</script>. This is because in the extraction phase <script type="math/tex">f_r</script> is completely ignored during the learning of <script type="math/tex">f_l</script>.</p>
+
+<h3 id="discussion">Discussion</h3>
+
+<p>In this post, we discuss the limitations of learning transferrable features using label-based supervised learning. Current practice, however, tend to take CNN features trained on ImageNet as granted, such as the Inception score for measuring the “quality” of generated samples. While these methods seems to be successful <sup id="fnref:imagenet"><a href="#fn:imagenet" class="footnote">3</a></sup>, one should also realize their limitations. We propose that further exploration be done in the direction of unsupervised representation learning.</p>
+
+<h4 id="references">References</h4>
+
+<ol class="bibliography"><li><span id="krizhevsky2012imagenet">Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E Hinton. 2012. “Imagenet Classification with Deep Convolutional Neural Networks.” In <i>Advances in Neural Information Processing Systems</i>, 1097–1105.</span></li>
+<li><span id="yosinski2014transferable">Yosinski, Jason, Jeff Clune, Yoshua Bengio, and Hod Lipson. 2014. “How Transferable Are Features in Deep Neural Networks?” In <i>Advances in Neural Information Processing Systems</i>, 3320–28.</span></li>
+<li><span id="nguyen2016plug">Nguyen, Anh, Jason Yosinski, Yoshua Bengio, Alexey Dosovitskiy, and Jeff Clune. 2016. “Plug &amp; Play Generative Networks: Conditional Iterative Generation of Images in Latent Space.” <i>ArXiv Preprint ArXiv:1612.00005</i>.</span></li>
+<li><span id="salimans2016improved">Salimans, Tim, Ian Goodfellow, Wojciech Zaremba, Vicki Cheung, Alec Radford, and Xi Chen. 2016. “Improved Techniques for Training Gans.” In <i>Advances in Neural Information Processing Systems</i>, 2226–34.</span></li>
+<li><span id="kingma2013auto">Kingma, Diederik P, and Max Welling. 2013. “Auto-Encoding Variational Bayes.” <i>ArXiv Preprint ArXiv:1312.6114</i>.</span></li>
+<li><span id="goodfellow2014generative">Goodfellow, Ian, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, and Yoshua Bengio. 2014. “Generative Adversarial Nets.” In <i>Advances in Neural Information Processing Systems</i>, 2672–80.</span></li></ol>
+
+<h4 id="footnotes">Footnotes</h4>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:dataset">
+      <p>We assume that we have infinite data in this article; the dataset size affects other aspects of feature learning. <a href="#fnref:dataset" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:bsgan">
+      <p>Note that the generator is not allowed to “fool” the discriminator, but only reach the decision boundary. If the condition is not satisfied then the argument would break (see Appendix A of our paper). This is also the intuition behind Boundary Seeking GANs <a href="#hjelm2017boundary">(Hjelm et al. 2017)</a>. <a href="#fnref:bsgan" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:imagenet">
+      <p>This is thanks to the highly expressive labels in ImageNet. Our theory also provides a strong motivation for datasets like Visual Genome, since the key to improving supervised feature learning is more expressive labels. <a href="#fnref:imagenet" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</div>
+</div>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+        <hr style="margin-top: 50px; margin-bottom: 50px;" />
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+        //var disqus_developer = 1; // Comment out when the site is live
+    var disqus_config = function () {
+            this.page.url = "http://tsong.me/blog/feature-learning/";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = "/blog/feature-learning/"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = 'https://tsong-me.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</div>
+</div>
+
+
+
+<footer>
+    <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+        <hr style="margin-top: 50px; margin-bottom: 50px;" />
+        <p style="text-align: center; font-size: 14px;">
+            © 2017 •
+            <a href="">tsong.me</a> •
+            <a href="" target="_top">tsong@cs.stanford.edu</a>
+        </p>
+    </div>
+</footer>
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-68764449-3', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
