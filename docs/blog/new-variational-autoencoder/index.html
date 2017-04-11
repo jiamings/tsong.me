@@ -86,20 +86,15 @@
       <hr/>
       
       <blockquote>
-  <p>TLDR: We propose a new way of viewing variational autoencoders, that allows us to explain many existing problems in VAE, such as fuzzy generation and low usage of latent code. Based on these observations, we are able to propose new models that are simple yet highly effective.</p>
+  <p>TLDR: We propose a new way of viewing variational autoencoders, that allows us to explain many existing problems in VAE, such as fuzzy generation and low usage of latent code.</p>
 </blockquote>
 
-<p>Variational Autoencoders (VAEs) <a href="#kingma2013auto">(Kingma and Welling 2013)</a> is a interesting family of generative models, and has received much attention since its emergence [^vae]. We recently submitted two papers on arXiv that discuss several interesting aspects of VAEs.</p>
+<p>Variational Autoencoders (VAEs) <a href="#kingma2013auto">(Kingma and Welling 2013)</a> is a interesting family of generative models, and has received much attention since its emergence. We recently submitted two papers on arXiv that discuss several interesting aspects of VAEs. In one of them (<a href="https://arxiv.org/abs/1702.08658">https://arxiv.org/abs/1702.08658</a>), we propose a novel interpretation of VAEs that explains several phenomenons, including</p>
 
 <ul>
-  <li>We propose a novel interpretation of VAEs that explains several phenomenons, including
-    <ul>
-      <li>generation of fuzzy images</li>
-      <li>improving sample quality through sequential generation</li>
-      <li>under utilization of latent codes</li>
-    </ul>
-  </li>
-  <li>We discuss problems with current hierarchical VAEs, and propose a simple yet effective alternative to learn structured, disentangled features using the VAE framework (Similar to InfoGAN!).</li>
+  <li>generation of fuzzy images</li>
+  <li>improving sample quality through sequential generation</li>
+  <li>under utilization of latent codes</li>
 </ul>
 
 <p>We use the common notation for VAEs. Suppose <script type="math/tex">p(x)</script> is the underlying true data distribution, <script type="math/tex">p(z)</script> is the prior of the latent code, the generative model is <script type="math/tex">p_\theta(x\vert z)</script> and the recognition (or inference) model is <script type="math/tex">q_\phi(z \vert x)</script>.</p>
@@ -112,23 +107,30 @@
 
 <p>To answer this question, recall that <script type="math/tex">\mathbb{E}_{p(x)}\mathbb{E}_{q(z \vert x)}[p(x\lvert z)]</script> is the VAE ELBO bound without the KL divergence term. In the Bayesian framework, we are using <script type="math/tex">q(z\vert x)</script> as a variational approximator to the true posterior. However, we can also consider the variational approximation the other way:</p>
 
-<p><script type="math/tex">% <![CDATA[
+<script type="math/tex; mode=display">% <![CDATA[
 \begin{align}\
 q(x, z) &= p(x)q(z\lvert x) \\
 q(z) &= \mathbb{E}_{x \sim p(x)}[q(z \lvert x)] \\
 q(x \lvert z) &= \frac{q(x, z)}{q(z)}
 \end{align} %]]></script>
-Namely, we are treating the generative network as a variational approximation to the true posterior <script type="math/tex">q(x \lvert z)</script>, where the likelihood is defined by the recognition network <script type="math/tex">q(z \lvert x)</script>.</p>
+
+<p>Namely, we are treating the generative network as a variational approximation to the true posterior <script type="math/tex">q(x \lvert z)</script>, where the likelihood is defined by the recognition network <script type="math/tex">q(z \lvert x)</script>.</p>
 
 <p>Why is this interpretation necessary? If we consider the “glasses” example, the true posterior <script type="math/tex">q(x \vert z = z_g)</script> is going to be the distribution of all the faces with glasses, which is a truly complex distribution, and requires a very complex <script type="math/tex">p(x\vert z)</script> to approximate.</p>
 
 <h4 id="fuzzy-generation--simple-generative-model">Fuzzy Generation / Simple Generative Model</h4>
 
-<p>The most common <script type="math/tex">p(x\vert z)</script> we see are factored Gaussians, which clearly cannot approximate this complex distribution.</p>
+<p>The most common <script type="math/tex">p(x\vert z)</script> we see are factored Gaussians, which clearly cannot approximate this complex distribution. In fact, this explains the fuzzy generation of VAEs. Given a latent code, the generative network try to fit a subset of data with a Gaussian distribution, where the best fit for the mean is to calculate an average of the subset. If multiple <script type="math/tex">x</script> map to the same <script type="math/tex">z</script> (which is common since <script type="math/tex">q(z \vert x)</script> is also a Gaussian), the Gaussian will try to learn an average of these <script type="math/tex">x</script>, which leads to fuzzy generation.</p>
 
-<p>In fact, this explains the fuzzy generation of VAEs. Given a latent code, the generative network try to fit a subset of data with a Gaussian distribution, where the best fit for the mean is to calculate an average of the subset. If multiple <script type="math/tex">x</script> map to the same <script type="math/tex">z</script> (which is common since <script type="math/tex">q(z \vert x)</script> is also a Gaussian), the Gaussian will try to learn an average of these <script type="math/tex">x</script>, which leads to fuzzy generation. Since <script type="math/tex">p(x\vert z)</script> is an approximation of <script type="math/tex">q(x\vert z)</script>, we can calculate the variance of <script type="math/tex">q(x\vert z)</script> for any <script type="math/tex">z</script> to measure the “fuzziness” of the generated samples given that particular <script type="math/tex">z</script>.</p>
+<p>Since <script type="math/tex">p(x\vert z)</script> is an approximation of <script type="math/tex">q(x\vert z)</script>, we can calculate the variance of <script type="math/tex">q(x\vert z)</script> for any <script type="math/tex">z</script> to measure the “fuzziness” of the generated samples given that particular <script type="math/tex">z</script>. In the following image, the left digits are generated with low <script type="math/tex">q(x\vert z)</script>, and thus are sharp; the right digits, however, have high <script type="math/tex">q(x\vert z)</script>, and hence looks like some average between 5, 4, and 9.</p>
 
-<p>For a weak <script type="math/tex">p</script> there is only one solution to alleviate fuzziness - have a better <script type="math/tex">q</script>. In our paper, we demonstrated that injecting latent codes during iterative generation can result in latent code that have smaller variance, thus creating sharper samples. This is similar to the notion of “infusion training”, where the injected latent code is just a subset of the pixels of the image.</p>
+<p><img src="/public/img/blog/fuzzy.png" alt="" class="center" /></p>
+
+<p>For a weak <script type="math/tex">p</script> there is only one solution to alleviate fuzziness - have a better <script type="math/tex">q</script>. In our paper, we demonstrated that injecting latent codes during iterative generation can result in latent code that have smaller variance, thus creating sharper samples. This is a generalization of the notion of “infusion training” <a href="#bordes2017learning">(Bordes, Honari, and Vincent 2017)</a>, where the injected latent code is just a subset of the pixels of the image. Here, we show that we can generate sharp LSUN images using simple Gaussian VAEs.</p>
+
+<p><img src="/public/img/blog/seq_vae_lsun.png" alt="" class="center" /></p>
+
+<p>Our code for this experiment is available at <a href="https://github.com/ermongroup/Sequential-Variational-Autoencoder">https://github.com/ermongroup/Sequential-Variational-Autoencoder</a>.</p>
 
 <h4 id="underutilization-of-latent-code--complex-generative-model">Underutilization of Latent Code / Complex Generative Model</h4>
 
@@ -136,46 +138,42 @@ Namely, we are treating the generative network as a variational approximation to
 
 <p>Let us write the VAE ELBO:</p>
 
-<p><script type="math/tex">L = \mathbb{E}_{q(x, z)}[\log p(x \vert z)] - \mathbb{E}_{p(x)}[\text{KL}(q(z\vert x) \ \Vert \ p(z)))]</script>
-This is equivalent to:</p>
+<script type="math/tex; mode=display">L = \mathbb{E}_{q(x, z)}[\log p(x \vert z)] - \mathbb{E}_{p(x)}[\text{KL}(q(z\vert x) \ \Vert \ p(z)))]</script>
 
-<p><script type="math/tex">L = -\text{KL}(p(x) \ \Vert p_\theta(x)) - \mathbb{E}_{p(x)}[\text{KL}(q(z\vert x) \ \lVert \ p_\theta(z|x))] \leq 0</script>
-where <script type="math/tex">p_\theta(x) = \mathbb{E}_{p(z)}[p_\theta(x\vert z)]</script>, and <script type="math/tex">p_\theta(z|x)</script> is the true posterior. If <script type="math/tex">p_\theta(x\vert z)</script> can be arbitrarily complex, then a trivial solution will make <script type="math/tex">L</script> equal to zero:</p>
+<p>This is equivalent to:</p>
+
+<script type="math/tex; mode=display">L = -\text{KL}(p(x) \ \Vert p_\theta(x)) - \mathbb{E}_{p(x)}[\text{KL}(q(z\vert x) \ \lVert \ p_\theta(z|x))] \leq 0</script>
+
+<p>where <script type="math/tex">p_\theta(x) = \mathbb{E}_{p(z)}[p_\theta(x\vert z)]</script>, and <script type="math/tex">p_\theta(z \vert x)</script> is the true posterior. If <script type="math/tex">p_\theta(x\vert z)</script> can be arbitrarily complex, then a trivial solution will make <script type="math/tex">L</script> equal to zero:</p>
 
 <ul>
   <li>For all <script type="math/tex">z_i</script>, <script type="math/tex">p(x \vert z = z_i)</script> is the true data distribution <script type="math/tex">p(x)</script>.</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>For all <script type="math/tex">x_i</script>, $$q(z</td>
-          <td>x = x_i) = p_\theta(z</td>
-          <td>x = x_i) = p(z)<script type="math/tex">. Namely,</script>z<script type="math/tex">and</script>x<script type="math/tex">are independent for both</script>p_\theta<script type="math/tex">and</script>q$$.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>For all <script type="math/tex">x_i</script>, <script type="math/tex">q(z\lvert  = x_i) = p_\theta(z \lvert x = x_i) = p(z)</script>. Namely, <script type="math/tex">z</script> and <script type="math/tex">x</script> are independent for both <script type="math/tex">p_\theta</script> and <script type="math/tex">q</script>.</li>
 </ul>
 
-<p>This is exactly the case discussed in the Variational Lossy Autoencoder paper.</p>
+<p>This is exactly the case discussed in the Variational Lossy Autoencoder paper <a href="#chen2016variational">(Chen et al. 2016)</a>.</p>
 
-<p>In order to make <script type="math/tex">q(z \vert x)</script> meaningful, the</p>
+<p>However, if we are willing to give up the KL divergence term in the prior, the latent code will be utilized, and it is still possible to generate samples through a Markov chain. Here, we illustrate generating samples through a Markov chain, where highly complex models such as PixelCNN++ are utilized.</p>
 
-<p>However, with the advent of the “violent” Generative Adversarial Networks (GANs) <a href="#goodfellow2014generative">(Goodfellow et al. 2014)</a> [^ gun], VAEs seems to fall out of favor for a bit [^gan].</p>
+<p><img src="/public/img/blog/pixel_vae_cifar_mc_noreg.png" alt="" class="center" /></p>
 
-<p>One empirical motivation for GANs is that they to generate sharper samples than VAEs do.</p>
+<p>Our code for this experiment is available at <a href="https://github.com/ermongroup/Generalized-PixelVAE">https://github.com/ermongroup/Generalized-PixelVAE</a>.</p>
+
+<h3 id="discussion">Discussion</h3>
+
+<p>Through this work, we aim to promote the following argument: <strong>Learning features should be at least equally important to generating samples in unsupervised learning.</strong></p>
+
+<p>The view of VAE from the inference side allows us to realize that if we want our features <script type="math/tex">z</script> to have some alignment with the real world, then the type of <script type="math/tex">p(x \vert z)</script> we utilize should match our inductive bias over that distribution. Since both Gaussian and Recurrent distributions are far from perfect of encoding our inductive bias (as directed by features), this requires us to consider other types of distribution that could reflect that.</p>
+
+<p>This also gives us another intuition. Instead of using a simple generator network and come-up with complex inference distributions (as in many prior works), we can take the opposite direction, where the generator is complex yet the inference is simple.</p>
+
+<p>Following this work, our second arXiv submission (<a href="https://arxiv.org/abs/1702.08396">https://arxiv.org/abs/1702.08396</a>) discusses current limitations for hierarchical VAEs, and propose an architecture that is extremely simple yet effective at learning structured features. We will discuss that in another blog post.</p>
 
 <h4 id="references">References</h4>
 
 <ol class="bibliography"><li><span id="kingma2013auto">Kingma, Diederik P, and Max Welling. 2013. “Auto-Encoding Variational Bayes.” <i>ArXiv Preprint ArXiv:1312.6114</i>.</span></li>
-<li><span id="goodfellow2014generative">Goodfellow, Ian, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, and Yoshua Bengio. 2014. “Generative Adversarial Nets.” In <i>Advances in Neural Information Processing Systems</i>, 2672–80.</span></li></ol>
-
-<h4 id="footnotes">Footnotes</h4>
-
-<p>[^ gun]: A recent inspiring work titled “Generative Unadversarial Networks” (GUNs) provides a thoughtful discussion on the violence of GANs.
-[^vae]: As of Pi day 2017, VAE receives 637 citations.
-[^gan]: Since 2017, VAE has received 68 citations while GAN has received 93 citations.</p>
-
+<li><span id="bordes2017learning">Bordes, Florian, Sina Honari, and Pascal Vincent. 2017. “Learning to Generate Samples from Noise through Infusion Training.” <i>ArXiv Preprint ArXiv:1703.06975</i>.</span></li>
+<li><span id="chen2016variational">Chen, Xi, Diederik P Kingma, Tim Salimans, Yan Duan, Prafulla Dhariwal, John Schulman, Ilya Sutskever, and Pieter Abbeel. 2016. “Variational Lossy Autoencoder.” <i>ArXiv Preprint ArXiv:1611.02731</i>.</span></li></ol>
 
 </div>
 </div>
