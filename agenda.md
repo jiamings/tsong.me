@@ -21,7 +21,7 @@ The jobs that are currently running are [here in this Google doc](https://docs.g
 
 Interestingly, the UBEV-EB results does not seem to be better than MBIE-EB for 100 states under the parameters I select. (Average of 10 runs)
 
-https://github.com/jiamings/TabularRLpp/blob/master/visualization.ipynb
+[https://github.com/jiamings/TabularRLpp/blob/master/visualization.ipynb](https://github.com/jiamings/TabularRLpp/blob/master/visualization.ipynb)
 
 I am trying 0.75 and 0.35 to see if UBEV-EB performance can be improved.
 
