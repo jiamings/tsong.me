@@ -24,3 +24,5 @@ Interestingly, the UBEV-EB results does not seem to be better than MBIE-EB for 1
 https://github.com/jiamings/TabularRLpp/blob/master/visualization.ipynb
 
 I am trying 0.75 and 0.35 to see if UBEV-EB performance can be improved.
+
+The results for 200 should be ready by tomorrow afternoon. It seems that the speed is larger than quadratically increasing, so running 1 million episodes takes longer than expected.
