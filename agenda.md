@@ -39,6 +39,6 @@ Chris said that MIBE-EB and UBEV-EB should not be too different since the llnp t
 
 UBEV does not seem to perform much better than MBIE even with 10 million episodes...
 
-![](public/img/agenda/mbie_ubev.png)
+![]({{site.baseurl}}/public/img/agenda/mbie_ubev.png)
 
 I think the implementation should be correct, since Chirs showed me similar results on chain with 50 states.
