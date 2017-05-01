@@ -115,6 +115,12 @@ The code is available on <a href="https://github.com/jiamings/TabularRLpp">https
 
 <p>I think the implementation should be correct, since Chirs showed me similar results on chain with 50 states.</p>
 
+<h3 id="may-1">May 1</h3>
+
+<p>The results for UBEV does not look too good… I guess the problem might be the assumption that the reward is supported on <script type="math/tex">[0, 1]</script> (not the expected reward), so the proof for UBEV might not hold for the Chain MDP, which assumes a Gaussian reward that is centered at 1.</p>
+
+<p>I am looking into uniform distributions that could bound the reward values, and see if UBEV would work well in that case.</p>
+
         </div>
     </div>
 
