@@ -42,3 +42,10 @@ UBEV does not seem to perform much better than MBIE even with 10 million episode
 ![]({{site.baseurl}}/public/img/agenda/mbie_ubev.png)
 
 I think the implementation should be correct, since Chirs showed me similar results on chain with 50 states.
+
+
+### May 1
+
+The results for UBEV does not look too good... I guess the problem might be the assumption that the reward is supported on $$[0, 1]$$ (not the expected reward), so the proof for UBEV might not hold for the Chain MDP, which assumes a Gaussian reward that is centered at 1.
+
+I am looking into uniform distributions that could bound the reward values, and see if UBEV would work well in that case.
