@@ -51,7 +51,7 @@ Certain style details of the blog are inspired by [Otoro](http://blog.otoro.net/
 #### Footnotes
 
 [^medium]: Medium does not support math, and Ghost is expensive (and I didn't really need it by the time I encountered it).
-[^mathjax]: Math is not pretty. Use Common HTML in MathJax fix this.
+[^mathjax]: Math is not pretty. Use Common HTML in MathJax to fix this.
 [^phd]: I am a machine learning Ph.D, not a front-end developer.
 
  
