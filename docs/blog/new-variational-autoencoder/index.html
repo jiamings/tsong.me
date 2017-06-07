@@ -160,7 +160,7 @@ q(x \lvert z) &= \frac{q(x, z)}{q(z)}
 
 <ul>
   <li>For all <script type="math/tex">z_i</script>, <script type="math/tex">p(x \vert z = z_i)</script> is the true data distribution <script type="math/tex">p(x)</script>.</li>
-  <li>For all <script type="math/tex">x_i</script>, <script type="math/tex">q(z\lvert  = x_i) = p_\theta(z \lvert x = x_i) = p(z)</script>. Namely, <script type="math/tex">z</script> and <script type="math/tex">x</script> are independent for both <script type="math/tex">p_\theta</script> and <script type="math/tex">q</script>.</li>
+  <li>For all <script type="math/tex">x_i</script>, <script type="math/tex">q(z\lvert  = x_i) = p_\theta(z \lvert x = x_i) = p(z)</script>. Namely, this means that <script type="math/tex">z</script> and <script type="math/tex">x</script> are independent for both <script type="math/tex">p_\theta</script> and <script type="math/tex">q</script>.</li>
 </ul>
 
 <p>This is exactly the case discussed in the Variational Lossy Autoencoder paper <a href="#chen2016variational">(Chen et al. 2016)</a>.</p>
@@ -170,6 +170,8 @@ q(x \lvert z) &= \frac{q(x, z)}{q(z)}
 <p><img src="/public/img/blog/pixel_vae_cifar_mc_noreg.png" alt="" class="center" /></p>
 
 <p>Our code for this experiment is available at <a href="https://github.com/ermongroup/Generalized-PixelVAE">https://github.com/ermongroup/Generalized-PixelVAE</a>.</p>
+
+<p>(We have a recent work that extends this to multiple different type of regularizations, including Adversarial distance <a href="#goodfellow2014generative">(Goodfellow et al. 2014)</a>, Moment Matching Distance <a href="#li2015generative">(Li, Swersky, and Zemel 2015)</a>, and Stein <a href="#liu2016stein">(Liu and Wang 2016)</a>)</p>
 
 <h3 id="discussion">Discussion</h3>
 
@@ -185,7 +187,10 @@ q(x \lvert z) &= \frac{q(x, z)}{q(z)}
 
 <ol class="bibliography"><li><span id="kingma2013auto">Kingma, Diederik P, and Max Welling. 2013. “Auto-Encoding Variational Bayes.” <i>ArXiv Preprint ArXiv:1312.6114</i>.</span></li>
 <li><span id="bordes2017learning">Bordes, Florian, Sina Honari, and Pascal Vincent. 2017. “Learning to Generate Samples from Noise through Infusion Training.” <i>ArXiv Preprint ArXiv:1703.06975</i>.</span></li>
-<li><span id="chen2016variational">Chen, Xi, Diederik P Kingma, Tim Salimans, Yan Duan, Prafulla Dhariwal, John Schulman, Ilya Sutskever, and Pieter Abbeel. 2016. “Variational Lossy Autoencoder.” <i>ArXiv Preprint ArXiv:1611.02731</i>.</span></li></ol>
+<li><span id="chen2016variational">Chen, Xi, Diederik P Kingma, Tim Salimans, Yan Duan, Prafulla Dhariwal, John Schulman, Ilya Sutskever, and Pieter Abbeel. 2016. “Variational Lossy Autoencoder.” <i>ArXiv Preprint ArXiv:1611.02731</i>.</span></li>
+<li><span id="goodfellow2014generative">Goodfellow, Ian, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, and Yoshua Bengio. 2014. “Generative Adversarial Nets.” In <i>Advances in Neural Information Processing Systems</i>, 2672–80.</span></li>
+<li><span id="li2015generative">Li, Yujia, Kevin Swersky, and Rich Zemel. 2015. “Generative Moment Matching Networks.” In <i>Proceedings of the 32nd International Conference on Machine Learning (ICML-15)</i>, 1718–27.</span></li>
+<li><span id="liu2016stein">Liu, Qiang, and Dilin Wang. 2016. “Stein Variational Gradient Descent: A General Purpose Bayesian Inference Algorithm.” In <i>Advances In Neural Information Processing Systems</i>, 2370–78.</span></li></ol>
 
 </div>
 </div>

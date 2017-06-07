@@ -3,6 +3,7 @@ layout: post
 title: Towards Deeper Understanding of Variational Autoendoding Models
 author: Jiaming Song and Shengjia Zhao
 tags:
+- blog
 ---
 
 
@@ -97,7 +98,7 @@ $$
 where $$p_\theta(x) = \mathbb{E}_{p(z)}[p_\theta(x\vert z)]$$, and $$p_\theta(z \vert x)$$ is the true posterior. If $$p_\theta(x\vert z)$$ can be arbitrarily complex, then a trivial solution will make $$L$$ equal to zero:
 
 - For all $$z_i$$, $$p(x \vert z = z_i)$$ is the true data distribution $$p(x)$$.
-- For all $$x_i$$, $$q(z\lvert  = x_i) = p_\theta(z \lvert x = x_i) = p(z)$$. Namely, $$z$$ and $$x$$ are independent for both $$p_\theta$$ and $$q$$. 
+- For all $$x_i$$, $$q(z\lvert  = x_i) = p_\theta(z \lvert x = x_i) = p(z)$$. Namely, this means that $$z$$ and $$x$$ are independent for both $$p_\theta$$ and $$q$$. 
 
 This is exactly the case discussed in the Variational Lossy Autoencoder paper {% cite chen2016variational %}. 
 
@@ -108,6 +109,10 @@ However, if we are willing to give up the KL divergence term in the prior, the l
 ![]({{site.baseurl}}/public/img/blog/pixel_vae_cifar_mc_noreg.png){:.center}
 
 Our code for this experiment is available at [https://github.com/ermongroup/Generalized-PixelVAE](https://github.com/ermongroup/Generalized-PixelVAE).
+
+(We have a recent work that extends this to multiple different type of regularizations, including Adversarial distance {% cite goodfellow2014generative %}, Moment Matching Distance {% cite li2015generative %}, and Stein {% cite liu2016stein %})
+
+
 
 ### Discussion
 
