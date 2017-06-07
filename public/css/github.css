@@ -1,4 +1,5 @@
 @include-when-export url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+@include-when-export url(http://fonts.googleapis.com/css?family=Noto+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
 
 /**
  * css forked from https://github.com/GitbookIO/gitbook 

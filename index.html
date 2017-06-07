@@ -8,10 +8,10 @@
 {% include navbar.html %}
 <div class="container">
     <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-4">
-            {% include information.html %}
-        </div>
-        <div class="col-lg-9 col-md-8 col-sm-8">
+        <!--div class="col-lg-3 col-md-3 col-sm-3">
+             include information.html
+        </div-->
+        <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
             <div class="panel panel-default">
                 <div class="panel-body" style="line-height: 1.5;">
                     <p style="font-size: 14px;">
@@ -19,6 +19,18 @@
                         <!--My interests lies in machine learning and deep learning; deep generative models and deep reinforcement learning in particular.
                         I worked on scalable bayesian machine learning and deep generative models during my undergrad.-->
                     </p>
+                    <hr/>
+                    <p>
+                        Contact: <b style="font-family: 'Droid Sans Mono'; font-size: 13px;">tsong at cs.stanford.edu</b>
+                    </p>
+                    <!--p>
+                        <b>LinkedIn: </b> <a href="https://cn.linkedin.com/in/jiamings" target="_blank">Jiaming Song</a>
+                    </p>
+                    <p>
+                        <a href="https://cn.linkedin.com/in/jiamings" target="_blank"><img src="{{ site.baseurl }}/public/img/icon/linkedin.min.svg" height="24px" width="24px"></a>
+                        <a href="https://github.com/jiamings" target="_blank"><img src="{{ site.baseurl }}/public/img/icon/github.min.svg" height="24px" width="24px"></a>
+                        <a href="https://twitter.com/baaadas" target="_blank"><img src="{{ site.baseurl }}/public/img/icon/twitter.min.svg" height="24px" width="24px"></a>
+                    </p-->
                 </div>
             </div>
             {% include publications.html %}

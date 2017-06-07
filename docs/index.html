@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
     <link href="/public/css/bootstrap.min.css" rel="stylesheet">
     <link href="/public/css/github.css" rel="stylesheet">
     <style>
@@ -11,7 +14,7 @@
             height: 1px;
         }
         footer {
-            font-family: "Open Sans", "Arial", sans-serif;
+            font-family: "Noto Sans", "Arial", sans-serif;
             margin-top: 50px;
         }
         img {
@@ -31,12 +34,15 @@
             max-height:90%;
             display: block;
         }
+        p {
+            line-height: 1.7; margin-top: 1px; margin-bottom: 1px;
+        }
     </style>
 </head>
 
 <body style="font-size: 14px; margin-bottom: 5px; line-height: 1.3;">
 <nav class="navbar navbar-default" style="display: block; font-size: 18px;" role="navigation">
-    <div class="container">
+    <div class="container col-lg-8 col-lg-offset-2">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-data" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
@@ -50,18 +56,18 @@
 
         <div id="navbar-data" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li>
+                <!--li>
                     <a href="/" style="padding-left: 30px">Home</a>
-                </li>
+                </li-->
                 <li>
                     <a href="/blog" style="padding-left: 30px">Articles</a>
                 </li>
-                <li>
+                <!--li>
                     <a href="/projects" style="padding-left: 30px">Projects</a>
-                </li>
-                <li>
+                </li-->
+                <!--li>
                     <a href="/reading" style="padding-left: 30px">Reading</a>
-                </li>
+                </li-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
@@ -70,6 +76,12 @@
                 <li>
                     <a href="https://twitter.com/baaadas" target="_blank"><img src="/public/img/icon/twitter.min.svg" height="24px" width="24px"></a>
                 </li>
+                <li>
+                    <a href="https://cn.linkedin.com/in/jiamings" target="_blank"><img src="/public/img/icon/linkedin.min.svg" height="24px" width="24px"></a>
+                </li>
+                <li>
+                    <a href="https://github.com/jiamings/cv/blob/master/jiaming_cv.pdf" target="_blank">Curriculum Vitae</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -77,41 +89,10 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-4">
-            <div class="panel panel-default">
-    <img src="/public/img/avatar.png" class="img-responsive" style="width: 100%;" alt="Jiaming Song">
-    <div class="panel-body">
-
-        <h3>Jiaming Song (Tony)</h3>
-        <p>
-            Computer Science Department
-        </p>
-        <p>
-            Stanford University
-        </p>
-    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-body">
-        <p>
-            <b>Email: </b><a href="mailto:tsong@cs.stanford.edu" target="_top">tsong@cs.stanford.edu</a>
-        </p>
-        <p>
-            <b>Curriculum Viate:</b> <a href="https://github.com/jiamings/cv/blob/master/jiaming_cv.pdf" target="_blank">Jiaming Song</a>
-        </p>
-        <p>
-            <b>LinkedIn: </b> <a href="https://cn.linkedin.com/in/jiamings" target="_blank">Jiaming Song</a>
-        </p>
-        <p>
-            <a href="https://cn.linkedin.com/in/jiamings" target="_blank"><img src="/public/img/icon/linkedin.min.svg" height="24px" width="24px"></a>
-            <a href="https://github.com/jiamings" target="_blank"><img src="/public/img/icon/github.min.svg" height="24px" width="24px"></a>
-            <a href="https://twitter.com/baaadas" target="_blank"><img src="/public/img/icon/twitter.min.svg" height="24px" width="24px"></a>
-        </p>
-    </div>
-</div>
-
-        </div>
-        <div class="col-lg-9 col-md-8 col-sm-8">
+        <!--div class="col-lg-3 col-md-3 col-sm-3">
+             include information.html
+        </div-->
+        <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
             <div class="panel panel-default">
                 <div class="panel-body" style="line-height: 1.5;">
                     <p style="font-size: 14px;">
@@ -119,6 +100,18 @@
                         <!--My interests lies in machine learning and deep learning; deep generative models and deep reinforcement learning in particular.
                         I worked on scalable bayesian machine learning and deep generative models during my undergrad.-->
                     </p>
+                    <hr/>
+                    <p>
+                        Contact: <b style="font-family: 'Droid Sans Mono'; font-size: 13px;">tsong at cs.stanford.edu</b>
+                    </p>
+                    <!--p>
+                        <b>LinkedIn: </b> <a href="https://cn.linkedin.com/in/jiamings" target="_blank">Jiaming Song</a>
+                    </p>
+                    <p>
+                        <a href="https://cn.linkedin.com/in/jiamings" target="_blank"><img src="/public/img/icon/linkedin.min.svg" height="24px" width="24px"></a>
+                        <a href="https://github.com/jiamings" target="_blank"><img src="/public/img/icon/github.min.svg" height="24px" width="24px"></a>
+                        <a href="https://twitter.com/baaadas" target="_blank"><img src="/public/img/icon/twitter.min.svg" height="24px" width="24px"></a>
+                    </p-->
                 </div>
             </div>
             <div class="panel panel-default" style="line-height: 1.5; margin-top: 0; margin-bottom: 0;">
@@ -126,11 +119,11 @@
         <h4 style="line-height: 1.5; margin-top: 0; margin-bottom: 0;">Publications and Manuscripts</h4>
     </div>
     <div class="panel-body" style="padding-top: 5px; margin-top: 0; margin-bottom: 0;">
-        <h4 style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
+        <p style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
             <a href="https://arxiv.org/abs/1702.08396" target="_blank">
                 <b>Learning Hierarchical Features from Generative Models</b>
             </a>
-        </h4>
+        </p>
         <p style="line-height: 1.5; margin-top: 0; margin-bottom: 0;">
             Shengjia Zhao, <b>Jiaming Song</b>, Stefano Ermon <br/>
             <i>To appear in the 34th International Conference on Machine Learning (ICML 2017).</i>
@@ -139,11 +132,11 @@
             </a>
         </p>
         <hr style="margin-top: 10px; margin-bottom: 10px;" />
-        <h4 style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
+        <p style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
             <a href="https://openreview.net/pdf?id=S1L-hCNtl" target="_blank">
                 <b>Generative Adversarial Learning of Markov Chains</b>
             </a>
-        </h4>
+        </p>
         <p style="line-height: 1.5; margin-top: 0; margin-bottom: 0;">
             <b>Jiaming Song</b>, Shengjia Zhao, Stefano Ermon <br/>
             <i>In the 5th International Conference on Learning Representations (ICLR 2017) Workshop Track.</i>
@@ -155,68 +148,68 @@
             </a>
         </p>
         <hr style="margin-top: 10px; margin-bottom: 10px;" />
-        <h4 style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
+        <p style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
             <a href="https://arxiv.org/abs/1703.08840" target="_blank">
                 <b>Inferring The Latent Structure of Human Decision-Making from Raw Visual Inputs</b>
             </a>
-        </h4>
+        </p>
         <p style="line-height: 1.5; margin-top: 0; margin-bottom: 0;">
             Yunzhu Li, <b>Jiaming Song</b>, Stefano Ermon
         </p>
         <hr style="margin-top: 10px; margin-bottom: 10px;" />
-        <h4 style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
+        <p style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
             <a href="https://arxiv.org/abs/1702.08658" target="_blank">
                 <b>Towards Deeper Understanding of Variational Autoencoding Models</b>
             </a>
-        </h4>
+        </p>
         <p style="line-height: 1.5; margin-top: 0; margin-bottom: 0;">
             Shengjia Zhao, <b>Jiaming Song</b>, Stefano Ermon
         </p>
         <hr style="margin-top: 10px; margin-bottom: 10px;" />
-        <h4 style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
+        <p style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
             <a href="https://arxiv.org/abs/1703.02156" target="_blank">
                 <b>On the Limits of Learning Representations with Label-Based Supervision</b>
             </a>
-        </h4>
+        </p>
         <p style="line-height: 1.5; margin-top: 0; margin-bottom: 0;">
             <b>Jiaming Song</b>, Russell Stewart, Shengjia Zhao, Stefano Ermon
         </p>
         <hr style="margin-top: 10px; margin-bottom: 10px;" />
-        <h4 style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
+        <p style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
             <a href="https://arxiv.org/abs/1605.06715" target="_blank">
                 <b>Factored Sigmoid Belief Networks for Sequence Learning</b>
             </a>
-        </h4>
+        </p>
         <p style="line-height: 1.5; margin-top: 0; margin-bottom: 0;">
             <b>Jiaming Song</b>, Zhe Gan, Lawrence Carin
         <br/>
             <i>In the 33rd International Conference on Machine Learning (ICML 2016).</i></p>
         <hr style="margin-top: 10px; margin-bottom: 10px;"/>
-        <h4 style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
+        <p style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
             <a href="/static/papers/icm2015_umap.pdf" target="_blank">
                 <b>Organizational Churn: A Roll of the Dice?</b>
             </a>
-        </h4>
+        </p>
         <p style="line-height: 1.5; margin-top: 0; margin-bottom: 0;">
             Canyao Liu*, <b>Jiaming Song</b>*, Chuan Yu*.
         <br/>
             <i>Undergraduate Mathematics and its Applications (UMAP), Issue 36.2.</i>
         </p>
         <hr style="margin-top: 10px; margin-bottom: 10px;" />
-        <h4 style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
+        <p style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
             <a href="http://arxiv.org/abs/1602.07428" target="_blank">
                 <b>Max-Margin Nonparametric Latent Feature Relational Models for Link Prediction</b>
             </a>
-        </h4>
+        </p>
         <p style="line-height: 1.5; margin-top: 0; margin-bottom: 0;">
             Jun Zhu, <b>Jiaming Song</b>, Bei Chen
         </p>
         <hr style="margin-top: 10px; margin-bottom: 10px;" />
-        <h4 style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
+        <p style="line-height: 1.5; margin-top: 1px; margin-bottom: 1px; font-size: 16px;">
             <a href="https://arxiv.org/abs/1512.02016" target="_blank">
                 <b>Discriminative Nonparametric Latent Feature Relational Models with Data Augmentation</b>
             </a>
-        </h4>
+        </p>
         <p style="line-height: 1.5; margin-top: 0; margin-bottom: 0;">
             Bei Chen, Ning Chen, Jun Zhu, <b>Jiaming Song</b>, Bo Zhang
         <br/>
@@ -227,9 +220,9 @@
     </div>
 </div>
 
-<footer>
-    <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
-        <hr style="margin-top: 50px; margin-bottom: 50px;" />
+<footer style="margin-top: 0px;">
+    <div class="container" style="margin-top: 25px; margin-bottom: 20px;">
+        <hr style="margin-top: 25px; margin-bottom: 25px;" />
         <p style="text-align: center; font-size: 14px;">
             © 2017 •
             <a href="">tsong.me</a> •
