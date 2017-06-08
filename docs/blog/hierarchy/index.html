@@ -1,0 +1,236 @@
+<html lang='en'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning Hierarchical Features from Generative Models</title>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/css/github.css" rel="stylesheet">
+    <style>
+        hr {
+            height: 1px;
+        }
+        footer {
+            font-family: "Noto Sans", "Arial", sans-serif;
+            margin-top: 50px;
+        }
+        img {
+            margin-left: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-right: auto;
+            max-width:90%;
+            max-height:90%;
+        }
+        img.center {
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 25px;
+            padding-top: 25px;
+            max-width:90%;
+            max-height:90%;
+            display: block;
+        }
+        p {
+            line-height: 1.5; margin-top: 10px; margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body style="font-size: 16px;">
+
+<nav class="navbar navbar-default" style="display: block; font-size: 18px;" role="navigation">
+    <div class="container col-lg-8 col-lg-offset-2">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-data" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/" style="padding-left: 30px">Jiaming Song</a>
+        </div>
+
+
+        <div id="navbar-data" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <!--li>
+                    <a href="/" style="padding-left: 30px">Home</a>
+                </li-->
+                <li>
+                    <a href="/blog" style="padding-left: 30px">Articles</a>
+                </li>
+                <!--li>
+                    <a href="/projects" style="padding-left: 30px">Projects</a>
+                </li-->
+                <!--li>
+                    <a href="/reading" style="padding-left: 30px">Reading</a>
+                </li-->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="https://github.com/jiamings" target="_blank" style="padding-left: 30px"><img src="/public/img/icon/github.min.svg" height="24px" width="24px"></a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/baaadas" target="_blank" style="padding-left: 30px"><img src="/public/img/icon/twitter.min.svg" height="24px" width="24px"></a>
+                </li>
+                <li>
+                    <a href="https://cn.linkedin.com/in/jiamings" target="_blank" style="padding-left: 30px"><img src="/public/img/icon/linkedin.min.svg" height="24px" width="24px"></a>
+                </li>
+                <li>
+                    <a href="/static/jiaming_cv.pdf" target="_blank" style="padding-left: 30px">Curriculum Vitae</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container" style="margin-top: 50px;">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+      
+      <h2>Learning Hierarchical Features from Generative Models</h2>
+      <!--h5>by  </h5-->
+      <hr/>
+      
+      <blockquote>
+  <p>TLDR: Current ways of stacking variational autoencoders may not always provide meaningful structured features. In fact, we showed in a recent ICML paper that a simple ladder architecture is enough for us to learn structured, distentangled features from variational autoencoders.</p>
+</blockquote>
+
+<p>Variational Autoencoders (VAE) <a href="#kingma2013auto">(Kingma and Welling 2013)</a> has been one of the most popular frameworks for deep generative models. It defines a model <script type="math/tex">p(x \lvert z)</script> that generates data <script type="math/tex">x</script> given the latent variables <script type="math/tex">z</script>, where we can treat <script type="math/tex">z</script> as some sort of “feature” and perform semi-supervised learning <a href="#kingma2014semi">(Kingma et al. 2014)</a>.</p>
+
+<h3 id="deeper-is-not-always-better-for-hierarchical-vaes">Deeper is not Always Better for Hierarchical VAEs</h3>
+
+<p>For some time, researchers have proposed to use “hierarchical VAEs”:</p>
+
+<script type="math/tex; mode=display">p(x \lvert z) = p(x|z_1)\prod_{\ell = 1}^{L-1} p(z_\ell | z_{\ell+1})</script>
+
+<p>There are two potential advantages to using such hierarchical VAEs:</p>
+
+<ol>
+  <li>It could improve the ELBO bounds and decrease reconstruction error in most cases, which would look nicely in a paper.</li>
+  <li>The stack of latent variables <script type="math/tex">z_\ell</script> might learn a “feature hierarchy”, similar to what convolutional neural networks learned.</li>
+</ol>
+
+<p>The first has been validated by many recent works and hierarchical VAEs would help improving ELBO bounds on paper <sup id="fnref:likelihood"><a href="#fn:likelihood" class="footnote">1</a></sup>. The second argument, however, has not been clearly demonstrated<sup id="fnref:hierarchy"><a href="#fn:hierarchy" class="footnote">2</a></sup>. In fact, it is difficult to learn a meaningful hierarchy when there are many layers of <script type="math/tex">z</script>, and some have considered that as an inference problem <a href="#sonderby2016ladder">(Sønderby et al. 2016)</a>.</p>
+
+<h3 id="a-simple-yet-effective-method-for-learning-hierarchical-features">A Simple yet Effective Method for Learning Hierarchical Features</h3>
+
+<p>We show in our recent ICML paper, <a href="https://arxiv.org/abs/1702.08396">Learning Hierarchical Features from Generative Models</a>, that if the purpose is to learn structured, hierarchical features, using an hierarchical VAE has its problems. Instead, we can use a very simple approach, which we call Variational Ladder Autoencoder (VLAE) <sup id="fnref:vlae"><a href="#fn:vlae" class="footnote">3</a></sup>.</p>
+
+<p>The basic idea is simple: <em>if there is a hiearchy of features, some complex and some simple, they should be expressed by neural networks of different capacity</em>. Hence, we should use shallow networks to express low-level, simple features and deep networks to express high-level, complex features. One way to do this is to use an implicit generative model <sup id="fnref:implicit"><a href="#fn:implicit" class="footnote">4</a></sup>, where we inject Gaussian noise at different levels of the network:</p>
+
+<div class="row">
+
+<div class="col-lg-4 col-lg-offset-4">
+
+<img src="/public/img/blog/vlae.png" />
+
+</div>
+
+</div>
+
+<p>Training is essentially the same for 1 layer VAE with <script type="math/tex">L_2</script> reconstruction error. We show some results from SVHN and CelebA: the models have 4 layers of <script type="math/tex">z</script> and in each block we display the generation results when we change the <script type="math/tex">z</script> in one layer and fix that in other layers (from left to right, lower layers to higher layers):</p>
+
+<p><img src="/public/img/blog/vlae_svhn.png" alt="" /></p>
+
+<p><img src="/public/img/blog/vlae_celeba.png" alt="" /></p>
+
+<p>We can see that lower layers learned simpler features such as the image color, while higher layers learned more complex attributes such as the overall structure. This clearly demonstrates that this VLAE is able to learn hierarchical features, similar to what InfoGAN <a href="#chen2016infogan">(Chen et al. 2016)</a> does.</p>
+
+<p>Code is available at: <a href="https://github.com/ermongroup/Variational-Ladder-Autoencoder">https://github.com/ermongroup/Variational-Ladder-Autoencoder</a>.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>In terms of learning hierarchical features, deep is not always good for VAEs; if we use a ladder architecture that serves as an inductive bias for the complexity of features, then we can learn structured features at ease.</p>
+
+<h4 id="references">References</h4>
+
+<ol class="bibliography"><li><span id="kingma2013auto">Kingma, Diederik P, and Max Welling. 2013. “Auto-Encoding Variational Bayes.” <i>ArXiv Preprint ArXiv:1312.6114</i>.</span></li>
+<li><span id="kingma2014semi">Kingma, Diederik P, Shakir Mohamed, Danilo Jimenez Rezende, and Max Welling. 2014. “Semi-Supervised Learning with Deep Generative Models.” In <i>Advances in Neural Information Processing Systems</i>, 3581–89.</span></li>
+<li><span id="sonderby2016ladder">Sønderby, Casper Kaae, Tapani Raiko, Lars Maaløe, Søren Kaae Sønderby, and Ole Winther. 2016. “Ladder Variational Autoencoders.” In <i>Advances in Neural Information Processing Systems</i>, 3738–46.</span></li>
+<li><span id="chen2016infogan">Chen, Xi, Yan Duan, Rein Houthooft, John Schulman, Ilya Sutskever, and Pieter Abbeel. 2016. “Infogan: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets.” In <i>Advances in Neural Information Processing Systems</i>, 2172–80.</span></li></ol>
+
+<h4 id="footnotes">Footnotes</h4>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:likelihood">
+      <p>Although ELBO bounds and log-likelihood in general are not necessarily good measurements for generative models <a href="#theis2015note">(Theis, Oord, and Bethge 2015)</a>.&nbsp;<a href="#fnref:likelihood" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:hierarchy">
+      <p>Except for in <a href="#gulrajani2016pixelvae">(Gulrajani et al. 2016)</a>, where PixelCNN is used to model <script type="math/tex">p</script>.&nbsp;<a href="#fnref:hierarchy" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:vlae">
+      <p>Coming up with a good name for this model is so difficult, because of existing works.&nbsp;<a href="#fnref:vlae" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:implicit">
+      <p><a href="#tran2017deep">(Tran, Ranganath, and Blei 2017)</a> has mentioned a model with similar architecture, but the motivation is different from ours (they focus on learning and inference with GANs while we focus on learning hierarchical features).&nbsp;<a href="#fnref:implicit" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</div>
+</div>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+        <hr style="margin-top: 50px; margin-bottom: 50px;" />
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+        //var disqus_developer = 1; // Comment out when the site is live
+    var disqus_config = function () {
+            this.page.url = "http://tsong.me/blog/hierarchy/";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = "/blog/hierarchy/"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = 'https://tsong-me.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</div>
+</div>
+
+
+
+<footer style="margin-top: 0px;">
+    <div class="container" style="margin-top: 25px; margin-bottom: 20px;">
+        <hr style="margin-top: 25px; margin-bottom: 25px;" />
+        <p style="text-align: center; font-size: 14px;">
+            © 2017 •
+            <a href="">tsong.me</a> •
+            <a href="" target="_top">tsong@cs.stanford.edu</a>
+        </p>
+    </div>
+</footer>
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-68764449-3', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
