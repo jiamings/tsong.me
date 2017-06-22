@@ -1,3 +1,6 @@
+@import url(github-rouge.css);
+@import url(https://cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css)
+
 @include-when-export url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
 @include-when-export url(http://fonts.googleapis.com/css?family=Noto+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
 
@@ -266,11 +269,11 @@ table tr td:last-child {
 .md-fences,
 code,
 tt {
-    border: 1px solid #ddd;
+    border: 0px solid #ddd;
     background-color: #f8f8f8;
     border-radius: 3px;
     padding: 0;
-    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    font-family: "Hack", "Liberation Mono", Courier, monospace;
     padding: 2px 4px 0px 4px;
     font-size: 0.9em;
 }

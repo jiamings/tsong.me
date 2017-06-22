@@ -3,7 +3,7 @@
 permalink: /blog/:title/
 destination: docs
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
-highlighter: pygments
+#highlighter: pygments
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
@@ -19,6 +19,7 @@ author :
 
 markdown: kramdown
 highlighter: rouge
+
 kramdown:
   input:  GFM
   hard_wrap: false
@@ -26,7 +27,7 @@ kramdown:
   toc_levels: 1..6
   entity_output: as_char
   smart_quotes: lsquo,rsquo,ldquo,rdquo
-
+  syntax_highlighter: rouge
 
 gems:
  - jekyll-redirect-from
