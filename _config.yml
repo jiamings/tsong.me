@@ -29,7 +29,7 @@ kramdown:
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   syntax_highlighter: rouge
 
-gems:
+plugins:
  - jekyll-redirect-from
  - 'jekyll/scholar'
 # The production_url is only used when full-domain names are needed
