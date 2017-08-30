@@ -1,8 +1,10 @@
 @import url(github-rouge.css);
-@import url(https://cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css)
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url(https://cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css);
 
 @include-when-export url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
 @include-when-export url(http://fonts.googleapis.com/css?family=Noto+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+@include-when-export url(http://fonts.googleapis.com/css?family=Lato:400italic,700italic,700,400&subset=latin,latin-ext);
 
 /**
  * css forked from https://github.com/GitbookIO/gitbook 
