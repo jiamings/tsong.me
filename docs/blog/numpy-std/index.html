@@ -105,17 +105,15 @@
 
 <p>See the following example:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">500.0</span><span class="p">,</span> <span class="p">[</span><span class="mi">10000000</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'float64: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'float32: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)))</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>float64: [ 500.17523373  500.04088655]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float64: [ 500.17523373  500.04088655]
 float32: [ 496.34017944  496.21456909]
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Here we can see that even if the standard deviation should be 500, it was 496 when using float32. Numpy actually knows this (in <a href="https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.std.html">their docs</a>):</p>
 
@@ -125,28 +123,24 @@ float32: [ 496.34017944  496.21456909]
 
 <p>Weirdly enough, if we use a data with shape [10000000 * 2] instead of [10000000, 2], then this will not have issues:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">500.0</span><span class="p">,</span> <span class="p">[</span><span class="mi">10000000</span> <span class="o">*</span> <span class="mi">2</span><span class="p">])</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">500.0</span><span class="p">,</span> <span class="p">[</span><span class="mi">10000000</span> <span class="o">*</span> <span class="mi">2</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'float64: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'float32: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)))</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>float64: 499.9830404637898
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float64: 499.9830404637898
 float32: 499.9829406738281
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>If we calculate std on each axis manually, no issues occur as well:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'float64: [{}, {}]'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'float64: [{}, {}]'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'float32: [{}, {}]'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)))</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>float64: [500.1752337287789, 500.04088654730464]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float64: [500.1752337287789, 500.04088654730464]
 float32: [500.1752624511719, 500.04095458984375]
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>So there is really no reason why std for float32 in the first case fails. Nevertheless, this happens and <strong>we should use float64 in all cases</strong>.</p>
 
