@@ -1,0 +1,208 @@
+publications:
+- name: "Multi-Agent Generative Adversarial Imitation Learning"
+  url: https://arxiv.org/abs/1807.09936
+  authors:
+  - Jiaming Song
+  - Hongyu Ren
+  - Dorsa Sadigh
+  - Stefano Ermon
+  conference: "the 31th Neural Information Processing Systems (NIPS 2018)"
+  additional: ""
+  workshops:
+  - "the 6th International Conference on Learning Representations (ICLR 2018) Workshop Track"
+  - "1st Workshop on Goal Specifications for Reinforcement Learning"
+  code: ""
+  slides: ""
+  blog: ""
+  date: "12/03/2018"
+- name: "Bias and Generalization in Deep Generative Models: An Empirical Study"
+  url: ""
+  authors:
+  - Shengjia Zhao
+  - Hongyu Ren
+  - Arianna Yuan
+  - Jiaming Song
+  - Noah Goodman
+  - Stefano Ermon
+  conference: "the 31th Neural Information Processing Systems (NIPS 2018)."
+  additional: "Spotlight Presentation"
+  code: ""
+  slides: ""
+  blog: ""
+  date: "12/03/2018"
+- name: "A Lagrangian Perspective on Latent Variable Generative Models"
+  url: "https://arxiv.org/abs/1806.06514"
+  authors:
+  - Shengjia Zhao
+  - Jiaming Song
+  - Stefano Ermon
+  conference: "the 2018 Conference on Uncertainty in Artificial Intelligence (UAI 2018)"
+  additional: "Oral Presentation"
+  workshops:
+  - "2018 Bay Area Machine Learning Symposium"
+  - "ICML 2018 Workshop on Theoretical Foundations and Applications of Deep Generative Models"
+  blog: ""
+  code: "https://github.com/ermongroup/lagvae"
+  date: "08/06/2018"
+- name: "Accelerating Natural Gradient with Higher-Order Invariance"
+  url: "https://arxiv.org/abs/1803.01273"
+  authors:
+  - Yang Song
+  - Jiaming Song
+  - Stefano Ermon
+  conference: "the 35th International Conference on Machine Learning (ICML 2018)"
+  blog: "https://ermongroup.github.io/blog/geo/"
+  code: "https://github.com/ermongroup/higher_order_invariance"
+  date: "07/08/2018"
+- name: "Adversarial Constraint Learning for Structured Prediction"
+  url: "https://arxiv.org/abs/1805.1056"
+  authors:
+  - Hongyu Ren
+  - Russell Stewart
+  - Jiaming Song
+  - Volodymyr Kuleshov
+  - Stefano Ermon
+  conference: "2018 International Joint Conference on Artificial Intelligence (IJCAI 2018)"
+  workshops:
+  - "NIPS Workshop on Learning with Limited Data"
+  date: "07/08/2018"
+- name: "A-NICE-MC: Adversarial Training for MCMC"
+  url: https://arxiv.org/abs/1706.07561
+  authors:
+  - Jiaming Song
+  - Shengjia Zhao
+  - Stefano Ermon
+  conference: "the 30th Neural Information Processing Systems (NIPS 2017)"
+  workshops:
+  - "ICML 2017 Workshop on Implicit Models"
+  blog: "https://ermongroup.github.io/blog/a-nice-mc/"
+  code: "https://github.com/ermongroup/a-nice-mc"
+  poster: "http://tsong.me/static/slides/nice-mc-poster.pdf"
+  slides: "http://tsong.me/static/slides/nice-mc.pdf"
+  date: "12/08/2017"
+- name: "InfoGAIL: Interpretable Imitation Learning from Visual Demonstration"
+  url: https://arxiv.org/abs/1703.08840
+  authors:
+  - Yunzhu Li
+  - Jiaming Song
+  - Stefano Ermon
+  conference: "the 30th Neural Information Processing Systems (NIPS 2017)"
+  code: "https://github.com/ermongroup/infogail"
+  date: "12/08/2017"
+- name: "Learning Hierarchical Features from Generative Models"
+  url: https://arxiv.org/abs/1702.08396
+  authors:
+  - Shengjia Zhao
+  - Jiaming Song
+  - Stefano Ermon
+  conference: "the 34th International Conference on Machine Learning (ICML 2017)"
+  blog: "https://ermongroup.github.io/blog/hierarchy/"
+  code: "https://github.com/ermongroup/Variational-Ladder-Autoencoder"
+  date: "08/06/2017"
+- name: Factored Sigmoid Belief Networks for Sequence Learning
+  url: https://arxiv.org/abs/1605.06715
+  authors:
+  - Jiaming Song
+  - Zhe Gan
+  - Lawrence Carin
+  conference: "33rd International Conference on Machine Learning (ICML 2016)"
+  date: "06/25/2016"
+- name: "Organizational Churn: A Roll of the Dice?"
+  url: "http://tsong.me/static/papers/icm2015_umap.pdf"
+  authors:
+  - Canyao Liu*
+  - Jiaming Song*
+  - Chuan Yu*
+  conference: "Undergraduate Mathematics and its Applications (UMAP), Issue 36.2"
+  additional: "Invited paper"
+  date: "06/25/2015"
+- name: "Discriminative Nonparametric Latent Feature Relational Models with Data Augmentation"
+  url: "https://arxiv.org/abs/1512.02016"
+  authors:
+  - Bei Chen
+  - Ning Chen
+  - Jun Zhu
+  - Jiaming Song
+  - Bo Zhang
+  conference: "10th Association for the Advancement of Artificial Intelligence Conference (AAAI 2016)"
+  date: "06/25/2015"
+
+preprints:
+- name: "InfoVAE: Information Maximizing Variational Autoencoders"
+  url: "https://arxiv.org/abs/1706.02262"
+  authors:
+  - Shengjia Zhao
+  - Jiaming Song
+  - Stefano Ermon
+  locations:
+  - "ICML 2018 Workshop on Theoretical Foundations and Applications of Deep Generative Models"
+  date: "07/06/2018"
+- name: "Dual Optimization for Latent Variable Generative Models"
+  url: "https://arxiv.org/abs/1806.06514"
+  authors:
+  - Shengjia Zhao*
+  - Jiaming Song*
+  - Stefano Ermon
+  locations:
+  - "ICML 2018 Workshop on Theoretical Foundations and Applications of Deep Generative Models"
+  date: "07/06/2018"
+- name: "Markov Chain Monte Carlo for Learning Belief Networks"
+  authors:
+  - Laetitia Shao*
+  - Jiaming Song*
+  - Aditya Grover
+  - Stefano Ermon
+  locations:
+  - "ICML 2018 Workshop on Theoretical Foundations and Applications of Deep Generative Models"
+  date: "07/06/2018"
+- name: "Learning Controllable Fair Representations via Latent Variable Generative Models"
+  authors:
+  - Jiaming Song
+  - Pratyusha Kalluri
+  - Aditya Grover
+  - Shengjia Zhao
+  - Stefano Ermon
+  locations:
+  - "ICML 2018 Workshop on Theoretical Foundations and Applications of Deep Generative Models"
+  date: "07/06/2018"
+- name: "Structured Prediction with Adversarial Constraint Learning"
+  authors:
+  - Hongyu Ren
+  - Russell Stweart
+  - Jiaming Song
+  - Volodymyr Kuleshov
+  - Stefano Ermon
+  locations:
+  - "NIPS 2017 Workshop on Learning with Limited Data"
+  date: "12/07/2017"
+- name: "A Lagrangian Perspective on Latent Variable Generative Modeling"
+  authors:
+  - Shengjia Zhao
+  - Jiaming Song
+  - Stefano Ermon
+  locations:
+  - "NIPS 2017 Workshop on Bayesian Deep Learning"
+  date: "12/07/2017"
+- name: "An Empirical Study of the Generalization Behavior of Generative Adversarial Networks"
+  authors:
+  - Hongyu Ren
+  - Shengjia Zhao
+  - Jiaming Song
+  - Lijie Fan
+  - Stefano Ermon
+  locations:
+  - "NIPS 2017 Workshop on Deep Learning: Bridging Theory and Practice"
+  date: "12/07/2017"
+- name: "Generative Adversarial Learning of Markov Chains"
+  url: "https://openreview.net/pdf?id=S1L-hCNtl"
+  authors:
+  - Jiaming Song
+  - Shengjia Zhao
+  - Stefano Ermon
+  code: "https://github.com/jiamings/markov-chain-gan"
+  poster: "http://tsong.me/static/docs/mgan-poster.pdf"
+
+
+collaborators:
+- name: Jiaming Song
+  url: http://tsong.me
