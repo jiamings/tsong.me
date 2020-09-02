@@ -15,6 +15,12 @@ a, table.table a {
   }
 }
 
+.container {
+  h1, h2, h3, h4, h5 {
+    font-weight: 600;
+  }
+}
+
 // Math
 
 .equation {
@@ -73,12 +79,14 @@ a, table.table a {
       }
   }
   .contact-icon {
-    font-size: 2rem;
+    margin-top: 0.1em;
+    font-size: 1.5rem;
     a {
       color: $grey-color-dark;
       &:hover {
         color: $theme-color;
       }
+      margin-left: 0.3em;
     }
   }
 }
@@ -131,7 +139,7 @@ a, table.table a {
 .social {
   text-align: center;
   .contact-icon {
-    font-size: 4rem;
+    font-size: 1.5rem;
     a {
       color: $grey-color-dark;
       &:hover {
@@ -252,10 +260,10 @@ footer.sticky-bottom {
 .publications {
   margin-top: 2rem;
   h2.year {
-    color: $grey-color-light;
-    border-top: 1px solid $grey-color-light;
-    padding-top: 1rem;
-    margin-top: 2rem;
+    color: $grey-color;
+    border-top: 1px solid $grey-color;
+    padding-top: 2rem;
+    margin-top: 4rem;
     margin-bottom: -2rem;
     text-align: right;
   }
