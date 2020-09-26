@@ -61,6 +61,9 @@
       {% elsif entry.type == "inproceedings" %}
         <em>In {{entry.booktitle}}</em>
       {% endif %}
+      {% if entry.additional %}
+      <b>({{entry.additional}})</b>
+      {% endif %}
       <!-- {% if entry.year %}
         {{entry.year}}
       {% endif %} -->
