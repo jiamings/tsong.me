@@ -16,13 +16,13 @@ Ph.D. Candidate, Computer Science <br/>
 
 ---- 
 
-I am an incoming fifth year Ph.D. candidate in Computer Science in Stanford University, advised by [Stefano Ermon](http://cs.stanford.edu/~ermon). I did my undergrad in the Department of Computer Science and Technology, Tsinghua University, where I worked with [Jun Zhu](http://bigml.cs.tsinghua.edu.cn/~jun) and [Lawrence Carin](http://people.ee.duke.edu/~lcarin).
+I am a fifth year Ph.D. candidate in Computer Science in Stanford University, advised by [Stefano Ermon](http://cs.stanford.edu/~ermon). I did my undergrad in the Department of Computer Science and Technology, Tsinghua University, where I worked with [Jun Zhu](http://bigml.cs.tsinghua.edu.cn/~jun) and [Lawrence Carin](http://people.ee.duke.edu/~lcarin).
 
 My research is centered on deep unsupervised learning, with various applications on deep generative modeling, representation learning and (inverse) reinforcement learning. Recently, I am interested in the following topics:
 
 - Information-theoretic approaches to machine learning and representation learning 
 [[1](https://arxiv.org/abs/2007.09852), [2](https://arxiv.org/abs/1910.06222), [3](https://arxiv.org/abs/2002.10689), [4](https://arxiv.org/abs/1812.04218)]
-- Improvements to generative modeling and statistical inference [[1](https://arxiv.org/abs/1910.09779), [2](https://arxiv.org/1906.09531), [3](https://arxiv.org/abs/1706.07561)]
+- Improvements to generative modeling and statistical inference [[1](https://arxiv.org/abs/1910.09779), [2](https://arxiv.org/1906.09531), [3](https://arxiv.org/abs/1706.07561), [4](https://arxiv.org/abs/2010.02502)]
 - Learning complex behaviors and intentions from demonstrations [[1](https://arxiv.org/abs/1807.09936), [2](https://arxiv.org/abs/1703.08840), [3](https://arxiv.org/abs/1907.13220), [4](http://www.ifaamas.org/Proceedings/aamas2020/pdfs/p1855.pdf)]
 - Societal issues in machine learning, such as fairness and calibration [[1](https://arxiv.org/abs/1812.04218), [2](https://arxiv.org/abs/1906.08312), [3](https://arxiv.org/abs/2008.09643)]
 
@@ -41,7 +41,7 @@ My research is centered on deep unsupervised learning, with various applications
 
 **Journal reviewer**: IEEE TPAMI, JAIR, IEEE TIT, ACM TIST
 
-**Conference reviewer / Program committee**: ICML (2019, 2020), NeurIPS (2019, 2020), ICLR (2018, 2019, 2020, 2021), COLT (2019), UAI (2019, 2020), CVPR (2020), ECCV (2020), ICCV (2019), AAAI (2021), ACML (2018, 2019), WACV (2020)
+**Conference reviewer / Program committee**: ICML (2019, 2020), NeurIPS (2019, 2020), ICLR (2018, 2019, 2020, 2021), COLT (2019), UAI (2019, 2020), CVPR (2020, 2021), ECCV (2020), ICCV (2019), AAAI (2021), ACML (2018, 2019), WACV (2020)
 
 **Workshop organization**:
 - [NeurIPS 2019 Workshop on Information Theory and Machine Learning](https://sites.google.com/view/itml19/home) (chair)
