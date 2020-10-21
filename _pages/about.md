@@ -22,7 +22,7 @@ My research is centered on deep unsupervised learning, with various applications
 
 - Information-theoretic approaches to machine learning and representation learning 
 [[1](https://arxiv.org/abs/2007.09852), [2](https://arxiv.org/abs/1910.06222), [3](https://arxiv.org/abs/2002.10689), [4](https://arxiv.org/abs/1812.04218)]
-- Improvements to generative modeling and statistical inference [[1](https://arxiv.org/abs/1910.09779), [2](https://arxiv.org/1906.09531), [3](https://arxiv.org/abs/1706.07561), [4](https://arxiv.org/abs/2010.02502)]
+- Improvements to generative modeling and statistical inference [[1](https://arxiv.org/abs/1910.09779), [2](https://arxiv.org/abs/1906.09531), [3](https://arxiv.org/abs/1706.07561), [4](https://arxiv.org/abs/2010.02502)]
 - Learning complex behaviors and intentions from demonstrations [[1](https://arxiv.org/abs/1807.09936), [2](https://arxiv.org/abs/1703.08840), [3](https://arxiv.org/abs/1907.13220), [4](http://www.ifaamas.org/Proceedings/aamas2020/pdfs/p1855.pdf)]
 - Societal issues in machine learning, such as fairness and calibration [[1](https://arxiv.org/abs/1812.04218), [2](https://arxiv.org/abs/1906.08312), [3](https://arxiv.org/abs/2008.09643)]
 
