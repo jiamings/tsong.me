@@ -7,6 +7,7 @@ description:
 
 news: true
 social: true
+years: [2020, 2019, 2018, 2017, 2016]
 ---
 
 Ph.D. Candidate, Computer Science <br/>
@@ -30,12 +31,27 @@ My research is centered on deep unsupervised learning, with various applications
 
 ----
 
+
+
 ##### Teaching
 
 - [CS228](cs228.stanford.edu), Probablistic Graphical Models (Winter 2020, Head TA)
 - [CS236](cs236.stanford.edu), Deep Generative Models (Fall 2018, TA)
 
+
 ----
+
+##### Publications
+
+<div class="publications-front">
+
+{% for y in page.years %}
+  <h3 class="year">{{y}}</h3>
+  {% bibliography -f papers -q @*[year={{y}}]* %}
+{% endfor %}
+
+</div>
+---
 
 ##### Professional Services
 

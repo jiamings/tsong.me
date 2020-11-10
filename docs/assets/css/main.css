@@ -101,3 +101,24 @@ footer.sticky-bottom { border-top: 1px solid #e8e8e8; padding-top: 40px; padding
 .publications ol.bibliography li .hidden.open { max-height: 100em; -webkit-transition: 0.15s ease; -moz-transition: 0.15s ease; -ms-transition: 0.15s ease; -o-transition: 0.15s ease; transition: all 0.15s ease; }
 .publications ol.bibliography li span.abstract.hidden { border: dashed 1px white; }
 .publications ol.bibliography li span.abstract.hidden.open { border-color: #828282; }
+
+.publications-front h3.year { color: #828282; border-top: 1px solid #828282; padding-top: 1rem; margin-bottom: -2rem; text-align: right; }
+.publications-front ol.bibliography { list-style: none; padding: 0; margin-top: 0; }
+.publications-front ol.bibliography li { margin-bottom: 1rem; }
+.publications-front ol.bibliography li .abbr { height: 2rem; margin-bottom: 0.5rem; }
+.publications-front ol.bibliography li .abbr abbr { display: inline-block; background-color: #00369f; padding-left: 1rem; padding-right: 1rem; }
+.publications-front ol.bibliography li span { display: block; }
+.publications-front ol.bibliography li .title { font-weight: bolder; font-size: 0.9rem; }
+.publications-front ol.bibliography li .author { font-size: 0.9rem; }
+.publications-front ol.bibliography li .author a { border-bottom: 1px dashed #00369f; }
+.publications-front ol.bibliography li .author a:hover { border-bottom-style: solid; text-decoration: none; }
+.publications-front ol.bibliography li .author > em { border-bottom: 1px solid; font-style: normal; }
+.publications-front ol.bibliography li .periodical { font-size: 0.9rem; }
+.publications-front ol.bibliography li em.star { border-bottom: none; color: #00369f; font-style: normal; }
+.publications-front ol.bibliography li a.abstract, .publications-front ol.bibliography li a.bibtex { cursor: pointer; }
+.publications-front ol.bibliography li .hidden { font-size: 0.875rem; max-height: 0px; overflow: hidden; text-align: justify; -webkit-transition: 0.15s ease; -moz-transition: 0.15s ease; -ms-transition: 0.15s ease; -o-transition: 0.15s ease; transition: all 0.15s ease; }
+.publications-front ol.bibliography li .hidden p { line-height: 1.4em; margin: 10px; }
+.publications-front ol.bibliography li .hidden pre { font-size: 1em; line-height: 1.4em; padding: 10px; }
+.publications-front ol.bibliography li .hidden.open { max-height: 100em; -webkit-transition: 0.15s ease; -moz-transition: 0.15s ease; -ms-transition: 0.15s ease; -o-transition: 0.15s ease; transition: all 0.15s ease; }
+.publications-front ol.bibliography li span.abstract.hidden { border: dashed 1px white; }
+.publications-front ol.bibliography li span.abstract.hidden.open { border-color: #828282; }

@@ -1,0 +1,110 @@
+---
+---
+
+<div class="row">
+  <div class="col-sm-2 abbr">
+  {% if entry.abbr %}
+    {% if site.data.venues[entry.abbr] %}
+    <abbr class="badge"><a href="{{site.data.venues[entry.abbr].url}}" target="_blank">{{entry.abbr}}</a></abbr>
+    {% else %}
+    <abbr class="badge">{{entry.abbr}}</abbr>
+    {% endif %}
+  {% endif %}
+  </div>
+
+  <div id="{{entry.key}}" class="col-sm-9">
+    {% if entry.type == "thesis" %}
+      {{reference}}
+    {% else %}
+      {% if entry.url %}
+      <span class="title"> <a href="{{entry.url}}">{{entry.title}}</a></span>
+      {% else %}
+      <span class="title">{{entry.title}}</span>
+      {% endif %}
+      <span class="author">
+        {% for author in entry.author_array %}
+          {% if forloop.length == 1 %}
+            {% if author.last == site.scholar.last_name and author.first == site.scholar.first_name %}
+              <em>{{author.first}} {{author.last}}</em>
+            {% else %}
+              {{author.first}} {{author.last}}
+            {% endif %}
+          {% else %}
+            {% unless forloop.last %}
+              {% if author.first == site.scholar.first_name %}
+                <em>{{author.first}} {{author.last}}</em>,
+              {% else %}
+                {% if site.data.coauthors[author.last] %}
+                  <a href="{{site.data.coauthors[author.last].url}}" target="_blank">{{author.last}}, {{author.first}}</a>,
+                {% else %}
+                  {{author.first}} {{author.last}},
+                {% endif %}
+              {% endif %}
+            {% else %}
+              {% if author.last == site.scholar.last_name %}
+                <em>{{author.first}} {{author.last}}</em>
+              {% else %}
+                {% if site.data.coauthors[author.last] %}
+                  <a href="{{site.data.coauthors[author.last].url}}" target="_blank">{{author.last}}, {{author.first}}</a>
+                {% else %}
+                  {{author.first}} {{author.last}}
+                {% endif %}
+              {% endif %}
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+      </span>
+
+      <span class="periodical">
+      {% if entry.type == "article" %}
+        <em>{{entry.journal}}</em>
+      {% elsif entry.type == "inproceedings" %}
+        <em>In {{entry.booktitle}}</em>
+      {% endif %}
+      {% if entry.additional %}
+      <b>({{entry.additional}})</b>
+      {% endif %}
+      <!-- {% if entry.year %}
+        {{entry.year}}
+      {% endif %} -->
+      </span>
+    {% endif %}
+
+    <span class="links" style="font-weight: 600;">
+    {% if entry.abstract %}
+      [<a class="abstract">abstract</a>]
+    {% endif %}
+    {% if entry.arxiv %}
+      [<a href="http://arxiv.org/abs/{{ entry.arxiv }}" target="_blank">arXiv</a>]
+    {% endif %}
+    {% if entry.html %}
+      [<a href="{{ entry.html }}" target="_blank">HTML</a>]
+    {% endif %}
+    {% if entry.pdf %}
+      [<a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" target="_blank">PDF</a>]
+    {% endif %}
+    {% if entry.supp %}
+      [<a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}" target="_blank">Supp</a>]
+    {% endif %}
+    {% if entry.poster %}
+      [<a href="{{ entry.poster | prepend: '/assets/pdf/' | relative_url }}" target="_blank">Poster</a>]
+    {% endif %}
+    {% if entry.slides %}
+      [<a href="{{ entry.slides | prepend: '/assets/slides/' | relative_url }}" target="_blank">slides</a>]
+    {% endif %}
+    {% if entry.code %}
+      [<a href="{{ entry.code }}" target="_blank">code</a>]
+    {% endif %}
+    {% if entry.blog %}
+      [<a href="{{ entry.blog }}" target="_blank">blog</a>]
+    {% endif %}
+    </span>
+
+    <!-- Hidden abstract block -->
+    {% if entry.abstract %}
+    <span class="abstract hidden">
+      <p>{{ entry.abstract }}</p>
+    </span>
+    {% endif %}
+  </div>
+</div>

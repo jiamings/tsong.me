@@ -2,7 +2,7 @@
 ---
 
 <div class="row">
-  <div class="col-sm-2 abbr">
+  <!-- <div class="col-sm-2 abbr">
   {% if entry.abbr %}
     {% if site.data.venues[entry.abbr] %}
     <abbr class="badge"><a href="{{site.data.venues[entry.abbr].url}}" target="_blank">{{entry.abbr}}</a></abbr>
@@ -10,17 +10,12 @@
     <abbr class="badge">{{entry.abbr}}</abbr>
     {% endif %}
   {% endif %}
-  </div>
+  </div> -->
 
-  <div id="{{entry.key}}" class="col-sm-9">
+  <div id="{{entry.key}}" class="col-sm-11">
     {% if entry.type == "thesis" %}
       {{reference}}
     {% else %}
-      {% if entry.url %}
-      <span class="title"> <a href="{{entry.url}}">{{entry.title}}</a></span>
-      {% else %}
-      <span class="title">{{entry.title}}</span>
-      {% endif %}
       <span class="author">
         {% for author in entry.author_array %}
           {% if forloop.length == 1 %}
@@ -54,23 +49,41 @@
           {% endif %}
         {% endfor %}
       </span>
+      {% if entry.url %}
+      <span class="title"> <a href="{{entry.url}}">{{entry.title}}</a></span>
+      {% else %}
+      <span class="title">{{entry.title}}</span>
+      {% endif %}
 
       <span class="periodical">
-      {% if entry.type == "article" %}
-        <em>{{entry.journal}}</em>
-      {% elsif entry.type == "inproceedings" %}
-        <em>In {{entry.booktitle}}</em>
+      <nobr style="color:darkcyan; font-weight: 600;">
+      {% if entry.abbr %}
+        {% if site.data.venues[entry.abbr] %}
+        <a href="{{site.data.venues[entry.abbr].url}}" target="_blank">{{entry.abbr}}, 
+        {% else %}
+        {{entry.abbr}}, 
+        {% endif %}
       {% endif %}
+      </nobr>
       {% if entry.additional %}
-      <b>({{entry.additional}})</b>
+        {% if entry.type == "article" %}
+          <em>{{entry.journal}},</em>
+        {% elsif entry.type == "inproceedings" %}
+          <em>In {{entry.booktitle}},</em>
+        {% endif %}
+        <b>({{entry.additional}}).</b>
+      {% else %}
+        {% if entry.type == "article" %}
+          <em>{{entry.journal}}.</em>
+        {% elsif entry.type == "inproceedings" %}
+          <em>In {{entry.booktitle}}.</em>
+        {% endif %}
       {% endif %}
       <!-- {% if entry.year %}
         {{entry.year}}
       {% endif %} -->
-      </span>
-    {% endif %}
 
-    <span class="links" style="font-weight: 600;">
+    <nobr class="links" style="font-weight: 600;">
     {% if entry.abstract %}
       [<a class="abstract">abstract</a>]
     {% endif %}
@@ -98,7 +111,11 @@
     {% if entry.blog %}
       [<a href="{{ entry.blog }}" target="_blank">blog</a>]
     {% endif %}
-    </span>
+    </nobr>
+
+      </span>
+    {% endif %}
+
 
     <!-- Hidden abstract block -->
     {% if entry.abstract %}
