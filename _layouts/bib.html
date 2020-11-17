@@ -2,15 +2,9 @@
 ---
 
 <div class="row">
-  <!-- <div class="col-sm-2 abbr">
-  {% if entry.abbr %}
-    {% if site.data.venues[entry.abbr] %}
-    <abbr class="badge"><a href="{{site.data.venues[entry.abbr].url}}" target="_blank">{{entry.abbr}}</a></abbr>
-    {% else %}
-    <abbr class="badge">{{entry.abbr}}</abbr>
-    {% endif %}
-  {% endif %}
-  </div> -->
+  <div class="col-sm-1">
+    [{{ entry.count }}]
+  </div>
 
   <div id="{{entry.key}}" class="col-sm-11">
     {% if entry.type == "thesis" %}
