@@ -17,7 +17,7 @@ Ph.D. Candidate, Computer Science <br/>
 
 ---- 
 
-I am a fifth year Ph.D. candidate in Computer Science in Stanford University, advised by [Stefano Ermon](http://cs.stanford.edu/~ermon). I did my undergrad in the Department of Computer Science and Technology, Tsinghua University, where I worked with [Jun Zhu](http://bigml.cs.tsinghua.edu.cn/~jun) and [Lawrence Carin](http://people.ee.duke.edu/~lcarin).
+I am a fifth year Ph.D. candidate in Computer Science in Stanford University, advised by [Stefano Ermon](http://cs.stanford.edu/~ermon). I did my undergrad in the Department of Computer Science and Technology, Tsinghua University, where I worked with [Jun Zhu](http://ml.cs.tsinghua.edu.cn/~jun/index.shtml) and [Lawrence Carin](http://people.ee.duke.edu/~lcarin).
 
 My research is centered on deep unsupervised learning, with various applications on deep generative modeling, representation learning and (inverse) reinforcement learning. Recently, I am interested in the following topics:
 
