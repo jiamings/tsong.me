@@ -6,7 +6,10 @@
    font-family: 'Lato';
    padding-bottom: 70px;
    color: $text-color;
-   font-weight: 500;
+ }
+
+ body {
+   font-weight: 400;
  }
 
  body.fixed-top-nav {
