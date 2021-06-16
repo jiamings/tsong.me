@@ -55,9 +55,9 @@ My research is centered on deep unsupervised learning, with various applications
 
 ##### Professional Services
 
-**Journal reviewer**: IEEE TPAMI, JAIR, IEEE TIT, ACM TIST
+**Journal reviewer**: IEEE TPAMI, JAIR, IEEE TIT, ACM TIST, JMLR
 
-**Conference reviewer / Program committee**: ICML (2019, 2020), NeurIPS (2019, 2020), ICLR (2018, 2019, 2020, 2021), COLT (2019), UAI (2019, 2020), CVPR (2020, 2021), ECCV (2020), ICCV (2019), AAAI (2021), ACML (2018, 2019), WACV (2020)
+**Conference reviewer / Program committee**: ICML (2019, 2020, 2021), NeurIPS (2019, 2020, 2021), ICLR (2018, 2019, 2020, 2021), COLT (2019), UAI (2019, 2020, 2021), CVPR (2020, 2021), ECCV (2020), ICCV (2019, 2021), AAAI (2021), ACML (2018, 2019), WACV (2020)
 
 **Workshop organization**:
 - [NeurIPS 2019 Workshop on Information Theory and Machine Learning](https://sites.google.com/view/itml19/home) (chair)
