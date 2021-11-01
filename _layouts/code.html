@@ -1,0 +1,20 @@
+---
+---
+
+    {% if entry.code %}
+<div class="row">
+  <div id="{{entry.key}}" class="col-sm-12">
+    <span class="title" style="font-size: 16px;"> <a href="{{entry.code}}">{{entry.title}}</a>, 
+      <nobr style="color:darkcyan; font-weight: 600;">
+        {% if entry.abbr %}
+        {% if site.data.venues[entry.abbr] %}
+        <a href="{{site.data.venues[entry.abbr].url}}" target="_blank">{{entry.abbr}},
+          {% else %}
+          {{entry.abbr}}
+          {% endif %}
+          {% endif %}
+      </nobr>
+      </span>
+  </div>
+</div>
+    {% endif %}
