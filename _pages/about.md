@@ -10,7 +10,7 @@ social: true
 years: [2022, 2021, 2020, 2019, 2018, 2017, 2016]
 ---
 
-Ph.D. Candidate, Computer Science <br/>
+Ph.D., Computer Science <br/>
 [Stanford Artificial Intelligence Laboratory](ai.stanford.edu) <br/>
 [Statistical Machine Learning Group](statsml.stanford.edu) <br/>
 <a href="assets/pdf/jiaming_cv.pdf" target="_blank"><b>Curriculum Vitae</b></a>
