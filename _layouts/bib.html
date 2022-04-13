@@ -111,6 +111,13 @@
       </nobr>
 
     </span>
+
+    {% if entry.workshop %}
+    <span class="periodical">
+    <em>Short version in {{ entry.workshop }}.</em>  
+    </span>
+    {% endif %}
+
     {% endif %}
 
 
