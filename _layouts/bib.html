@@ -65,7 +65,7 @@
       {% elsif entry.type == "inproceedings" %}
       <em>In {{entry.booktitle}},</em>
       {% endif %}
-      <b>({{entry.additional}}).</b>
+      <b style="color:darkred">{{entry.additional}}.</b>
       {% else %}
       {% if entry.type == "article" %}
       <em>{{entry.journal}}.</em>
