@@ -82,10 +82,17 @@ def arxiv_papers():
         
         author_list = []
         for author in entry.persons['author']:
+            
             if 'Song' in author.last_names[0] and 'Jiaming' in author.first_names[0]:
                 author_list.append('\\textbf{' + author.first_names[0] + ' ' + author.last_names[0] + '}')
             else:
-                author_list.append(author.first_names[0] + ' ' + author.last_names[0])
+                try:
+                    author_list.append(author.first_names[0] + ' ' + author.last_names[0])
+                except:
+                    if author.last_names[0] == 'others':
+                        author_list.append('et al.')
+                    else:
+                        author.append(author.last_names[0])
         
         author_list = ', '.join(author_list)
         
