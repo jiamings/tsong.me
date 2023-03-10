@@ -16,17 +16,22 @@ Research Scientist, NVIDIA <br/>
 
 ---- 
 
-I am a research scientist in the Learning and Perception Research (LPR) team of NVIDIA Research. I am generally interested in learning and inference algorithms for applications such as generative modeling, reinforcement learning, representation learning, simulation, and inverse problems. 
+I am a research scientist in the Deep Imagination Research (DIR) team of NVIDIA Research. 
 
 My recent research focus is on diffusion models. I created the earliest [accelerated algorithm for diffusion models](https://arxiv.org/abs/2010.02502) that is widely used in recent generative AI systems including [DALL-E 2](https://cdn.openai.com/papers/dall-e-2.pdf), [Imagen](https://imagen.research.google/paper.pdf), [Stable Diffusion](https://en.wikipedia.org/wiki/Stable_Diffusion), and [ERNIE-ViLG 2.0](https://arxiv.org/abs/2210.15257). I co-authored [the paper](https://arxiv.org/abs/2108.01073) that is the foundation of [Stable Diffusion's img2img method](https://github.com/CompVis/stable-diffusion/blob/main/README.md#image-modification-with-stable-diffusion). I aim to further [democratize the use of diffusion models for general applications](https://arxiv.org/abs/2201.11793), such as super-resolution, inpainting, and [JPEG restoration](https://arxiv.org/abs/2209.11888). 
 
 
-Prior to joining LPR, I was a postdoc in Computer Science in Stanford University working with [Stefano Ermon](http://cs.stanford.edu/~ermon). I completed my [Ph.D.](assets/pdf/jiaming_thesis.pdf) in Computer Science at Stanford University advised by Stefano as well.
+Prior to joining NVIDIA, I was a postdoc in Computer Science in Stanford University working with [Stefano Ermon](http://cs.stanford.edu/~ermon). I completed my [Ph.D.](assets/pdf/jiaming_thesis.pdf) in Computer Science at Stanford University advised by Stefano as well.
 I did my undergrad in the Department of Computer Science and Technology, Tsinghua University, where I worked with [Jun Zhu](http://ml.cs.tsinghua.edu.cn/~jun/index.shtml) and [Lawrence Carin](http://people.ee.duke.edu/~lcarin).
 
 **Email**: jiaming [dot] tsong [atgmaildotcom]
 
 
+----
+
+##### News
+
+- Talks at University of Edinburgh, DeepMind, Imperial College London, and Oxford. [[slides](assets/slides/2023-01-26-workshop.pdf)]
 
 
 ----
