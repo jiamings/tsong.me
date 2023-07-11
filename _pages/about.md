@@ -11,18 +11,25 @@ years: [2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016]
 ---
 
 Ph.D., Computer Science <br/>
-Research Scientist, NVIDIA <br/>
-<a href="assets/pdf/jiaming_cv.pdf" target="_blank"><b>Curriculum Vitae</b></a>
+Research Scientist, Luma AI <br/>
+<a href="assets/pdf/jiaming_cv.pdf" target="_blank"><b>Curriculum Vitae (outdated)</b></a>
 
 ---- 
 
-I am a research scientist in the Deep Imagination Research (DIR) team of NVIDIA Research. 
+I am a research scientist in [Luma AI](https://lumalabs.ai/), where I am working on foundation models for 3D. 
 
-My recent research focus is on diffusion models. I created the earliest [accelerated algorithm for diffusion models](https://arxiv.org/abs/2010.02502) that is widely used in recent generative AI systems including [DALL-E 2](https://cdn.openai.com/papers/dall-e-2.pdf), [Imagen](https://imagen.research.google/paper.pdf), [Stable Diffusion](https://en.wikipedia.org/wiki/Stable_Diffusion), and [ERNIE-ViLG 2.0](https://arxiv.org/abs/2210.15257). I co-authored [the paper](https://arxiv.org/abs/2108.01073) that is the foundation of [Stable Diffusion's img2img method](https://github.com/CompVis/stable-diffusion/blob/main/README.md#image-modification-with-stable-diffusion). I aim to further [democratize the use of diffusion models for general applications](https://arxiv.org/abs/2201.11793), such as super-resolution, inpainting, and [JPEG restoration](https://arxiv.org/abs/2209.11888). 
+Before that, I was:
+- A research scientist in the Deep Imagination Research (DIR) group of NVIDIA Research. I worked on NVIDIA AI Foundations, specifically the [Picasso project](https://www.nvidia.com/en-us/gpu-cloud/picasso/). 
+- A research scientist in the Learning and Perception Research (LPR) group of NVIDIA Research. I was the first author of an ICLR 2023 and an ICML 2023 paper and also collaborated on various other papers.
+- A postdoc in Computer Science in Stanford University working with [Stefano Ermon](http://cs.stanford.edu/~ermon). 
+- [Ph.D.](assets/pdf/jiaming_thesis.pdf) in Computer Science at Stanford University advised by Stefano as well.
+- Undergrad in the Department of Computer Science and Technology, Tsinghua University, where I worked with [Jun Zhu](http://ml.cs.tsinghua.edu.cn/~jun/index.shtml) and [Lawrence Carin](http://people.ee.duke.edu/~lcarin).
 
 
-Prior to joining NVIDIA, I was a postdoc in Computer Science in Stanford University working with [Stefano Ermon](http://cs.stanford.edu/~ermon). I completed my [Ph.D.](assets/pdf/jiaming_thesis.pdf) in Computer Science at Stanford University advised by Stefano as well.
-I did my undergrad in the Department of Computer Science and Technology, Tsinghua University, where I worked with [Jun Zhu](http://ml.cs.tsinghua.edu.cn/~jun/index.shtml) and [Lawrence Carin](http://people.ee.duke.edu/~lcarin).
+My "generative AI" qualifications:
+- I created DDIM, the earliest [accelerated algorithm for diffusion models](https://arxiv.org/abs/2010.02502). DDIM is widely used in recent generative AI systems including [DALL-E 2](https://cdn.openai.com/papers/dall-e-2.pdf), [Imagen](https://imagen.research.google/paper.pdf), [Stable Diffusion](https://en.wikipedia.org/wiki/Stable_Diffusion), and [ERNIE-ViLG 2.0](https://arxiv.org/abs/2210.15257). 
+- I co-authored [the paper](https://arxiv.org/abs/2108.01073) that is the foundation of [Stable Diffusion's img2img method](https://github.com/CompVis/stable-diffusion/blob/main/README.md#image-modification-with-stable-diffusion). 
+- I also [democratized the use of diffusion models for general applications](https://arxiv.org/abs/2201.11793), such as super-resolution, inpainting, and [JPEG restoration](https://arxiv.org/abs/2209.11888). 
 
 **Email**: jiaming [dot] tsong [atgmaildotcom]
 
@@ -31,6 +38,8 @@ I did my undergrad in the Department of Computer Science and Technology, Tsinghu
 
 ##### News
 
+- Organized the [CVPR 2023 diffusion model tutorial](https://cvpr2023-tutorial-diffusion-models.github.io/). Slides are available. 
+- Organizing the SIGGRAPH 2023 Course on Diffusion Models.
 - Talks at University of Edinburgh, DeepMind, Imperial College London, and Oxford. [[slides](assets/slides/2023-01-26-workshop.pdf)]
 
 
