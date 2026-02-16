@@ -22,6 +22,15 @@ npm run dev
 npm run build
 ```
 
+## Deploy to GitHub Pages
+
+This repo includes `.github/workflows/deploy-astro-pages.yml`:
+
+- Pull requests to `main` build the Astro site for validation.
+- Pushes to `main` build and deploy `site/dist` to GitHub Pages.
+
+Custom domain is preserved by `public/CNAME` (`tsong.me`).
+
 ## Content model
 
 Content is markdown-first and organized into collections:
