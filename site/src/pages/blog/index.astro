@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+---
+
+<Layout title="Blog | Jiaming Song">
+  <section class="hero">
+    <h1>Blog</h1>
+    <p>Notes on industry AI systems, model development, and research-to-product lessons.</p>
+  </section>
+
+  <section class="cards">
+    {
+      posts.map((post) => (
+        <article class="card">
+          <h3><a href={`/blog/${post.id.replace(/\.md$/, "")}/`}>{post.data.title}</a></h3>
+          <p class="meta">
+            {post.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+          </p>
+          <p>{post.data.description}</p>
+        </article>
+      ))
+    }
+  </section>
+</Layout>

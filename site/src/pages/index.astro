@@ -1,0 +1,81 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const featuredProjects = (await getCollection("projects"))
+  .filter((item) => item.data.featured)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+
+const latestTalks = (await getCollection("talks"))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+
+const latestPodcasts = (await getCollection("podcasts"))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+---
+
+<Layout title="Jiaming Song | Industry, Talks, and Projects">
+  <section class="hero">
+    <h1>Building practical AI systems for 3D and generative media</h1>
+    <p>
+      I am a research scientist at Luma AI, focused on foundation models for 3D. This site
+      highlights industry-oriented work, technical talks, podcasts, and ongoing projects.
+    </p>
+    <div class="pill-row">
+      <span class="pill">Foundation Models</span>
+      <span class="pill">3D AI</span>
+      <span class="pill">Generative Systems</span>
+      <span class="pill">Research to Product</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Featured Projects</h2>
+    <div class="cards">
+      {
+        featuredProjects.map((project) => (
+          <article class="card">
+            <h3>{project.data.title}</h3>
+            <p class="meta">{project.data.date.getFullYear()}</p>
+            <p>{project.data.summary}</p>
+            {project.data.projectUrl && (
+              <p><a href={project.data.projectUrl} target="_blank" rel="noreferrer">Project link</a></p>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Talks</h2>
+    <ul>
+      {
+        latestTalks.map((talk) => (
+          <li>
+            <strong>{talk.data.title}</strong> - {talk.data.event} ({talk.data.date.getFullYear()})
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Podcasts</h2>
+    {
+      latestPodcasts.length > 0 ? (
+        <ul>
+          {latestPodcasts.map((podcast) => (
+            <li>
+              <a href={podcast.data.episodeUrl} target="_blank" rel="noreferrer">{podcast.data.title}</a> - {podcast.data.show}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="meta">Podcast episodes will be added here soon.</p>
+      )
+    }
+  </section>
+</Layout>

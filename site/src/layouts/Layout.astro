@@ -1,0 +1,52 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Jiaming Song",
+  description = "Research scientist building foundation models for 3D and generative AI."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/">Jiaming Song</a>
+        <nav aria-label="Main navigation">
+          <ul class="nav">
+            <li><a href="/about">About</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/talks">Talks</a></li>
+            <li><a href="/podcasts">Podcasts</a></li>
+            <li><a href="/blog">Blog</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="container page">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>&copy; {new Date().getFullYear()} Jiaming Song</span>
+        <span class="footer-links">
+          <a href="https://github.com/jiamings" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://x.com/baaadas" target="_blank" rel="noreferrer">X</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<Layout title="Projects | Jiaming Song">
+  <section class="hero">
+    <h1>Projects</h1>
+    <p>Industry-oriented and research-backed projects across generative AI and 3D modeling.</p>
+  </section>
+  <section class="cards">
+    {
+      projects.map((project) => (
+        <article class="card">
+          <h3>{project.data.title}</h3>
+          <p class="meta">
+            {project.data.date.toLocaleDateString("en-US", { year: "numeric", month: "short" })}
+          </p>
+          <p>{project.data.summary}</p>
+          <p class="meta">{project.data.tags.join(" - ")}</p>
+          {project.data.projectUrl && (
+            <p><a href={project.data.projectUrl} target="_blank" rel="noreferrer">Project link</a></p>
+          )}
+        </article>
+      ))
+    }
+  </section>
+</Layout>

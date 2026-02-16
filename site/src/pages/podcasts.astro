@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const podcasts = (await getCollection("podcasts")).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<Layout title="Podcasts | Jiaming Song">
+  <section class="hero">
+    <h1>Podcasts</h1>
+    <p>Podcast appearances focused on practical generative AI and applied research.</p>
+  </section>
+
+  <section class="cards">
+    {
+      podcasts.length > 0 ? (
+        podcasts.map((podcast) => (
+          <article class="card">
+            <h3>
+              <a href={podcast.data.episodeUrl} target="_blank" rel="noreferrer">{podcast.data.title}</a>
+            </h3>
+            <p class="meta">
+              {podcast.data.show} - {podcast.data.date.toLocaleDateString("en-US", { year: "numeric", month: "short" })}
+            </p>
+            <p>{podcast.data.summary}</p>
+          </article>
+        ))
+      ) : (
+        <article class="card">
+          <h3>No podcast episodes yet</h3>
+          <p class="meta">This page is ready; add markdown entries in <code>src/content/podcasts</code>.</p>
+        </article>
+      )
+    }
+  </section>
+</Layout>
