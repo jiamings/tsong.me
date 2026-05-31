@@ -6,19 +6,16 @@ tags: ["generative models", "inference-time scaling", "diffusion"]
 draft: true
 ---
 
-A lot of arguments in generative modeling sound like taxonomy arguments.
+A common way to describe modern generative models is to split them into two
+families: autoregressive models for language, and diffusion models for images
+and videos.
 
-Is the model autoregressive or diffusion-based? Is the data discrete or
-continuous? Is the objective cross-entropy, denoising, flow matching, or
-something else?
+This split is historically useful, but I think it is too coarse. Autoregression
+and diffusion are not just labels for model families. They also describe two
+different ways of spending compute at inference time. One extends a sample by
+adding new pieces. The other starts from a state and repeatedly revises it.
 
-These distinctions matter. They affect architectures, losses, hardware
-efficiency, and what kind of mistakes a system tends to make. But I increasingly
-think they are not the right first question. They describe the family a method
-belongs to. They do not always describe what the method can actually do when it
-is asked to generate.
-
-The question I find more useful is:
+So the question I find more useful is:
 
 > What inference move is the model allowed to make?
 
