@@ -1,6 +1,6 @@
 ---
 title: Inference-Time Scaling for Generative Pre-Training
-description: A short note on sequence expansion, state refinement, and why the inference procedure should shape the training objective.
+description: A short note on the false dichotomy between autoregression and diffusion, why flow maps help, and what this might mean for language models.
 pubDate: 2026-05-31
 tags: ["generative models", "inference-time scaling", "diffusion"]
 draft: true
@@ -26,165 +26,173 @@ must stay in the usual discrete-token, left-to-right form, we should ask whether
 continuous states, refinement steps, or flow-like updates can give language
 models a useful form of inference-time scaling.
 
-## Two kinds of motion
+## The false dichotomy
 
-The false dichotomy becomes easier to see from a simple observation: at
-inference time, extra compute usually buys one of two things.
+The autoregressive/diffusion split is useful historically, but it bundles
+together things that do not have to stay bundled.
 
-The first is that the object gets longer. A language model samples a token,
-appends it, and repeats. A video model might extend a clip. A reasoning model
-might write down more intermediate steps. I will call this sequence expansion.
+Autoregressive models are usually discussed in the context of discrete tokens
+and next-token prediction. Diffusion models are usually discussed in the context
+of continuous signals and denoising objectives. This pairing is so common that
+it can start to look inevitable: language is autoregressive; images and videos
+are diffusion.
 
-The second is that the object stays roughly the same size, but the state changes.
-A diffusion model starts from noise and revises the whole sample many times. A
-masked model fills in or repairs parts of a sequence. A video model might keep
-the same latent grid and make it more coherent. I will call this state
-refinement.
+I do not think that is the right abstraction.
 
-Autoregressive models are the canonical example of sequence expansion.
-Diffusion models are the canonical example of state refinement. But those are
-just the familiar cases. There is nothing sacred about the boundary. A model can
-expand for a while, refine locally, expand again, verify, revise, and so on.
+Autoregression is an inference procedure that expands a sample. It samples a new
+piece conditioned on the pieces that are already there. Diffusion is an
+inference procedure that refines a state. It starts from something simple or
+corrupted and repeatedly revises it toward data.
 
-Once you look at it this way, the familiar AR/diffusion split becomes less like
-a boundary between tribes and more like two common inference motions. Those
-motions often travel with particular objectives and representations because
-history made them travel together. They do not have to.
+Those two motions are different, but they are not mutually exclusive. A model
+can generate blocks autoregressively and refine within each block. It can revise
+a whole sequence while still using some ordering. It can use discrete variables,
+continuous variables, or a mixture of both.
 
-## Well-specified inference
+So the sharper question is not whether a method belongs to the autoregressive
+tribe or the diffusion tribe. It is how the method spends inference compute.
 
-It is tempting to think of inference as the boring part that happens after
-training. We choose a loss, train a large model, and then the sampler is just how
-we run it.
+One axis is sequence expansion: make the object longer. A language model writes
+more tokens. A video model might extend a clip. A reasoning system might spend
+more tokens on intermediate steps.
 
-I think this gets the order backwards.
+The other axis is state refinement: keep the object roughly the same size, but
+improve the current state. A diffusion model denoises. A masked model fills in
+or repairs pieces. A video model might keep the same latent grid and make it
+more coherent.
 
-The sampler already contains a set of assumptions. It decides which variables are
-available to the model, which dependencies are represented explicitly, which
-updates are local, and which updates are supposed to be learned as a single
-move. The training objective can make the model good at the move. It cannot
-fully rescue an inference procedure that never had the move in its vocabulary.
-
-This is easiest to see in cases where the missing ingredient is almost
-embarrassingly concrete.
+Once separated, these are just design choices. They can be combined. They can
+also be made more or less efficient. That is where flow maps become interesting.
 
 ## Why flow maps are good
 
-In a DDIM-style sampler, we often move from a current time `t` to a target time
-`s`. For many small steps, it is natural to think in terms of a local velocity or
-denoising direction. The network sees the current state and the current time,
-and the numerical solver takes care of stepping forward.
+Suppose a continuous generator is trained with a local view of time. At a current
+time `t`, the model predicts a velocity or denoising direction, and a sampler
+uses that direction to take a step. If the step is small, this is a natural
+setup. The model only needs to know how to move locally.
 
-But if we want to make very large jumps, or even a single jump, a small mismatch
-appears. The sampler is trying to land at `s`, but the network may not be told
-which `s` it is aiming for.
+But fast generation asks for something harder. If we want one-step or few-step
+sampling, the model is no longer being asked for a small local correction. It is
+being asked to make a large jump.
 
-For local steps, this can be fine. The target is close enough that the direction
-is mostly determined by where you are. For long jumps, it becomes a real
-restriction. A model that only sees `(x_t, t)` is being asked to produce updates
-for many possible destinations without being told the destination.
+This exposes a simple mismatch in DDIM-style samplers. The sampler may be trying
+to move from a current time `t` to a target time `s`, but the network producing
+the update may only see the current state and current time. It is being asked to
+land at `s` without being told which `s` it is aiming for.
 
-One natural fix is to put the destination into the model class. Instead of only
-learning a local vector field, learn a two-time map: from this state at time `t`,
-where should I go if the target time is `s`?
+For small steps, the missing target is not too damaging. For large jumps, it is a
+real limitation. The inference map is under-specified: it omits an argument that
+matters.
 
-This is one way to read the recent interest in flow maps, shortcut models,
-consistency-style methods, and few-step distillation. They are not just better
-losses for the same old sampler. They make larger inference moves explicit.
+Flow maps are a clean way to remove that mismatch. Instead of learning only an
+infinitesimal vector field, a flow-map model learns a two-time map: from this
+state at time `t`, where should the sample go if the target is time `s`?
 
-Flow maps are the clean version of this idea. Instead of asking a model to learn
-only an infinitesimal direction and then hoping that numerical integration will
-make it fast, a flow-map model is asked to learn a finite move between two
-times. If the goal is few-step generation, that is a better match between the
-thing we train and the thing we ask the model to do at inference time.
+This is not just a trick for conditioning on one more scalar. It changes the
+object being learned. A local velocity field is the right object if inference
+will use many tiny steps. A two-time map is a more natural object if inference
+needs a small number of large steps.
 
-This is the second point in concrete form. Before training, ask whether the
-sampler has the right arguments. If a model is expected to jump to a target time,
-then the target time should be part of the inference map. Otherwise the training
-objective is trying to repair a sampler that was underspecified from the start.
+That is why flow maps, shortcut models, consistency-style methods, mean flows,
+and few-step distillation methods feel connected even when their losses and
+training recipes differ. They all move in the same direction: make long-range
+updates belong to the model class, instead of hoping that a model trained for
+local updates will automatically become a good few-step sampler.
+
+There is still a tradeoff. A flow map is harder to learn than a local direction.
+It has to represent a larger move. But that difficulty is at least placed in the
+right part of the problem. If the product we want at inference time is a large
+move, then training should expose and supervise that large move directly.
+
+This is the broader lesson: before designing the training objective, check
+whether the inference procedure is well specified. Does the sampler see the
+variables it needs? Does its parameterization contain the update it will be
+asked to perform? If not, training is being asked to compensate for a missing
+piece of the algorithm.
 
 ## Why consider this for LLMs
 
-There is a related issue on the language side.
+The language-modeling version of this issue shows up in a different form.
 
-Multi-token prediction is appealing because one-token-at-a-time decoding is
-slow. If a model could predict several future tokens at once, we might get lower
-latency and better use of parallel hardware.
+Multi-token prediction is attractive because left-to-right decoding is slow. If
+a model could predict several future tokens at once, we might get lower latency
+and better use of parallel hardware.
 
-But predicting several marginal distributions is not the same as predicting a
-joint distribution.
+But predicting several token marginals is not the same as predicting their joint
+distribution.
 
-Suppose the prompt asks for examples of two-word poker hands. "High card," "two
-pair," "full house," and "straight flush" are valid. If the first position and
-second position are sampled independently, each word can look plausible on its
-own while the pair is invalid. You can get something like "high house."
+Suppose the prompt asks for examples of two-word poker hands. Valid answers
+include "high card," "two pair," "full house," and "straight flush." The first
+word and the second word are correlated. If a sampler predicts the two positions
+independently, each word can look plausible on its own while the pair is invalid.
+You can get something like "high house."
 
-The problem is not that the model failed to know English. The problem is that the
-inference procedure quietly removed the dependency it needed.
+This is not a failure of vocabulary. It is a failure of inference design. The
+sampler removed a dependency that the output needed.
 
-There are many possible repairs: verification, rejection, iterative refinement,
-dependency modeling, blockwise sampling with an internal ordering, or some more
-direct joint parameterization. The important point is that the dependency has to
-live somewhere in the inference algorithm. It cannot be wished into existence by
+There are many ways to repair this: verification, rejection, iterative
+refinement, dependency prediction, blockwise sampling, or a more direct joint
+parameterization. The important point is that the dependency has to live
+somewhere in the inference procedure. It cannot be wished into existence by
 calling the objective "multi-token."
 
-This also changes how I think about diffusion and flow methods for language.
-They should not be dismissed just because language is usually represented with
-discrete tokens, and they should not be accepted just because they carry the word
-"diffusion." The question is more specific: what is the state space, and what
-parallel or refinement move is the sampler actually allowed to make?
+This is also why I think diffusion and flow-style ideas for language should be
+taken seriously, but carefully. The point is not that text should simply copy
+image diffusion. The point is that language generation might also benefit from
+inference procedures that refine, revise, or move several variables together.
 
-Masked diffusion language models, block diffusion models, continuous diffusion
-over categorical data, and flow-map language models answer that question in
-different ways. Some operate over discrete masked tokens. Some generate blocks
-autoregressively and refine inside each block. Some move the language problem
-into a continuous space and learn refinement or flow-like updates there. These
-are not the same algorithm with different branding. But they share a common
-inference design problem: how to get the latency benefits of parallelism or
-few-step refinement without silently dropping the dependencies that make
-language coherent.
+Discrete next-token prediction has a very strong property: each generated token
+extends a valid prefix by another normalized conditional draw. That stability is
+one reason autoregressive LLMs work so well. Giving it up casually would be a
+mistake.
 
-Continuous-domain language models are especially interesting from this angle
-because they make the false dichotomy harder to maintain. A language model can
-use continuous states. A diffusion or flow model can be applied to text-like
-objects. But the important part is not the label. It is whether the chosen state
-space and update map make the intended inference procedure well specified.
+But it is also a mistake to assume that language must always use exactly this
+inference procedure. Masked diffusion language models, block diffusion models,
+continuous diffusion over categorical data, and flow-map language models are all
+ways of exploring nearby design space. Some keep the state discrete. Some use
+masked tokens. Some generate blocks. Some move the problem into a continuous
+embedding space and learn refinement or flow-like updates there.
 
-## What this suggests
+These methods should not be judged only by whether they are "autoregressive" or
+"diffusion." They should be judged by whether their inference procedure is
+well-specified for the state space they choose.
 
-I do not think the future of generative modeling is going to be a clean victory
-for one historical family over another.
+Continuous-domain language models are especially useful for thinking through the
+false dichotomy. They separate the question of language from the question of
+discrete left-to-right decoding. If a language model lives in a continuous state
+space, then ideas from diffusion and flow matching become available in a more
+direct way. The hard part is then to preserve the dependencies that make
+language coherent while gaining the parallelism or refinement behavior that
+continuous methods make possible.
 
-Autoregressive models gave us a robust way to scale by making sequences longer.
-Diffusion models gave us a robust way to scale by revising many parts of a state
-in parallel. Frontier systems probably need both kinds of motion, and they will
-probably use them in combinations that look awkward if we insist on the old
-taxonomy.
+That is the interesting possibility: not replacing autoregressive LLMs because
+they are "old," but asking whether some parts of language generation could use a
+different inference axis.
 
-Flow maps make the continuous-domain implication clear: if we want fewer, larger
-refinement steps, we should train objects that can represent fewer, larger
-refinement steps. Continuous-domain language models pose the same question in a
-different state space: if we want text generation to benefit from refinement or
-parallel updates, we have to specify the dependencies those updates must
-preserve.
+## What to check first
 
-So when I look at a new pretraining or inference-time scaling idea, I try to ask
-a few questions before looking too closely at the loss:
+The practical takeaway is simple: look at the sampler before arguing about the
+loss.
 
-- What variables does the model get to condition on when it makes an update?
-- Does extra compute make the sample longer, make the current sample better, or
-  both?
-- If we reduce the number of steps, is the model still being asked to make a
-  move that belongs to its parameterization?
-- If several variables are generated together, where is their dependence
-  represented?
+For a new generative pre-training algorithm, I would ask:
 
-These questions are not a replacement for likelihoods, architectures, or scaling
-laws. They are more like a sanity check. Before training a model to make a move,
-make sure the move is actually available.
+- Does inference scale by making the object longer, refining the current object,
+  or both?
+- If the sampler takes a large step, does the model get the variables needed to
+  specify where that step should land?
+- If several variables are generated together, does the sampler represent their
+  dependencies?
+- If the method uses a continuous state for language, what structure keeps the
+  result coherent after refinement or parallel decoding?
 
-That is the main point I want to preserve from this note: design the inference
-move first. Then train the model to make that move well.
+These questions do not replace scaling laws, architectures, or empirical
+validation. They are a sanity check. A training objective can make a model good
+at an inference procedure. It cannot fully repair an inference procedure that is
+missing the move it is supposed to make.
+
+The old categories will probably keep being useful shorthand. But the more
+important design question is becoming clearer: what inference behavior do we
+want, and have we actually given the model a way to learn it?
 
 ## Related reading
 
