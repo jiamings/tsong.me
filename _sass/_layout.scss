@@ -3,9 +3,10 @@
  ******************************************************************************/
 
  body {
-   font-family: 'Nunito', 'TT Norms Pro', 'Lato';
+   font-family: 'TT Norms Pro', 'Nunito', 'Lato', sans-serif;
    padding-bottom: 70px;
-   color: $text-color;
+   color: #181817;
+   background: #fbfaf7;
  }
 
  body {
@@ -23,7 +24,7 @@
  }
 
 .container {
-  max-width: $max-content-width;
+  max-width: 900px;
 }
 
 // Profile

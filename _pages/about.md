@@ -3,90 +3,95 @@ layout: about
 title: About
 permalink: /
 description:
-
-
-news: true
 social: true
-years: [2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016]
 ---
 
-Ph.D., Computer Science <br/>
-Research Scientist, Luma AI <br/>
-<a href="assets/pdf/jiaming_cv.pdf" target="_blank"><b>Curriculum Vitae (outdated)</b></a>
+<section class="home-hero" id="top">
+  <div class="hero-copy">
+    <p class="eyebrow">Jiaming Song</p>
+    <h1>I build generative models for visual intelligence.</h1>
+    <p class="lede">
+      Former Chief Scientist at <a href="https://lumalabs.ai/">Luma AI</a>.
+      My work spans image, video, 3D, and diffusion models, with a focus on
+      models that are controllable, efficient, and useful to people making things.
+    </p>
+    <div class="link-row">
+      <a href="https://scholar.google.com/citations?user=6dP660cAAAAJ&hl=en">Google Scholar</a>
+      <a href="https://github.com/jiamings">GitHub</a>
+      <a href="https://twitter.com/baaadas">X / Twitter</a>
+      <a href="mailto:jiaming.tsong@gmail.com">Email</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <img src="{{ '/assets/img/visual-intelligence.png' | relative_url }}" alt="Abstract generative visual intelligence artwork">
+  </div>
+</section>
 
----- 
+<section class="home-section" id="work">
+  <p class="section-label">Recent Work</p>
+  <div class="work-list">
+    <article class="work-item">
+      <div>
+        <h2><a href="https://lumalabs.ai/uni-1">Uni-1</a></h2>
+        <p>
+          A multimodal reasoning model for image generation and editing. Uni-1
+          is built around understanding intention, following direction, spatial
+          reasoning, reference-guided generation, and culture-aware visual
+          creation.
+        </p>
+      </div>
+    </article>
 
-I am a research scientist in [Luma AI](https://lumalabs.ai/), where I am working on foundation models for 3D. 
+    <article class="work-item">
+      <div>
+        <h2><a href="https://lumalabs.ai/dream-machine">Ray</a></h2>
+        <p>
+          Luma's family of video generation models for coherent motion,
+          camera-aware generation, and creative control in Dream Machine.
+        </p>
+      </div>
+    </article>
 
-Before that, I was:
-- A research scientist in the Deep Imagination Research (DIR) group of NVIDIA Research. I worked on NVIDIA AI Foundations, specifically the [Picasso project](https://www.nvidia.com/en-us/gpu-cloud/picasso/). 
-- A research scientist in the Learning and Perception Research (LPR) group of NVIDIA Research. I was the first author of an ICLR 2023 and an ICML 2023 paper and also collaborated on various other papers.
-- A postdoc in Computer Science in Stanford University working with [Stefano Ermon](http://cs.stanford.edu/~ermon). 
-- [Ph.D.](assets/pdf/jiaming_thesis.pdf) in Computer Science at Stanford University advised by Stefano as well.
-- Undergrad in the Department of Computer Science and Technology, Tsinghua University, where I worked with [Jun Zhu](http://ml.cs.tsinghua.edu.cn/~jun/index.shtml) and [Lawrence Carin](http://people.ee.duke.edu/~lcarin).
+    <article class="work-item">
+      <div>
+        <h2>Diffusion Models</h2>
+        <p>
+          I created DDIM, an early accelerated sampler for diffusion models, and
+          worked on image-to-image generation, inverse problems, and controllable
+          generative modeling.
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
 
+<section class="home-section" id="background">
+  <p class="section-label">Background</p>
+  <p>
+    Before Luma, I was a research scientist at NVIDIA Research, working across
+    generative AI and AI foundation model projects. I was previously a postdoc
+    at Stanford with <a href="http://cs.stanford.edu/~ermon">Stefano Ermon</a>,
+    where I also completed my Ph.D. in Computer Science.
+  </p>
+  <p>
+    I am keeping this site lighter than a traditional academic page. For the
+    complete publication list, please see
+    <a href="https://scholar.google.com/citations?user=6dP660cAAAAJ&hl=en">Google Scholar</a>.
+  </p>
+</section>
 
-My "generative AI" qualifications:
-- I created DDIM, the earliest [accelerated algorithm for diffusion models](https://arxiv.org/abs/2010.02502). DDIM is widely used in recent generative AI systems including [DALL-E 2](https://cdn.openai.com/papers/dall-e-2.pdf), [Imagen](https://imagen.research.google/paper.pdf), [Stable Diffusion](https://en.wikipedia.org/wiki/Stable_Diffusion), and [ERNIE-ViLG 2.0](https://arxiv.org/abs/2210.15257). 
-- I co-authored [the paper](https://arxiv.org/abs/2108.01073) that is the foundation of [Stable Diffusion's img2img method](https://github.com/CompVis/stable-diffusion/blob/main/README.md#image-modification-with-stable-diffusion). 
-- I also [democratized the use of diffusion models for general applications](https://arxiv.org/abs/2201.11793), such as super-resolution, inpainting, and [JPEG restoration](https://arxiv.org/abs/2209.11888). 
-
-**Email**: jiaming [dot] tsong [atgmaildotcom]
-
-
-----
-
-##### News
-
-- Organized the [CVPR 2023 diffusion model tutorial](https://cvpr2023-tutorial-diffusion-models.github.io/). Slides are available. 
-- Organizing the SIGGRAPH 2023 Course on Diffusion Models.
-- Talks at University of Edinburgh, DeepMind, Imperial College London, and Oxford. [[slides](assets/slides/2023-01-26-workshop.pdf)]
-
-
-----
-
-##### Publications
-
-<div class="publications-front">
-
-{% for y in page.years %}
-  <h3 class="year">{{y}}</h3>
-  {% bibliography -f papers -q @*[year={{y}}]* %}
-{% endfor %}
-
-</div>
----
-
-##### Professional Services
-
-**Journal reviewer**: IEEE TPAMI, JAIR, IEEE TIT, ACM TIST, JMLR
-
-**Conference reviewer / Program committee**: ICML (2019, 2020, 2021), NeurIPS (2019, 2020, 2021), ICLR (2018, 2019, 2020, 2021), COLT (2019), UAI (2019, 2020, 2021), CVPR (2020, 2021), ECCV (2020), ICCV (2019, 2021), AAAI (2021), ACML (2018, 2019), WACV (2020)
-
-**Workshop organization**:
-- [NeurIPS 2019 Workshop on Information Theory and Machine Learning](https://sites.google.com/view/itml19/home) (chair)
-- [DALI 2018 Workshop on Generative Models and Reinforcement Learning](http://dalimeeting.org/dali2018//program) (chair)
-
-----
-
-##### Awards and Fellowships
-
-- ICLR 2022 Outstanding Paper Award
-- [Qualcomm Innovation Fellowship](https://www.qualcomm.com/invention/research/university-relations/innovation-fellowship/winners) (QInF 2018, 4.6%)
-- Stanford School of Engineering Fellowship (2016)
-- Google Excellence Scholarship (2015)
-- Outstanding Undergraduate, China Computer Federation (2015)
-- Outstanding Winner, Interdisciplinary Contest in Modeling (2015, 0.4%)
-- Zhong Shimo Scholarship (2013, 0.75%)
-
-----
-
-
-##### Teaching
-
-- [CS228](cs228.stanford.edu), Probablistic Graphical Models (Winter 2020, Head TA)
-- [CS236](cs236.stanford.edu), Deep Generative Models (Fall 2018, TA)
-
-----
-
-**Acknowledgements**: based on the [al-folio](https://github.com/alshedivat/al-folio) template by [Maruan Al-Shedivat](https://www.cs.cmu.edu/~mshediva/).
+<section class="home-section split-section" id="writing">
+  <div>
+    <p class="section-label">Writing</p>
+    <p>
+      I may add longer notes here later. The site is set up to support regular
+      markdown posts with math, which keeps technical writing portable and easy
+      to version. Substack can still be useful as a distribution layer for
+      broader essays.
+    </p>
+  </div>
+  <div class="small-note">
+    <strong>Good default:</strong> write canonical technical posts here, then
+    cross-post or link from Substack when distribution matters.
+  </div>
+</section>
