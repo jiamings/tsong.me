@@ -10,27 +10,26 @@ A common way to describe modern generative models is to split them into two
 families: autoregressive models for language, and diffusion models for images
 and videos.
 
-This note is about three positions.
+This note is about three points.
 
 First, the usual split is a false dichotomy. Autoregressive and diffusion
 methods can coexist in the same generative system, because the labels mix
 together several different choices: representation, training objective, and
 inference procedure.
 
-Second, many pre-training algorithms share a smaller set of inference designs
-than their names suggest. Some spend inference compute by expanding a sequence.
-Others spend it by refining an existing state. Some can do both.
+Second, flow maps point to a better way to build fast continuous-domain
+generators. If the sampler needs to make a large jump, the model should be given
+the information needed to learn that jump directly.
 
-Third, before choosing how to train one of these models, we should check whether
-the inference procedure is actually well specified. Does the sampler see the
-variables it needs? Does it represent the dependencies it will have to sample?
-If not, the training objective is being asked to compensate for a missing piece
-of the algorithm.
+Third, the same idea may matter for language models. Rather than assuming LLMs
+must stay in the usual discrete-token, left-to-right form, we should ask whether
+continuous states, refinement steps, or flow-like updates can give language
+models a useful form of inference-time scaling.
 
 ## Two kinds of motion
 
-The second position starts with a simple observation: at inference time, extra
-compute usually buys one of two things.
+The false dichotomy becomes easier to see from a simple observation: at
+inference time, extra compute usually buys one of two things.
 
 The first is that the object gets longer. A language model samples a token,
 appends it, and repeats. A video model might extend a clip. A reasoning model
@@ -69,7 +68,7 @@ fully rescue an inference procedure that never had the move in its vocabulary.
 This is easiest to see in cases where the missing ingredient is almost
 embarrassingly concrete.
 
-## Flow maps as the continuous-domain lesson
+## Why flow maps are good
 
 In a DDIM-style sampler, we often move from a current time `t` to a target time
 `s`. For many small steps, it is natural to think in terms of a local velocity or
@@ -99,12 +98,12 @@ make it fast, a flow-map model is asked to learn a finite move between two
 times. If the goal is few-step generation, that is a better match between the
 thing we train and the thing we ask the model to do at inference time.
 
-This is the third position in concrete form. Before training, ask whether the
+This is the second point in concrete form. Before training, ask whether the
 sampler has the right arguments. If a model is expected to jump to a target time,
 then the target time should be part of the inference map. Otherwise the training
 objective is trying to repair a sampler that was underspecified from the start.
 
-## Language models and parallel moves
+## Why consider this for LLMs
 
 There is a related issue on the language side.
 
