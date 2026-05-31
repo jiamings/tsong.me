@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const posts = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const postSlug = (id: string) => id.replace(/\.mdx?$/, "");
+---
+
+<Layout
+  title="Blog | Jiaming Song"
+  description="Technical writing by Jiaming Song."
+>
+  <section class="hero compact">
+    <h1>Blog</h1>
+    <p>Technical notes and essays.</p>
+  </section>
+
+  <section class="section">
+    {
+      posts.length > 0 ? (
+        <div class="post-list">
+          {posts.map((post) => (
+            <article class="post-list-item">
+              <p class="post-date">
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {post.data.pubDate.toLocaleDateString("en", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                  })}
+                </time>
+              </p>
+              <h2><a href={`/blog/${postSlug(post.id)}/`}>{post.data.title}</a></h2>
+              <p>{post.data.description}</p>
+              {post.data.tags.length > 0 && (
+                <div class="tag-row">
+                  {post.data.tags.map((tag) => <span>{tag}</span>)}
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p class="muted">No posts yet.</p>
+      )
+    }
+  </section>
+</Layout>
