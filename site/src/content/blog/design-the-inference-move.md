@@ -10,25 +10,27 @@ A common way to describe modern generative models is to split them into two
 families: autoregressive models for language, and diffusion models for images
 and videos.
 
-I think this is a false dichotomy. It treats "autoregressive" and "diffusion" as
-if they name two opposing model families, when they are mixing together several
-different choices: the data representation, the training objective, and the
-procedure used at inference time.
+This note is about three positions.
 
-Autoregression is primarily a way to sample: draw from a conditional
-distribution, append a new variable, and repeat. Diffusion is primarily a way to
-refine: start from a corrupted or simple state, then repeatedly revise it toward
-data.
+First, the usual split is a false dichotomy. Autoregressive and diffusion
+methods can coexist in the same generative system, because the labels mix
+together several different choices: representation, training objective, and
+inference procedure.
 
-So the question I find more useful is:
+Second, many pre-training algorithms share a smaller set of inference designs
+than their names suggest. Some spend inference compute by expanding a sequence.
+Others spend it by refining an existing state. Some can do both.
 
-> What inference move is the model allowed to make?
-
-This sounds small, but it changes the way I look at a lot of recent work.
+Third, before choosing how to train one of these models, we should check whether
+the inference procedure is actually well specified. Does the sampler see the
+variables it needs? Does it represent the dependencies it will have to sample?
+If not, the training objective is being asked to compensate for a missing piece
+of the algorithm.
 
 ## Two kinds of motion
 
-At inference time, extra compute usually buys one of two things.
+The second position starts with a simple observation: at inference time, extra
+compute usually buys one of two things.
 
 The first is that the object gets longer. A language model samples a token,
 appends it, and repeats. A video model might extend a clip. A reasoning model
