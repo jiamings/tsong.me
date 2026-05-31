@@ -10,10 +10,15 @@ A common way to describe modern generative models is to split them into two
 families: autoregressive models for language, and diffusion models for images
 and videos.
 
-This split is historically useful, but I think it is too coarse. Autoregression
-and diffusion are not just labels for model families. They also describe two
-different ways of spending compute at inference time. One extends a sample by
-adding new pieces. The other starts from a state and repeatedly revises it.
+I think this is a false dichotomy. It treats "autoregressive" and "diffusion" as
+if they name two opposing model families, when they are mixing together several
+different choices: the data representation, the training objective, and the
+procedure used at inference time.
+
+Autoregression is primarily a way to sample: draw from a conditional
+distribution, append a new variable, and repeat. Diffusion is primarily a way to
+refine: start from a corrupted or simple state, then repeatedly revise it toward
+data.
 
 So the question I find more useful is:
 
@@ -40,13 +45,10 @@ Diffusion models are the canonical example of state refinement. But those are
 just the familiar cases. There is nothing sacred about the boundary. A model can
 expand for a while, refine locally, expand again, verify, revise, and so on.
 
-Once you look at it this way, "autoregressive versus diffusion" starts to feel
-like a slightly misleading debate. It mixes together several different choices:
-the representation, the training objective, the factorization used by the
-sampler, and the computational path taken at inference time.
-
-Those choices often travel together because history made them travel together.
-They do not have to.
+Once you look at it this way, the familiar AR/diffusion split becomes less like
+a boundary between tribes and more like two common inference motions. Those
+motions often travel with particular objectives and representations because
+history made them travel together. They do not have to.
 
 ## The sampler has opinions
 
