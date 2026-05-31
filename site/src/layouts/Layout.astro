@@ -1,0 +1,35 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Jiaming Song",
+  description = "Jiaming Song builds multimodal AI systems for general intelligence."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/">Jiaming Song</a>
+      </div>
+    </header>
+    <main class="container page">
+      <slot />
+    </main>
+  </body>
+</html>

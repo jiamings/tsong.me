@@ -1,0 +1,208 @@
+@font-face {
+  font-family: "TT Norms Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/assets/fonts/tt-norms-pro-thin.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "TT Norms Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/assets/fonts/tt-norms-pro-regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "TT Norms Pro";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/assets/fonts/tt-norms-pro-medium.otf") format("opentype");
+}
+
+:root {
+  --bg: #fbfaf7;
+  --paper: #ffffff;
+  --text: #181817;
+  --muted: #45413b;
+  --soft: #5d5a54;
+  --rule: #e6e0d7;
+  --card-rule: #e8e1d7;
+  --accent: #1b6f78;
+  --accent-dark: #124d54;
+  --label: #8b5f2d;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "TT Norms Pro", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-dark);
+  text-decoration: underline;
+}
+
+.container {
+  width: min(100% - 3rem, 900px);
+  margin-inline: auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--rule);
+  background: rgba(251, 250, 247, 0.94);
+  backdrop-filter: blur(12px);
+}
+
+.header-inner {
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.brand:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.page {
+  padding: 0;
+}
+
+.hero {
+  min-height: 38vh;
+  padding: 5rem 0 3.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.hero h1 {
+  max-width: 760px;
+  margin: 0 0 1.25rem;
+  color: var(--text);
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: 0;
+}
+
+.hero p {
+  max-width: 660px;
+  margin: 0 0 1.75rem;
+  color: var(--muted);
+  font-size: 1.18rem;
+  line-height: 1.55;
+}
+
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.1rem;
+}
+
+.link-row a {
+  border-bottom: 1px solid rgba(27, 111, 120, 0.35);
+  color: var(--accent);
+  font-weight: 600;
+  padding-bottom: 0.12rem;
+}
+
+.section {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section p {
+  max-width: 760px;
+}
+
+.section-label {
+  margin: 0 0 0.85rem;
+  color: var(--label);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.work-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.work-item {
+  border: 1px solid var(--card-rule);
+  border-radius: 8px;
+  background: var(--paper);
+  padding: 1.4rem 1.5rem;
+}
+
+.work-item h2 {
+  margin: 0 0 0.35rem;
+  color: var(--text);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.work-item p {
+  margin: 0;
+  color: var(--muted);
+}
+
+@media (max-width: 720px) {
+  body {
+    font-size: 16px;
+  }
+
+  .container {
+    width: min(100% - 3.2rem, 900px);
+  }
+
+  .header-inner {
+    padding: 0.85rem 0;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 3.5rem 0 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.55rem;
+    line-height: 1.08;
+  }
+
+  .hero p {
+    font-size: 1.08rem;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+}
