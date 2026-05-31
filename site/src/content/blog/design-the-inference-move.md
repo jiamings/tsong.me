@@ -52,7 +52,7 @@ a boundary between tribes and more like two common inference motions. Those
 motions often travel with particular objectives and representations because
 history made them travel together. They do not have to.
 
-## The sampler has opinions
+## Well-specified inference
 
 It is tempting to think of inference as the boring part that happens after
 training. We choose a loss, train a large model, and then the sampler is just how
@@ -69,7 +69,7 @@ fully rescue an inference procedure that never had the move in its vocabulary.
 This is easiest to see in cases where the missing ingredient is almost
 embarrassingly concrete.
 
-## A small example from fast diffusion sampling
+## Flow maps as the continuous-domain lesson
 
 In a DDIM-style sampler, we often move from a current time `t` to a target time
 `s`. For many small steps, it is natural to think in terms of a local velocity or
@@ -93,7 +93,18 @@ This is one way to read the recent interest in flow maps, shortcut models,
 consistency-style methods, and few-step distillation. They are not just better
 losses for the same old sampler. They make larger inference moves explicit.
 
-## A small example from parallel decoding
+Flow maps are the clean version of this idea. Instead of asking a model to learn
+only an infinitesimal direction and then hoping that numerical integration will
+make it fast, a flow-map model is asked to learn a finite move between two
+times. If the goal is few-step generation, that is a better match between the
+thing we train and the thing we ask the model to do at inference time.
+
+This is the third position in concrete form. Before training, ask whether the
+sampler has the right arguments. If a model is expected to jump to a target time,
+then the target time should be part of the inference map. Otherwise the training
+objective is trying to repair a sampler that was underspecified from the start.
+
+## Language models and parallel moves
 
 There is a related issue on the language side.
 
@@ -118,6 +129,28 @@ direct joint parameterization. The important point is that the dependency has to
 live somewhere in the inference algorithm. It cannot be wished into existence by
 calling the objective "multi-token."
 
+This also changes how I think about diffusion and flow methods for language.
+They should not be dismissed just because language is usually represented with
+discrete tokens, and they should not be accepted just because they carry the word
+"diffusion." The question is more specific: what is the state space, and what
+parallel or refinement move is the sampler actually allowed to make?
+
+Masked diffusion language models, block diffusion models, continuous diffusion
+over categorical data, and flow-map language models answer that question in
+different ways. Some operate over discrete masked tokens. Some generate blocks
+autoregressively and refine inside each block. Some move the language problem
+into a continuous space and learn refinement or flow-like updates there. These
+are not the same algorithm with different branding. But they share a common
+inference design problem: how to get the latency benefits of parallelism or
+few-step refinement without silently dropping the dependencies that make
+language coherent.
+
+Continuous-domain language models are especially interesting from this angle
+because they make the false dichotomy harder to maintain. A language model can
+use continuous states. A diffusion or flow model can be applied to text-like
+objects. But the important part is not the label. It is whether the chosen state
+space and update map make the intended inference procedure well specified.
+
 ## What this suggests
 
 I do not think the future of generative modeling is going to be a clean victory
@@ -128,6 +161,13 @@ Diffusion models gave us a robust way to scale by revising many parts of a state
 in parallel. Frontier systems probably need both kinds of motion, and they will
 probably use them in combinations that look awkward if we insist on the old
 taxonomy.
+
+Flow maps make the continuous-domain implication clear: if we want fewer, larger
+refinement steps, we should train objects that can represent fewer, larger
+refinement steps. Continuous-domain language models pose the same question in a
+different state space: if we want text generation to benefit from refinement or
+parallel updates, we have to specify the dependencies those updates must
+preserve.
 
 So when I look at a new pretraining or inference-time scaling idea, I try to ask
 a few questions before looking too closely at the loss:
