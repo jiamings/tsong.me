@@ -25,12 +25,10 @@ The production output is written to `dist/`.
 ## Content
 
 - Homepage: `src/pages/index.astro`
-- Software page: `src/pages/software.astro`
-- Blog index and posts: `src/pages/blog/`
-- Blog markdown: `src/content/blog/`
+- Homepage: `src/pages/index.astro`
 
-Blog posts can use Markdown or MDX. Math is configured through `remark-math`,
-`rehype-katex`, and KaTeX CSS imported by the base layout.
+A blog can be added later with Astro content collections and Markdown/MDX, but it
+is intentionally not surfaced in the current site.
 
 ## Deployment
 

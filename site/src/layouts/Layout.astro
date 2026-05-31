@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import "katex/dist/katex.min.css";
 
 interface Props {
   title?: string;
@@ -11,15 +10,6 @@ const {
   title = "Jiaming Song",
   description = "Jiaming Song builds multimodal AI systems for general intelligence."
 } = Astro.props;
-
-const currentPath = Astro.url.pathname;
-
-const navItems = [
-  { href: "/#work", label: "Work" },
-  { href: "https://scholar.google.com/citations?user=6dP660cAAAAJ&hl=en", label: "Scholar" },
-  { href: "/software/", label: "Software" },
-  { href: "/blog/", label: "Blog" }
-];
 ---
 
 <!doctype html>
@@ -36,26 +26,6 @@ const navItems = [
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="/">Jiaming Song</a>
-        <nav aria-label="Main navigation">
-          <ul class="nav">
-            {
-              navItems.map((item) => {
-                const isActive =
-                  item.href.startsWith("/") &&
-                  item.href !== "/#work" &&
-                  currentPath.startsWith(item.href);
-
-                return (
-                  <li>
-                    <a class:list={[{ active: isActive }]} href={item.href}>
-                      {item.label}
-                    </a>
-                  </li>
-                );
-              })
-            }
-          </ul>
-        </nav>
       </div>
     </header>
     <main class="container page">
