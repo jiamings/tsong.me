@@ -8,12 +8,11 @@ social: true
 
 <section class="home-hero" id="top">
   <div class="hero-copy">
-    <p class="eyebrow">Jiaming Song</p>
-    <h1>I build generative models for visual intelligence.</h1>
+    <h1>I build multimodal AI systems for general intelligence.</h1>
     <p class="lede">
       Former Chief Scientist at <a href="https://lumalabs.ai/">Luma AI</a>.
-      My work spans image, video, 3D, and diffusion models, with a focus on
-      models that are controllable, efficient, and useful to people making things.
+      My work focuses on foundation models that reason across modalities,
+      generate rich worlds, and turn human intent into controllable outputs.
     </p>
     <div class="link-row">
       <a href="https://scholar.google.com/citations?user=6dP660cAAAAJ&hl=en">Google Scholar</a>
@@ -21,9 +20,6 @@ social: true
       <a href="https://twitter.com/baaadas">X / Twitter</a>
       <a href="mailto:jiaming.tsong@gmail.com">Email</a>
     </div>
-  </div>
-  <div class="hero-visual">
-    <img src="{{ '/assets/img/visual-intelligence.png' | relative_url }}" alt="Abstract generative visual intelligence artwork">
   </div>
 </section>
 
@@ -44,17 +40,17 @@ social: true
 
     <article class="work-item">
       <div>
-        <h2><a href="https://lumalabs.ai/dream-machine">Ray</a></h2>
+        <h2><a href="https://lumalabs.ai/ray">Ray</a></h2>
         <p>
-          Luma's family of video generation models for coherent motion,
-          camera-aware generation, and creative control in Dream Machine.
+          Luma's family of video generation models, focused on coherent motion,
+          camera-aware generation, and creative control.
         </p>
       </div>
     </article>
 
     <article class="work-item">
       <div>
-        <h2>Diffusion Models</h2>
+        <h2><a href="https://github.com/ermongroup/ddim">Diffusion Models</a></h2>
         <p>
           I created DDIM, an early accelerated sampler for diffusion models, and
           worked on image-to-image generation, inverse problems, and controllable
@@ -68,30 +64,19 @@ social: true
 <section class="home-section" id="background">
   <p class="section-label">Background</p>
   <p>
+    At Luma, I led the research pivots from 3D generation models with Genie, to
+    video generation models with Ray, to unified multimodal models with Uni-1.
+    Across those shifts, I worked across the full modeling stack, including
+    model architectures, training infrastructure, and data processing.
+  </p>
+  <p>
     Before Luma, I was a research scientist at NVIDIA Research, working across
-    generative AI and AI foundation model projects. I was previously a postdoc
+    multimodal generation and AI foundation model projects. I was previously a postdoc
     at Stanford with <a href="http://cs.stanford.edu/~ermon">Stefano Ermon</a>,
     where I also completed my Ph.D. in Computer Science.
   </p>
   <p>
-    I am keeping this site lighter than a traditional academic page. For the
-    complete publication list, please see
+    For the complete publication list, please see
     <a href="https://scholar.google.com/citations?user=6dP660cAAAAJ&hl=en">Google Scholar</a>.
   </p>
-</section>
-
-<section class="home-section split-section" id="writing">
-  <div>
-    <p class="section-label">Writing</p>
-    <p>
-      I may add longer notes here later. The site is set up to support regular
-      markdown posts with math, which keeps technical writing portable and easy
-      to version. Substack can still be useful as a distribution layer for
-      broader essays.
-    </p>
-  </div>
-  <div class="small-note">
-    <strong>Good default:</strong> write canonical technical posts here, then
-    cross-post or link from Substack when distribution matters.
-  </div>
 </section>
