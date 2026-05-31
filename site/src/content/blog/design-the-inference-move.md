@@ -1,6 +1,6 @@
 ---
-title: Design the Inference Move First
-description: A less taxonomic way to think about autoregressive models, diffusion models, and inference-time scaling.
+title: Inference-Time Scaling for Generative Pre-Training
+description: A short note on sequence expansion, state refinement, and why the inference procedure should shape the training objective.
 pubDate: 2026-05-31
 tags: ["generative models", "inference-time scaling", "diffusion"]
 draft: true
