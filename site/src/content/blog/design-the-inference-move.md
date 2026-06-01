@@ -16,14 +16,14 @@ methods can coexist in the same generative system. The split makes it sound as
 if we are choosing between two fixed packages, when in practice the pieces can
 be recombined.
 
-Second, flow maps point to a better way to build fast continuous-domain
-generators. If the sampler needs to make a large jump, the model should be given
-the information needed to learn that jump directly.
+Second, flow maps point to one way of making fast continuous-domain generators
+better specified. If the sampler needs to make a large jump, the model should be
+given the information needed to learn that jump directly.
 
-Third, the same idea may matter for language models. Rather than assuming LLMs
-must stay in the usual discrete-token, left-to-right form, we should ask whether
-continuous states, refinement steps, or flow-like updates can give language
-models a useful form of inference-time scaling.
+Third, the same inference-capacity question may matter for language models.
+Rather than assuming LLMs must stay in the usual discrete-token, left-to-right
+form, we should ask whether continuous states, refinement steps, or flow-like
+updates can give language models a useful form of inference-time scaling.
 
 This is a shorter, less technical version of the argument. For the longer
 technical write-up, see
@@ -40,9 +40,10 @@ of continuous signals and denoising objectives. This pairing is so common that
 it can start to look inevitable: language is autoregressive; images and videos
 are diffusion.
 
-I do not think that is the right abstraction. The sharper question is how a
-method spends inference compute, not whether it belongs to the autoregressive or
-diffusion tribe.
+I do not think that is the right abstraction. A sharper contrast is between
+discrete tokens learned with cross-entropy and continuous states learned with
+diffusion-style objectives, together with the inference procedures used to
+sample from them.
 
 Some methods spend compute by expanding a sequence. Others spend compute by
 refining an existing state. Many useful systems can do both.
@@ -57,9 +58,9 @@ These examples are hard to describe cleanly if "autoregressive" and "diffusion"
 are treated as mutually exclusive families. They are easier to understand as
 different ways of organizing inference compute: when to extend the object, when
 to revise the current state, and how much work each step should do. That is
-where flow maps become interesting.
+where the question of inference capacity becomes important.
 
-## Why flow maps are good
+## Why flow maps help
 
 Suppose a continuous generator is trained with a local view of time. At a current
 time `t`, the model predicts a velocity or denoising direction, and a sampler
@@ -80,9 +81,10 @@ For small steps, the missing target is not too damaging. For large jumps, it is 
 real limitation. The inference map is under-specified: it omits an argument that
 matters.
 
-Flow maps are a clean way to remove that mismatch. Instead of learning only an
-infinitesimal vector field, a flow-map model learns a two-time map: from this
-state at time `t`, where should the sample go if the target is time `s`?
+Adding the target time is the minimal fix. Flow maps give a more general
+language for the same idea. Instead of learning only an infinitesimal vector
+field, a flow-map model learns a two-time map: from this state at time `t`,
+where should the sample go if the target is time `s`?
 
 <figure class="imm-flow-figure">
   <div class="imm-flow-media-grid">
@@ -166,8 +168,8 @@ inference procedure itself did not directly model the dependency among the
 tokens.
 
 Continuous-domain language models are especially useful for thinking through the
-false dichotomy. They separate the question of language from the question of
-discrete left-to-right decoding. If a language model lives in a continuous state
+false dichotomy, but they should be separated from masked, discrete, or hybrid
+diffusion language models. If a language model lives in a continuous state
 space, then ideas from diffusion and flow matching become available in a more
 direct way.
 
@@ -177,12 +179,13 @@ Recent examples include
 [CoDAR](https://arxiv.org/abs/2603.02547),
 [LangFlow](https://arxiv.org/abs/2604.11748),
 [ELF](https://arxiv.org/abs/2605.10938), and
-[FlowLM](https://arxiv.org/abs/2605.20199). Their inference procedures are quite
-similar: they use continuous refinement before returning to discrete text. They
-differ in where they place the continuous state, how they map back to tokens,
-and whether they learn diffusion, flow matching, or a flow-map-like few-step
-sampler. One of the remaining challenges is whether continuous refinement can
-give a proper validation perplexity, not only a useful sampler.
+[FlowLM](https://arxiv.org/abs/2605.20199). These methods are not the same
+object, but they share a broad inference shape: use a continuous state or
+relaxation before returning to discrete text. They differ in where they place
+the continuous state, how they map back to tokens, and whether they learn
+diffusion, flow matching, or a flow-map-like few-step sampler. One remaining
+challenge is whether these procedures can give a well-defined validation
+perplexity for text, not only useful samples.
 
 ## Related reading
 
