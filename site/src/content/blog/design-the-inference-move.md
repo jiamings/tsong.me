@@ -189,13 +189,6 @@ flow matching, or a flow-map-like few-step sampler. The common question is
 whether continuous refinement can be made into a well-specified language model,
 not only a useful sampler.
 
-## What this suggests
-
-Before designing the training objective, check whether the inference procedure
-is well specified. Does the sampler see the variables it needs? Does its
-parameterization contain the update it will be asked to perform? If not,
-training is being asked to compensate for a missing piece of the algorithm.
-
 ## Related reading
 
 - [Denoising Diffusion Implicit Models](https://arxiv.org/abs/2010.02502)
