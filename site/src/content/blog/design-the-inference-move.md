@@ -154,14 +154,17 @@ You can get something like "high house."
   </figcaption>
 </figure>
 
-This is not a failure of vocabulary. It is a failure of inference design. The
-sampler removed a dependency that the output needed.
+The issue is the independence assumption in the inference process. Current
+multi-token prediction methods often produce softmax distributions for multiple
+future positions in parallel, and then sample from those positions independently.
+This can be useful as part of a larger decoding system, but by itself it does
+not represent the joint distribution over the tokens being decoded together.
 
-There are many ways to repair this: verification, rejection, iterative
-refinement, dependency prediction, blockwise sampling, or a more direct joint
-parameterization. The important point is that the dependency has to live
-somewhere in the inference procedure. It cannot be wished into existence by
-calling the objective "multi-token."
+Existing systems often work around this limitation with verification,
+self-speculative decoding, rejection, or by falling back to ordinary next-token
+prediction at inference time. Those workarounds can be practical, but they also
+make the capacity issue visible: the inference procedure itself did not directly
+model the dependency among the tokens.
 
 This is also why I think diffusion and flow-style ideas for language should be
 taken seriously, but carefully. The point is not that text should simply copy
