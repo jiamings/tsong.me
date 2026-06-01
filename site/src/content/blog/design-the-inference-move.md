@@ -13,9 +13,9 @@ and videos.
 This note is about three points.
 
 First, the usual split is a false dichotomy. Autoregressive and diffusion
-methods can coexist in the same generative system, because the labels mix
-together several different choices: representation, training objective, and
-inference procedure.
+methods can coexist in the same generative system. The split makes it sound as
+if we are choosing between two fixed packages, when in practice the pieces can
+be recombined.
 
 Second, flow maps point to a better way to build fast continuous-domain
 generators. If the sampler needs to make a large jump, the model should be given
