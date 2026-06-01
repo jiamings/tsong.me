@@ -37,10 +37,9 @@ of continuous signals and denoising objectives. This pairing is so common that
 it can start to look inevitable: language is autoregressive; images and videos
 are diffusion.
 
-I do not think that is the right abstraction.
-
-So the sharper question is not whether a method belongs to the autoregressive
-tribe or the diffusion tribe. It is how the method spends inference compute.
+I do not think that is the right abstraction. The sharper question is how a
+method spends inference compute, not whether it belongs to the autoregressive or
+diffusion tribe.
 
 Some methods spend compute by expanding a sequence. Others spend compute by
 refining an existing state. Many useful systems can do both. Diffusion Forcing,
