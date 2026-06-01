@@ -184,10 +184,15 @@ discrete left-to-right decoding. If a language model lives in a continuous state
 space, then ideas from diffusion and flow matching become available in a more
 direct way. Recent examples include
 [Continuous Diffusion for Categorical Data](https://arxiv.org/abs/2211.15089),
-[Flow Map Language Models](https://arxiv.org/abs/2602.16813), and
-[LangFlow](https://arxiv.org/abs/2604.11748). The hard part is then to preserve
-the dependencies that make language coherent while gaining the parallelism or
-refinement behavior that continuous methods make possible.
+[Flow Map Language Models](https://arxiv.org/abs/2602.16813),
+[CoDAR](https://arxiv.org/abs/2603.02547),
+[LangFlow](https://arxiv.org/abs/2604.11748),
+[ELF](https://arxiv.org/abs/2605.10938), and
+[FlowLM](https://arxiv.org/abs/2605.20199). They differ in where they place the
+continuous state, how they map back to tokens, and whether they learn diffusion,
+flow matching, or a flow-map-like few-step sampler. The common question is the
+same: can language generation use continuous refinement while preserving the
+dependencies that make text coherent?
 
 That is the interesting possibility: not replacing autoregressive LLMs because
 they are "old," but asking whether some parts of language generation could use a
@@ -205,7 +210,10 @@ different inference axis.
 - [Better & Faster Large Language Models via Multi-token Prediction](https://arxiv.org/abs/2404.19737)
 - [Continuous Diffusion for Categorical Data](https://arxiv.org/abs/2211.15089)
 - [Flow Map Language Models](https://arxiv.org/abs/2602.16813)
+- [CoDAR: Continuous Diffusion Language Models are More Powerful Than You Think](https://arxiv.org/abs/2603.02547)
 - [LangFlow](https://arxiv.org/abs/2604.11748)
+- [ELF: Embedded Language Flows](https://arxiv.org/abs/2605.10938)
+- [FlowLM: Few-Step Language Modeling via Diffusion-to-Flow Adaptation](https://arxiv.org/abs/2605.20199)
 - Sander Dieleman's ["Flow maps"](https://sander.ai/2026/05/06/flow-maps.html),
   ["Perspectives on diffusion"](https://sander.ai/2023/07/20/perspectives.html),
   and ["Diffusion language models"](https://sander.ai/2023/01/09/diffusion-language.html)
