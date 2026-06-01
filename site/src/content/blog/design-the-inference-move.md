@@ -42,11 +42,13 @@ method spends inference compute, not whether it belongs to the autoregressive or
 diffusion tribe.
 
 Some methods spend compute by expanding a sequence. Others spend compute by
-refining an existing state. Many useful systems can do both. Diffusion Forcing,
-for example, can generate a sequence over time while also denoising parts of the
-sequence. Block Diffusion generates blocks autoregressively but refines tokens
-inside each block. Diffusion via Autoregressive Models recasts a visual
-diffusion process into a next-token prediction problem.
+refining an existing state. Many useful systems can do both.
+[Diffusion Forcing](https://arxiv.org/abs/2407.01392), for example, can generate
+a sequence over time while also denoising parts of the sequence.
+[Block Diffusion](https://arxiv.org/abs/2503.09573) generates blocks
+autoregressively but refines tokens inside each block.
+[Diffusion via Autoregressive Models](https://arxiv.org/abs/2505.23660) recasts
+a visual diffusion process into a next-token prediction problem.
 
 These examples are hard to describe cleanly if "autoregressive" and "diffusion"
 are treated as mutually exclusive families. They are easier to understand as
@@ -65,10 +67,11 @@ But fast generation asks for something harder. If we want one-step or few-step
 sampling, the model is no longer being asked for a small local correction. It is
 being asked to make a large jump.
 
-This exposes a simple mismatch in DDIM-style samplers. The sampler may be trying
-to move from a current time `t` to a target time `s`, but the network producing
-the update may only see the current state and current time. It is being asked to
-land at `s` without being told which `s` it is aiming for.
+This exposes a simple mismatch in
+[DDIM-style samplers](https://arxiv.org/abs/2010.02502). The sampler may be
+trying to move from a current time `t` to a target time `s`, but the network
+producing the update may only see the current state and current time. It is
+being asked to land at `s` without being told which `s` it is aiming for.
 
 For small steps, the missing target is not too damaging. For large jumps, it is a
 real limitation. The inference map is under-specified: it omits an argument that
@@ -109,11 +112,13 @@ object being learned. A local velocity field is the right object if inference
 will use many tiny steps. A two-time map is a more natural object if inference
 needs a small number of large steps.
 
-That is why flow maps, shortcut models, consistency-style methods, mean flows,
-and few-step distillation methods feel connected even when their losses and
-training recipes differ. They all move in the same direction: make long-range
-updates belong to the model class, instead of hoping that a model trained for
-local updates will automatically become a good few-step sampler.
+That is why [flow maps](https://arxiv.org/abs/2406.07507),
+[shortcut models](https://arxiv.org/abs/2410.12557),
+consistency-style methods, [mean flows](https://arxiv.org/abs/2505.13447), and
+few-step distillation methods feel connected even when their losses and training
+recipes differ. They all move in the same direction: make long-range updates
+belong to the model class, instead of hoping that a model trained for local
+updates will automatically become a good few-step sampler.
 
 There is still a tradeoff. A flow map is harder to learn than a local direction.
 It has to represent a larger move. But that difficulty is at least placed in the
@@ -130,9 +135,9 @@ piece of the algorithm.
 
 The language-modeling version of this issue shows up in a different form.
 
-Multi-token prediction is attractive because left-to-right decoding is slow. If
-a model could predict several future tokens at once, we might get lower latency
-and better use of parallel hardware.
+[Multi-token prediction](https://arxiv.org/abs/2404.19737) is attractive
+because left-to-right decoding is slow. If a model could predict several future
+tokens at once, we might get lower latency and better use of parallel hardware.
 
 But predicting several token marginals is not the same as predicting their joint
 distribution.
@@ -162,9 +167,11 @@ not represent the joint distribution over the tokens being decoded together.
 
 Existing systems often work around this limitation with verification,
 self-speculative decoding, rejection, or by falling back to ordinary next-token
-prediction at inference time. Those workarounds can be practical, but they also
-make the capacity issue visible: the inference procedure itself did not directly
-model the dependency among the tokens.
+prediction at inference time, as in the
+[DeepSeek-V3 technical report](https://arxiv.org/abs/2412.19437). Those
+workarounds can be practical, but they also make the capacity issue visible: the
+inference procedure itself did not directly model the dependency among the
+tokens.
 
 This is also why I think diffusion and flow-style ideas for language should be
 taken seriously, but carefully. The point is not that text should simply copy
@@ -175,48 +182,30 @@ Continuous-domain language models are especially useful for thinking through the
 false dichotomy. They separate the question of language from the question of
 discrete left-to-right decoding. If a language model lives in a continuous state
 space, then ideas from diffusion and flow matching become available in a more
-direct way. The hard part is then to preserve the dependencies that make
-language coherent while gaining the parallelism or refinement behavior that
-continuous methods make possible.
+direct way. Recent examples include
+[Continuous Diffusion for Categorical Data](https://arxiv.org/abs/2211.15089),
+[Flow Map Language Models](https://arxiv.org/abs/2602.16813), and
+[LangFlow](https://arxiv.org/abs/2604.11748). The hard part is then to preserve
+the dependencies that make language coherent while gaining the parallelism or
+refinement behavior that continuous methods make possible.
 
 That is the interesting possibility: not replacing autoregressive LLMs because
 they are "old," but asking whether some parts of language generation could use a
 different inference axis.
 
-## What to check first
-
-The practical takeaway is simple: look at the sampler before arguing about the
-loss.
-
-For a new generative pre-training algorithm, I would ask:
-
-- Does inference scale by making the object longer, refining the current object,
-  or both?
-- If the sampler takes a large step, does the model get the variables needed to
-  specify where that step should land?
-- If several variables are generated together, does the sampler represent their
-  dependencies?
-- If the method uses a continuous state for language, what structure keeps the
-  result coherent after refinement or parallel decoding?
-
-These questions do not replace scaling laws, architectures, or empirical
-validation. They are a sanity check. A training objective can make a model good
-at an inference procedure. It cannot fully repair an inference procedure that is
-missing the move it is supposed to make.
-
-The old categories will probably keep being useful shorthand. But the more
-important design question is becoming clearer: what inference behavior do we
-want, and have we actually given the model a way to learn it?
-
 ## Related reading
 
-Sander Dieleman's posts on diffusion are good examples of writing that starts
-from a conceptual mismatch and slowly sharpens it into a model. In particular,
-["Perspectives on diffusion"](https://sander.ai/2023/07/20/perspectives.html),
-["Diffusion language models"](https://sander.ai/2023/01/09/diffusion-language.html),
-and ["Flow maps"](https://sander.ai/2026/05/06/flow-maps.html) are useful
-background for the diffusion side of this discussion.
-
-For a broader research context around multimodal generative modeling, Ruiqi
-Gao's [research page](https://ruiqigao.github.io/) and diffusion-related work
-are also useful reference points.
+- [Denoising Diffusion Implicit Models](https://arxiv.org/abs/2010.02502)
+- [Diffusion Forcing](https://arxiv.org/abs/2407.01392)
+- [Block Diffusion](https://arxiv.org/abs/2503.09573)
+- [Diffusion via Autoregressive Models](https://arxiv.org/abs/2505.23660)
+- [Flow Map Matching](https://arxiv.org/abs/2406.07507)
+- [One Step Diffusion via Shortcut Models](https://arxiv.org/abs/2410.12557)
+- [Mean Flows for One-Step Generative Modeling](https://arxiv.org/abs/2505.13447)
+- [Better & Faster Large Language Models via Multi-token Prediction](https://arxiv.org/abs/2404.19737)
+- [Continuous Diffusion for Categorical Data](https://arxiv.org/abs/2211.15089)
+- [Flow Map Language Models](https://arxiv.org/abs/2602.16813)
+- [LangFlow](https://arxiv.org/abs/2604.11748)
+- Sander Dieleman's ["Flow maps"](https://sander.ai/2026/05/06/flow-maps.html),
+  ["Perspectives on diffusion"](https://sander.ai/2023/07/20/perspectives.html),
+  and ["Diffusion language models"](https://sander.ai/2023/01/09/diffusion-language.html)
