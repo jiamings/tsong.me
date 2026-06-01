@@ -173,11 +173,6 @@ workarounds can be practical, but they also make the capacity issue visible: the
 inference procedure itself did not directly model the dependency among the
 tokens.
 
-This is also why I think diffusion and flow-style ideas for language should be
-taken seriously, but carefully. The point is not that text should simply copy
-image diffusion. The point is that language generation might also benefit from
-inference procedures that refine, revise, or move several variables together.
-
 Continuous-domain language models are especially useful for thinking through the
 false dichotomy. They separate the question of language from the question of
 discrete left-to-right decoding. If a language model lives in a continuous state
