@@ -168,15 +168,6 @@ discrete left-to-right decoding. If a language model lives in a continuous state
 space, then ideas from diffusion and flow matching become available in a more
 direct way.
 
-The main difficulty is not just preserving coherence during sampling. For
-language models, validation likelihood and perplexity are central sanity checks.
-Next-token models get this almost for free: each token has a normalized
-conditional probability. In a continuous-state language model, the probability
-assigned to held-out text has to be defined more carefully, because the model is
-moving through embeddings or relaxed variables before returning to tokens. That
-is one reason recent work pays so much attention to likelihood estimation,
-noise schedules, and the interface between continuous states and discrete text.
-
 Recent examples include
 [Continuous Diffusion for Categorical Data](https://arxiv.org/abs/2211.15089),
 [Flow Map Language Models](https://arxiv.org/abs/2602.16813),
@@ -186,8 +177,8 @@ Recent examples include
 [FlowLM](https://arxiv.org/abs/2605.20199). They differ in where they place the
 continuous state, how they map back to tokens, and whether they learn diffusion,
 flow matching, or a flow-map-like few-step sampler. The common question is
-whether continuous refinement can be made into a well-specified language model,
-not only a useful sampler.
+whether continuous refinement can give a proper validation perplexity, not only
+a useful sampler.
 
 ## Related reading
 
