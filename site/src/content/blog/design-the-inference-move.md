@@ -194,10 +194,6 @@ flow matching, or a flow-map-like few-step sampler. The common question is the
 same: can language generation use continuous refinement while preserving the
 dependencies that make text coherent?
 
-That is the interesting possibility: not replacing autoregressive LLMs because
-they are "old," but asking whether some parts of language generation could use a
-different inference axis.
-
 ## Related reading
 
 - [Denoising Diffusion Implicit Models](https://arxiv.org/abs/2010.02502)
