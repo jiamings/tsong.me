@@ -174,11 +174,12 @@ Recent examples include
 [CoDAR](https://arxiv.org/abs/2603.02547),
 [LangFlow](https://arxiv.org/abs/2604.11748),
 [ELF](https://arxiv.org/abs/2605.10938), and
-[FlowLM](https://arxiv.org/abs/2605.20199). They differ in where they place the
-continuous state, how they map back to tokens, and whether they learn diffusion,
-flow matching, or a flow-map-like few-step sampler. The common question is
-whether continuous refinement can give a proper validation perplexity, not only
-a useful sampler.
+[FlowLM](https://arxiv.org/abs/2605.20199). Their inference procedures are quite
+similar: they use continuous refinement before returning to discrete text. They
+differ in where they place the continuous state, how they map back to tokens,
+and whether they learn diffusion, flow matching, or a flow-map-like few-step
+sampler. One of the remaining challenges is whether continuous refinement can
+give a proper validation perplexity, not only a useful sampler.
 
 ## Related reading
 
