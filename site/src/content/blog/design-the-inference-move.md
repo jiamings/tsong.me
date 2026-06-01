@@ -143,6 +143,17 @@ word and the second word are correlated. If a sampler predicts the two positions
 independently, each word can look plausible on its own while the pair is invalid.
 You can get something like "high house."
 
+<figure class="blog-figure">
+  <img
+    src="/assets/blog/mtp-poker-gpt-image.png"
+    alt="A comparison of a joint distribution over valid two-word poker hands and independent sampling heads that can produce invalid combinations such as high house."
+  />
+  <figcaption>
+    A two-token poker-hand example. Valid two-word hands are correlated; sampling
+    the two positions independently can mix good marginals into an invalid pair.
+  </figcaption>
+</figure>
+
 This is not a failure of vocabulary. It is a failure of inference design. The
 sampler removed a dependency that the output needed.
 

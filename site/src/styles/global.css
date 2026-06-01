@@ -205,6 +205,26 @@ a:hover {
   text-align: center;
 }
 
+.blog-figure {
+  margin: 2rem 0;
+}
+
+.blog-figure img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--card-rule);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.blog-figure figcaption {
+  margin-top: 0.55rem;
+  color: var(--soft);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
 @media (max-width: 720px) {
   body {
     font-size: 16px;
