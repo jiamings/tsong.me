@@ -120,11 +120,6 @@ recipes differ. They all move in the same direction: make long-range updates
 belong to the model class, instead of hoping that a model trained for local
 updates will automatically become a good few-step sampler.
 
-There is still a tradeoff. A flow map is harder to learn than a local direction.
-It has to represent a larger move. But that difficulty is at least placed in the
-right part of the problem. If the product we want at inference time is a large
-move, then training should expose and supervise that large move directly.
-
 This is the broader lesson: before designing the training objective, check
 whether the inference procedure is well specified. Does the sampler see the
 variables it needs? Does its parameterization contain the update it will be
