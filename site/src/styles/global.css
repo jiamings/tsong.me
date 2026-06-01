@@ -175,6 +175,36 @@ a:hover {
   color: var(--muted);
 }
 
+.imm-flow-figure {
+  margin: 2rem 0;
+}
+
+.imm-flow-media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.imm-flow-panel video {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--card-rule);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.imm-flow-panel figcaption,
+.imm-flow-source {
+  margin-top: 0.55rem;
+  color: var(--soft);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.imm-flow-source {
+  text-align: center;
+}
+
 @media (max-width: 720px) {
   body {
     font-size: 16px;
@@ -204,5 +234,9 @@ a:hover {
 
   .section {
     padding: 3rem 0;
+  }
+
+  .imm-flow-media-grid {
+    grid-template-columns: 1fr;
   }
 }

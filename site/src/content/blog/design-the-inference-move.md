@@ -78,6 +78,32 @@ Flow maps are a clean way to remove that mismatch. Instead of learning only an
 infinitesimal vector field, a flow-map model learns a two-time map: from this
 state at time `t`, where should the sample go if the target is time `s`?
 
+<figure class="imm-flow-figure">
+  <div class="imm-flow-media-grid">
+    <div class="imm-flow-panel">
+      <video autoplay loop muted playsinline preload="metadata" src="https://static.cdn-luma.com/files/blog/imm/DDTI%20FINAL.mp4"></video>
+      <figcaption>
+        <strong>DDIM-style update.</strong> The sampler wants to jump from a
+        current time to a target time, but the network is not directly
+        conditioned on the target.
+      </figcaption>
+    </div>
+    <div class="imm-flow-panel">
+      <video autoplay loop muted playsinline preload="metadata" src="https://static.cdn-luma.com/files/site/home/IMM%20Exported.mp4"></video>
+      <figcaption>
+        <strong>Target-time-conditioned update.</strong> Exposing the target
+        time gives the model the missing degree of freedom for a finite
+        two-time move.
+      </figcaption>
+    </div>
+  </div>
+  <figcaption class="imm-flow-source">
+    Animations from Luma AI's
+    <a href="https://lumalabs.ai/news/inductive-moment-matching">Inductive Moment Matching</a>
+    post.
+  </figcaption>
+</figure>
+
 This is not just a trick for conditioning on one more scalar. It changes the
 object being learned. A local velocity field is the right object if inference
 will use many tiny steps. A two-time map is a more natural object if inference
