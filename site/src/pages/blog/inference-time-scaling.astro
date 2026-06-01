@@ -1,0 +1,22 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Post, { frontmatter } from "../../content/blog/design-the-inference-move.md";
+
+const publishedAt = new Date(frontmatter.pubDate).toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC"
+});
+---
+
+<Layout title={`${frontmatter.title} | Jiaming Song`} description={frontmatter.description}>
+  <article class="blog-post">
+    <header class="blog-post-header">
+      <p class="section-label">Writing · {publishedAt}</p>
+      <h1>{frontmatter.title}</h1>
+      <p>{frontmatter.description}</p>
+    </header>
+    <Post />
+  </article>
+</Layout>

@@ -175,8 +175,60 @@ a:hover {
   color: var(--muted);
 }
 
+.blog-post {
+  padding: 4rem 0;
+}
+
+.blog-post-header {
+  margin-bottom: 2.75rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.blog-post-header h1 {
+  max-width: 780px;
+  margin: 0 0 1rem;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+.blog-post-header p:not(.section-label) {
+  max-width: 720px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.55;
+}
+
+.blog-post h2 {
+  margin: 3rem 0 0.85rem;
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.blog-post p,
+.blog-post ul,
+.blog-post figure {
+  max-width: 780px;
+}
+
+.blog-post p {
+  margin: 1rem 0;
+}
+
+.blog-post ul {
+  padding-left: 1.3rem;
+}
+
+.blog-post li {
+  margin: 0.45rem 0;
+}
+
 .imm-flow-figure {
   margin: 2rem 0;
+  max-width: 980px;
 }
 
 .imm-flow-media-grid {
@@ -250,6 +302,14 @@ a:hover {
 
   .hero p {
     font-size: 1.08rem;
+  }
+
+  .blog-post {
+    padding: 3rem 0;
+  }
+
+  .blog-post-header h1 {
+    font-size: 2.25rem;
   }
 
   .section {

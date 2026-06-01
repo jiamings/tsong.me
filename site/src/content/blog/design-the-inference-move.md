@@ -3,7 +3,6 @@ title: Inference-Time Scaling for Generative Pre-Training
 description: A short note on the false dichotomy between autoregression and diffusion, why flow maps help, and what this might mean for language models.
 pubDate: 2026-05-31
 tags: ["generative models", "inference-time scaling", "diffusion"]
-draft: true
 ---
 
 A common way to describe modern generative models is to split them into two
