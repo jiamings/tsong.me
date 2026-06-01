@@ -120,12 +120,6 @@ recipes differ. They all move in the same direction: make long-range updates
 belong to the model class, instead of hoping that a model trained for local
 updates will automatically become a good few-step sampler.
 
-This is the broader lesson: before designing the training objective, check
-whether the inference procedure is well specified. Does the sampler see the
-variables it needs? Does its parameterization contain the update it will be
-asked to perform? If not, training is being asked to compensate for a missing
-piece of the algorithm.
-
 ## Why consider this for LLMs
 
 The language-modeling version of this issue shows up in a different form.
@@ -194,6 +188,13 @@ continuous state, how they map back to tokens, and whether they learn diffusion,
 flow matching, or a flow-map-like few-step sampler. The common question is
 whether continuous refinement can be made into a well-specified language model,
 not only a useful sampler.
+
+## What this suggests
+
+Before designing the training objective, check whether the inference procedure
+is well specified. Does the sampler see the variables it needs? Does its
+parameterization contain the update it will be asked to perform? If not,
+training is being asked to compensate for a missing piece of the algorithm.
 
 ## Related reading
 
