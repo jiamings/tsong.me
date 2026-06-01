@@ -25,6 +25,10 @@ must stay in the usual discrete-token, left-to-right form, we should ask whether
 continuous states, refinement steps, or flow-like updates can give language
 models a useful form of inference-time scaling.
 
+This is a shorter, less technical version of the argument. For the longer
+technical write-up, see
+[Inference-Time Scaling for Generative Pre-Training](https://arxiv.org/abs/2503.07154).
+
 ## The false dichotomy
 
 The autoregressive/diffusion split is useful historically, but it bundles
