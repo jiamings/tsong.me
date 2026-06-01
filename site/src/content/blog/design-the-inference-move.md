@@ -39,30 +39,21 @@ are diffusion.
 
 I do not think that is the right abstraction.
 
-Autoregression is an inference procedure that expands a sample. It samples a new
-piece conditioned on the pieces that are already there. Diffusion is an
-inference procedure that refines a state. It starts from something simple or
-corrupted and repeatedly revises it toward data.
-
-Those two motions are different, but they are not mutually exclusive. A model
-can generate blocks autoregressively and refine within each block. It can revise
-a whole sequence while still using some ordering. It can use discrete variables,
-continuous variables, or a mixture of both.
-
 So the sharper question is not whether a method belongs to the autoregressive
 tribe or the diffusion tribe. It is how the method spends inference compute.
 
-One axis is sequence expansion: make the object longer. A language model writes
-more tokens. A video model might extend a clip. A reasoning system might spend
-more tokens on intermediate steps.
+Some methods spend compute by expanding a sequence. Others spend compute by
+refining an existing state. Many useful systems can do both. Diffusion Forcing,
+for example, can generate a sequence over time while also denoising parts of the
+sequence. Block Diffusion generates blocks autoregressively but refines tokens
+inside each block. Diffusion via Autoregressive Models recasts a visual
+diffusion process into a next-token prediction problem.
 
-The other axis is state refinement: keep the object roughly the same size, but
-improve the current state. A diffusion model denoises. A masked model fills in
-or repairs pieces. A video model might keep the same latent grid and make it
-more coherent.
-
-Once separated, these are just design choices. They can be combined. They can
-also be made more or less efficient. That is where flow maps become interesting.
+These examples are hard to describe cleanly if "autoregressive" and "diffusion"
+are treated as mutually exclusive families. They are easier to understand as
+different ways of organizing inference compute: when to extend the object, when
+to revise the current state, and how much work each step should do. That is
+where flow maps become interesting.
 
 ## Why flow maps are good
 
