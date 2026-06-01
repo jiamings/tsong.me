@@ -168,22 +168,6 @@ taken seriously, but carefully. The point is not that text should simply copy
 image diffusion. The point is that language generation might also benefit from
 inference procedures that refine, revise, or move several variables together.
 
-Discrete next-token prediction has a very strong property: each generated token
-extends a valid prefix by another normalized conditional draw. That stability is
-one reason autoregressive LLMs work so well. Giving it up casually would be a
-mistake.
-
-But it is also a mistake to assume that language must always use exactly this
-inference procedure. Masked diffusion language models, block diffusion models,
-continuous diffusion over categorical data, and flow-map language models are all
-ways of exploring nearby design space. Some keep the state discrete. Some use
-masked tokens. Some generate blocks. Some move the problem into a continuous
-embedding space and learn refinement or flow-like updates there.
-
-These methods should not be judged only by whether they are "autoregressive" or
-"diffusion." They should be judged by whether their inference procedure is
-well-specified for the state space they choose.
-
 Continuous-domain language models are especially useful for thinking through the
 false dichotomy. They separate the question of language from the question of
 discrete left-to-right decoding. If a language model lives in a continuous state
